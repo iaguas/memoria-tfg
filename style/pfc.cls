@@ -24,7 +24,7 @@
 %\RequirePackage{tabu} % Un paquete de tablas para todo, pero que no se va a actualizar, buscar alternativas: https://tex.stackexchange.com/questions/12672/which-tabular-packages-do-which-tasks-and-which-packages-conflict
 \def\Hnewline{{?nl}}
 \RequirePackage{tikz}
-\RequirePackage{tikz-uml}
+%\RequirePackage{tikz-uml}
 %\RequirePackage{pgf-umlcd}
 %\usetikzlibrary{positioning,decorations.pathreplacing,shapes}
 \usetikzlibrary{positioning,fit,babel,shapes.multipart,calc}
