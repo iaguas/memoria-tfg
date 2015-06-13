@@ -1,68 +1,41 @@
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%
-% Welcome to Overleaf --- just edit your LaTeX on the left,
-% and we'll compile it for you on the right. If you give
-% someone the link to this page, they can edit at the same
-% time. See the help menu above for more info. Enjoy!
-%
-% Note: you can export the pdf to see the result at full
-% resolution.
-%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Behaviour of the stator voltage and the RMS-value of the stator
-% flux as a function of speed in scalar control.
-% Author: Erno Pentzin (2013)
-\documentclass{article}
-\usepackage{amsmath} % Required for \varPsi below
-\usepackage{tikz}
-%%%<
-\usepackage{verbatim}
-\usepackage[active,tightpage]{preview}
-\PreviewEnvironment{tikzpicture}
-\setlength\PreviewBorder{10pt}%
-%%%>
-\begin{comment}
-:Title: AC drive voltage flux control
-:Tags: Electrical engineering;Plotting;Basics
-:Author: Erno Pentzin
-:Slug: ac-drive-voltage
+\documentclass[main]{subfile}
 
-Behaviour of the stator voltage and the RMS-value of the stator
-flux as a function of speed in scalar control. Adapted from the
-figure in the handout by Jorma Luomi and Asko Niemenmaa (2011).
-\end{comment}
 \begin{document}
 
-\begin{tikzpicture}
+\begin{figure}[h!]
+  \centering
+  \begin{tikzpicture}
 
-% horizontal axis
-\draw[->] (0,0) -- (6.5,0) node[anchor=north] {\footnotesize altura (m)};
-% labels
-\draw	(0,0) node[anchor=north] {\footnotesize 0}
-		(1,0) node[anchor=north] {\footnotesize 0,5}
-		(2,0) node[anchor=north] {\footnotesize 1}
-		(3,0) node[anchor=north] {\footnotesize 1,5}
-		(4,0) node[anchor=north] {\footnotesize 2}
-		(5,0) node[anchor=north] {\footnotesize 2,5};
+  % horizontal axis
+  \draw[->] (0,0) -- (6.5,0) node[anchor=north] {\footnotesize altura (m)};
+  % labels
+  \draw	(0,0) node[anchor=north] {\footnotesize 0}
+  		(1,0) node[anchor=north] {\footnotesize 0,5}
+  		(2,0) node[anchor=north] {\footnotesize 1}
+  		(3,0) node[anchor=north] {\footnotesize 1,5}
+  		(4,0) node[anchor=north] {\footnotesize 2}
+  		(5,0) node[anchor=north] {\footnotesize 2,5};
 
-% vertical axis
-\draw[->] (0,0) -- (0,2.5) node[anchor=east] {\footnotesize Pertenencia};
-% labels
-\draw	(0,0) node[anchor=east] {\footnotesize 0}
-		(0,2) node[anchor=east] {\footnotesize 1};
+  % vertical axis
+  \draw[->] (0,0) -- (0,2.5) node[anchor=east] {\footnotesize Pertenencia};
+  % labels
+  \draw	(0,0) node[anchor=east] {\footnotesize 0}
+  		(0,2) node[anchor=east] {\footnotesize 1};
 
-% funcion
-\draw[thick] (0,0)--(3,0);
-\draw[thick] (3,0)--(4,2);
-\draw[thick] (4,2)--(6,2);
-\draw[dotted] (3,0)--(3,2.5);
-\draw[dotted] (4,0)--(4,2.5);
-\draw (5,2.25) node {\small Alto}; %label
-\draw (3.5,2.25) node {\small Difuso}; %label
-\draw (1.5,2.25) node {\small No alto}; %label
+  % funcion
+  \draw[thick] (0,0)--(3,0);
+  \draw[thick] (3,0)--(4,2);
+  \draw[thick] (4,2)--(6,2);
+  \draw[dotted] (3,0)--(3,2.5);
+  \draw[dotted] (4,0)--(4,2.5);
+  \draw (5,2.25) node {\small Alto}; %label
+  \draw (3.5,2.25) node {\small Difuso}; %label
+  \draw (1.5,2.25) node {\small No alto}; %label
 
 
 
-\end{tikzpicture}
+  \end{tikzpicture}
+  \caption{Representación de la pertenencia de los elementos para la lógica difusa. \label{fig:altodifusa}}
+\end{figure}
 
 \end{document}

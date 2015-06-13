@@ -1,0 +1,120 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{style/general}[2014/04/06 Ajustes generales]
+
+\RequirePackage{iftex}
+\RequireXeTeX
+
+
+\RequirePackage{ifdraft}
+
+\ifdraft{%
+  \PassOptionsToPackage{draft}{bookmark}%
+}{}
+
+\ProcessOptions\relax
+
+% Basic LaTeX packages
+\RequirePackage{fixltx2e}
+
+% Basic packages for XeTeX
+\RequirePackage{xltxtra}
+%\RequirePackage{fontspec}
+%\RequirePackage{xunicode}
+
+\defaultfontfeatures{Ligatures=TeX}
+
+% Fonts
+\setmainfont{Linux Libertine O}
+\setsansfont[Scale=MatchLowercase,BoldItalicFont={* Bold},BoldItalicFeatures={FakeSlant}]{Linux Biolinum O}
+\setmonofont[Scale=MatchLowercase,BoldFont={* Bold},AutoFakeSlant]{Inconsolata}
+\RequirePackage[protrusion=true]{microtype}
+
+% Language packages
+\RequirePackage{polyglossia}
+\setdefaultlanguage{spanish}
+\setotherlanguage[variant=uk]{english}
+\setotherlanguage{basque}
+
+% Bibliography
+\RequirePackage[backend=biber,hyperref=true,backref=true,style=numeric-comp]{biblatex}
+\RequirePackage{xpatch}
+\RequirePackage[autostyle=true,spanish=spanish]{csquotes}
+
+% KOMA Script hacks
+%\AtBeginDocument{\RequirePackage{scrhack}}
+\RequirePackage{scrhack}
+
+% Common useful stuff
+\RequirePackage{underscore}
+\RequirePackage{ellipsis}
+\RequirePackage{enumitem}
+\RequirePackage{calc}
+\RequirePackage[autolanguage]{numprint}
+\RequirePackage[usenames,dvipsnames,svgnames,table,x11names]{xcolor}
+\RequirePackage{float}
+\RequirePackage{subfig}
+\RequirePackage{url}
+
+% Math
+\RequirePackage{unicode-math}
+\RequirePackage{amsmath}
+\setmathfont[Scale=MatchLowercase]{Asana Math}
+%\RequirePackage[all,warning]{onlyamsmath}
+
+% Graphics
+\RequirePackage{graphicx}
+\DeclareGraphicsExtensions{.pdf,.png,.jpg,.mps}
+
+% Other stuff
+%\RequirePackage[gen,right]{eurosym}
+\RequirePackage[zeros]{euro}
+\EUROSYM{EUR}{€}
+
+\RequirePackage{numprint}
+\RequirePackage{translator}
+\RequirePackage[detect-all,binary-units,locale=FR]{siunitx}
+
+% Template stuff
+\RequirePackage[headsepline,automark]{scrlayer-scrpage}
+\pagestyle{scrheadings}
+
+% Table stuff
+\RequirePackage{array}
+\RequirePackage{tabularx}
+\RequirePackage{tabulary}
+\RequirePackage{multirow}
+\RequirePackage{booktabs}
+
+% Just before hyperref
+\RequirePackage[nohints]{minitoc}
+
+% Hyperref features
+\RequirePackage{varioref}
+\RequirePackage{hyperref}
+\RequirePackage{bookmark}
+\hypersetup{
+  unicode = true,
+  pdfencoding = auto,
+  pdfcreator = {XeLaTeX}
+}
+\AtBeginDocument{%
+  \hypersetup{
+    pdftitle = {\@title},
+    pdfauthor = {\@author},
+    pdfsubject = {\@subject},
+    pdfcreationdate = {\@date}
+  }
+}
+
+% Packages that go after hyperref
+\RequirePackage{cleveref}
+\RequirePackage[hypcap]{caption}
+
+% Glossaries
+\RequirePackage[xindy,toc,translate=babel]{glossaries}
+%\RequirePackage[xindy]{imakeidx}
+
+%\RequirePackage{appendix}
+%\renewcommand{\appendixname}{Anexo}
+%\renewcommand{\appendixtocname}{Anexos}
+%\renewcommand{\appendixpagename}{\usekomafont{disposition} Anexos}

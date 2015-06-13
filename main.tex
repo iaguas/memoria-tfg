@@ -1,39 +1,32 @@
 % main file
-\documentclass[12pt, twoside, a4paper, openright]{book}
-
-
-\usepackage[latin1]{inputenc}
-\usepackage[spanish]{babel}
-\usepackage[pdftex,usenames,dvipsnames]{color}
-\usepackage{subfigure} 
-\usepackage{babelbib}
+\documentclass[spanish]{style/pfc}
+\errorcontextlines 10000
+\usepackage{subfiles}
+\usepackage{subfig} 
 \usepackage{pdfpages}
-\usepackage{cite}
+\usepackage{amsthm}
 
-\usepackage{style/pfclistings}
-
-% Paquetes de la AMS:
-\usepackage{amsmath, amsthm, amsfonts}
+%\usepackage{style/pfclistings}
 
 
-\newcommand{\egilea}{I�igo Aguas Ardaiz}
-\newcommand{\izenburua}{T�tulo}
-\newcommand{\data}{2013ko maiatzaren 25}
+\title{Título}
+\author{Iñigo Aguas Ardaiz}
+\date{2013ko maiatzaren 25}
 
 \newtheorem{theorem}{Teorema}[section]
 \newtheorem{corolary}[theorem]{Corolario}
 \newtheorem{lemma}[theorem]{Lema}
-\newtheorem{proposition}[theorem]{Proposici�n}
+\newtheorem{proposition}[theorem]{Proposición}
 \theoremstyle{definition}
-\newtheorem{definition}[theorem]{Definici�n}
+\newtheorem{definition}[theorem]{Definición}
 \theoremstyle{remark}
-\newtheorem{rem}[theorem]{Observaci�n}
+\newtheorem{rem}[theorem]{Observación}
 
-\input{template/my-packages}
+%\input{template/my-packages}
 
-\newcommand{\espezialitatea}{IngenierÃ­a de Computadores}
+\newcommand{\espezialitatea}{Ingeniería de Computadores}
 
-% Cosas para la parte matem�tica
+% Cosas para la parte matemática
 \def\RR{\mathbb{R}}
 \def\ZZ{\mathbb{Z}}
 \def\FF{\mathcal{F}}
@@ -55,11 +48,10 @@
 
 \renewcommand{\labelenumi}{(\arabic{enumi})}
 
-\title{\izenburua}
-\author{\egilea}
+\addbibresource{bibliografia.bib}
 
 \begin{document}
-\frontmatter
+%\frontmatter
 \includepdf{graficos/portada.pdf}
 
 % \maketitle
@@ -67,10 +59,10 @@
 \cleardoublepage
 
 
-\input{0-abstract-en}
-\cleardoublepage
+\subfile{0-abstract-en}
 
-\input{0-abstract-es}
+\subfile{0-abstract-es}
+
 \cleardoublepage
 
 % Remove parskip for toc
@@ -85,15 +77,15 @@
 %\listoftables
 
 % Change to a more spaced text-style
-\setlength{\parskip}{1.3ex plus 0.2ex minus 0.2ex}
-\renewcommand{\baselinestretch}{1.3}
+%\setlength{\parskip}{1.3ex plus 0.2ex minus 0.2ex}
+%\renewcommand{\baselinestretch}{1.3}
 
-	\fancyhf{}
-	\fancyhf[OLH]{\rightmark}
-	\fancyhf[ERH]{\leftmark}
-	\fancyhf[ORH,ELH]{\thepage}
+	%\fancyhf{}
+	%\fancyhf[OLH]{\rightmark}
+	%\fancyhf[ERH]{\leftmark}
+	%\fancyhf[ORH,ELH]{\thepage}
 
-\mainmatter
+%\mainmatter
 \input{1-intro}
 \input{2-preliminares}
 \input{3-monoumbral}
@@ -112,16 +104,17 @@
 %\else
 %	\fancyhead[RE]{\emph{Anexo \thechapter}}
 %\fi
-\renewcommand{\headrulewidth}{0.5pt}
+%\renewcommand{\headrulewidth}{0.5pt}
 
 % \input{A-appendix}
 
-\backmatter
+%\backmatter
 
 %\bibliographystyle{ieeetr} % Use the "unsrtnat" BibTeX style for formatting the Bibliography
-\bibliographystyle{babamspl}
-\bibliography{bibliografia}
+%\bibliographystyle{babamspl}
+%\bibliography{bibliografia}
 \nocite{*}
+\printbibliography[heading=bibintoc]
 %\bibliography{bibliografia}{} % The references (bibliography) information are stored in the file named "Bibliography.bib"
 
 % In case we are using a glossary

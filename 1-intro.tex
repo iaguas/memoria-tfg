@@ -1,116 +1,116 @@
-% INTRODUCCI”N
-\chapter{IntroducciÛn}
+% INTRODUCCI√ìN
+\chapter{Introducci√≥n}
 
-En este capÌtulo se da una visiÛn general del problema que se ha estudiado asÌ como la motivaciÛn para investigar y contribuir en este ·rea. Se explica, tambiÈn, la relevancia del problema en el marco del procesamiento de imagen y la segmentaciÛn. Finalmente, se especifican el propÛsito y los objetivos que se han guiado esta investigaciÛn
-
-
-% 1.1. MOTIVACI”N
-\section{MotivaciÛn}\label{sec:motivacion}
-
-El desarrollo de mecanismos que permiten a las m·quinas el aprendizaje de tÈcnicas que les permitan la resoluciÛn autom·tica de problemas es un campo fundamental dentro del ·rea de la ComputaciÛn y la Inteligencia Artificial.Este tipo de procesos se utilizan en la vida diaria de muchos seres humanos y resultan innatos en ellos, en cambio, su implementaciÛn para que las m·quinas los implementen se convierte en todo un reto debido a la dificultad de la imitaciÛn de los procesos cerebrales de las personas.
-
-Muchos autores \cite{lib:ross, lib:boden, art:searle, art:churchland} han propuesto ideas sobre esta cuestiÛn pero debe destacarse a R. Penrose \cite{lib:penrose} que en su libro {\em La nueva mente del Emperador},  se proclama un claro detractor de la idea de que las m·quinas puedan llegar a tener la opciÛn de discernir de una forma similar al cerebro humano. Llega incluso a preguntarse ``?`cÛmo podrÌamos siquiera {\em empezar} a explicar la substancia de tales problemas a una entidad que no sea ella misma consciente\dots?''
-
-En definitiva, en este trabajo se motiva en la idea de hacer posible lo que muchos creen imposible, lo que muchos creen que no ser· posible en mucho tiempo, incluso que no ser· posible sin conocernos a nosotros mismos. En este sentido, se trata el problema de la segmentaciÛn de im·genes para intentar mejorar los mÈtodos actuales y llegar a un mÈtodo que pudiera ser utilizado de forma general para cualquier entrada.
+En este cap√≠tulo se da una visi√≥n general del problema que se ha estudiado as√≠ como la motivaci√≥n para investigar y contribuir en este √°rea. Se explica, tambi√©n, la relevancia del problema en el marco del procesamiento de imagen y la segmentaci√≥n. Finalmente, se especifican el prop√≥sito y los objetivos que se han guiado esta investigaci√≥n
 
 
-% 1.2. DEFINICI”N
-\section{DefiniciÛn del problema}\label{sec:definicion}
-El problema de la segmentaciÛn consiste en poder conocer dentro de una imagen quÈ parte de ella pertenece al objeto y cual al fondo. AsÌ, por ejemplo, en la figura \ref{img:ejemplomolino} el lector podr· diferenciar claramente un molino del pueblo que se ve en el fondo de la imagen. El hecho de diferenciar un objeto del fondo de una imagen es un proceso que no supone ninguna dificultad para la mente humana; es algo que realizamos inconscientemente cientos de veces durante el dÌa, sin que nos cueste ning˙n esfuerzo. Sin embargo, la misma tarea puede resultar muy complicada o imposible de realizar a travÈs de un programa inform·tico. PodrÌa ser como aquel hidalgo que veÌa gigantes en lugar molinos.
+% 1.1. MOTIVACI√ìN
+\section{Motivaci√≥n}\label{sec:motivacion}
 
-\begin{figure}[h!]
-\begin{center}
-\includegraphics[width=10cm]{img/molino.jpg}
-\caption{Distinguir el molino del pueblo del fondo no es difÌcil para un humano aunque sÌ para una m·quina. \label{img:ejemplomolino}}
-\end{center}
+El desarrollo de mecanismos que permiten a las m√°quinas el aprendizaje de t√©cnicas que les permitan la resoluci√≥n autom√°tica de problemas es un campo fundamental dentro del √°rea de la Computaci√≥n y la Inteligencia Artificial.Este tipo de procesos se utilizan en la vida diaria de muchos seres humanos y resultan innatos en ellos, en cambio, su implementaci√≥n para que las m√°quinas los implementen se convierte en todo un reto debido a la dificultad de la imitaci√≥n de los procesos cerebrales de las personas.
+
+Muchos autores \cite{lib:ross, lib:boden, art:searle, art:churchland} han propuesto ideas sobre esta cuesti√≥n pero debe destacarse a R. Penrose \cite{lib:penrose} que en su libro {\em La nueva mente del Emperador},  se proclama un claro detractor de la idea de que las m√°quinas puedan llegar a tener la opci√≥n de discernir de una forma similar al cerebro humano. Llega incluso a preguntarse ``?`c√≥mo podr√≠amos siquiera {\em empezar} a explicar la substancia de tales problemas a una entidad que no sea ella misma consciente\dots?''
+
+En definitiva, en este trabajo se motiva en la idea de hacer posible lo que muchos creen imposible, lo que muchos creen que no ser√° posible en mucho tiempo, incluso que no ser√° posible sin conocernos a nosotros mismos. En este sentido, se trata el problema de la segmentaci√≥n de im√°genes para intentar mejorar los m√©todos actuales y llegar a un m√©todo que pudiera ser utilizado de forma general para cualquier entrada.
+
+
+% 1.2. DEFINICI√ìN
+\section{Definici√≥n del problema}\label{sec:definicion}
+El problema de la segmentaci√≥n consiste en poder conocer dentro de una imagen qu√© parte de ella pertenece al objeto y cual al fondo. As√≠, por ejemplo, en la figura \ref{img:ejemplomolino} el lector podr√° diferenciar claramente un molino del pueblo que se ve en el fondo de la imagen. El hecho de diferenciar un objeto del fondo de una imagen es un proceso que no supone ninguna dificultad para la mente humana; es algo que realizamos inconscientemente cientos de veces durante el d√≠a, sin que nos cueste ning√∫n esfuerzo. Sin embargo, la misma tarea puede resultar muy complicada o imposible de realizar a trav√©s de un programa inform√°tico. Podr√≠a ser como aquel hidalgo que ve√≠a gigantes en lugar molinos.
+
+\begin{figure}
+	\centering
+	\includegraphics[width=0.9\textwidth]{img/molino.jpg}
+	\caption{Distinguir el molino del pueblo del fondo no es dif√≠cil para un humano aunque s√≠ para una m√°quina.}
+	\label{img:ejemplomolino}
 \end{figure}
 
-\REV{pq es importante el problema de la segmentaciÛn} Autores como Gonz·lez y Woods en \cite{lib:gonzalez} enuncian el problema de ``segmentaciÛn de im·genes no triviales como una de las tareas m·s dificiles en el procesamiento de im·genes''. En este sentido, insisten en que ``la exactitud de la segmentaciÛn determina el Èxito o error de los procesos de an·lisis computerizados''. Otros autores \cite{lib:sonka} hablan de la sementaciÛn como una ``tÈcnica en al que se divide la imagen en partes que tienen una correlaciÛn con objetos o ·reas del mundo real contenidas en la imagen''. Definido formalmente:
+\REV{pq es importante el problema de la segmentaci√≥n} Autores como Gonz√°lez y Woods en \cite{lib:gonzalez} enuncian el problema de ``segmentaci√≥n de im√°genes no triviales como una de las tareas m√°s dificiles en el procesamiento de im√°genes''. En este sentido, insisten en que ``la exactitud de la segmentaci√≥n determina el √©xito o error de los procesos de an√°lisis computerizados''. Otros autores \cite{lib:sonka} hablan de la sementaci√≥n como una ``t√©cnica en al que se divide la imagen en partes que tienen una correlaci√≥n con objetos o √°reas del mundo real contenidas en la imagen''. Definido formalmente:
 
 \begin{definition}\label{def:definicionproblema}
-Dada una imagen $Q$ que se pude subdividir en $n$ regiones $R_{1}, \dots, R_{n}$, y sabemos que $P$ es una cierta propiedad booleana que cumplen todos los pÌxeles de la regiÛn $R_{i}, \forall  i=1,\dots ,n$, se deber· cumplir siempre que:
+Dada una imagen $Q$ que se pude subdividir en $n$ regiones $R_{1}, \dots, R_{n}$, y sabemos que $P$ es una cierta propiedad booleana que cumplen todos los p√≠xeles de la regi√≥n $R_{i}, \forall  i=1,\dots ,n$, se deber√° cumplir siempre que:
 \begin{enumerate}
 	\item $\bigcup_{i=1}^{n}R_{i}=Q$;
-	\item En una regiÛn $R_{i}, \forall i=1,\dots ,n$ todos sus pÌxeles est·n conectados;
+	\item En una regi√≥n $R_{i}, \forall i=1,\dots ,n$ todos sus p√≠xeles est√°n conectados;
 	\item $R_{i}\cap R_{j}=\emptyset, \forall i, j : i\neq j;$
 	\item $P(R_{i}) = \text{ VERDADERO }, \forall  i=1,\dots ,n;$
 	\item $P(R_{i}\cup R_{j}) = \text{ FALSO }, \forall  i=1,\dots ,n.$
 \end{enumerate}
 \end{definition}
 
-En conclusiÛn, en este proceso se lleva a cabo la divisiÛn de la imagen en regiones donde cada una (desde 2 hasta $n$, este n˙mero depender· del problema que estemos resolviendo) har·n menciÛn al fondo y a cada objeto. Adem·s, todas las regiones ser·n independientes entre sÌ, esto es, un pixel pertenecer· solamente a la regiÛn $i$ cuando hablemos de segmentaciÛn completa. Centrando el problema ˙nicamente en aquellas im·genes en escala de grises, nuestra pretensiÛn ser· obtener aquellas regiones que contienen a un objeto centr·ndonos en sus tonalidades, esto es, por medio de tÈcnicas de umbralizaciÛn \REV{seguro?}.
+En conclusi√≥n, en este proceso se lleva a cabo la divisi√≥n de la imagen en regiones donde cada una (desde 2 hasta $n$, este n√∫mero depender√° del problema que estemos resolviendo) har√°n menci√≥n al fondo y a cada objeto. Adem√°s, todas las regiones ser√°n independientes entre s√≠, esto es, un pixel pertenecer√° solamente a la regi√≥n $i$ cuando hablemos de segmentaci√≥n completa. Centrando el problema √∫nicamente en aquellas im√°genes en escala de grises, nuestra pretensi√≥n ser√° obtener aquellas regiones que contienen a un objeto centr√°ndonos en sus tonalidades, esto es, por medio de t√©cnicas de umbralizaci√≥n \REV{seguro?}.
 
 
-% 1.3. SOLUCI”N
-\section{SoluciÛn propuesta}\label{sec:solucion}
-\REV{Nosotros vamos a utilizar tÈcnicas difusas, para empezar. øPor quÈ? (Incertidumebre en torno a los pÌxeles, pÈridda de informaciÛn captaciÛn im·genes,...)}
+% 1.3. SOLUCI√ìN
+\section{Soluci√≥n propuesta}\label{sec:solucion}
+\REV{Nosotros vamos a utilizar t√©cnicas difusas, para empezar. ¬øPor qu√©? (Incertidumebre en torno a los p√≠xeles, p√©ridda de informaci√≥n captaci√≥n im√°genes,...)}
 
-Existen tres tÈcnicas para poder llevar a cabo la segmentaciÛn de una imagen:
-\REV{explicaciÛn y referencia}
-\begin{enumerate}[a)]
-	\item SegmentaciÛn basada en umbralizaciÛn.
-	\item TÈcnicas basada en agrupamiento de pÌxeles en regiones.
-	\item TÈcnicas basadas en la detecciÛn de bordes.
+Existen tres t√©cnicas para poder llevar a cabo la segmentaci√≥n de una imagen:
+\REV{explicaci√≥n y referencia}
+\begin{enumerate}[label=\alph*)]
+	\item Segmentaci√≥n basada en umbralizaci√≥n.
+	\item T√©cnicas basada en agrupamiento de p√≠xeles en regiones.
+	\item T√©cnicas basadas en la detecci√≥n de bordes.
 \end{enumerate}
 
-En este trabajo se va a centrar la segmentaciÛn por medio de las tÈcnicas de umbralizaciÛn. Para ello lo que tendremos que hacer ser· calcular los umbrales que separen las regiones que se hayan encontrado, de forma que situaremos las regiones entre un umbral $t_{i}$ y uno $t_{i+1}$. Para ejemplificar esto, tomaremos la umbralizaciÛn binaria en la cual se dispondr· de un ˙nico umbral $t$. De esta forma, todos los elementos de la imagen que se encuentren por encima del umbral pertenecer·n a una regiÛn  y los que estÈn por debajo a la segunda. Esta tÈcnica se basa ˙nicamente en detectar los diferentes tonos de gris de la imagen, asÌ que mirando el histograma de la imagen (fig. \ref{img:rice}, podrÌamos ver cÛmo existe una frontera entre la intensidad $t=71$ y el resto creando diferencias en los niveles de gris. \cite{art:refbarrenechea}
+En este trabajo se va a centrar la segmentaci√≥n por medio de las t√©cnicas de umbralizaci√≥n. Para ello lo que tendremos que hacer ser√° calcular los umbrales que separen las regiones que se hayan encontrado, de forma que situaremos las regiones entre un umbral $t_{i}$ y uno $t_{i+1}$. Para ejemplificar esto, tomaremos la umbralizaci√≥n binaria en la cual se dispondr√° de un √∫nico umbral $t$. De esta forma, todos los elementos de la imagen que se encuentren por encima del umbral pertenecer√°n a una regi√≥n  y los que est√©n por debajo a la segunda. Esta t√©cnica se basa √∫nicamente en detectar los diferentes tonos de gris de la imagen, as√≠ que mirando el histograma de la imagen (fig. \ref{img:rice}, podr√≠amos ver c√≥mo existe una frontera entre la intensidad $t=71$ y el resto creando diferencias en los niveles de gris. \cite{art:refbarrenechea}
 
-\begin{figure}[h!]
-\begin{center}
-\subfigure[]{\includegraphics[width=0.25\textwidth]{img/rice.jpg}}\quad
-\subfigure[]{\includegraphics[width=0.25\textwidth]{img/umbra_rice.jpg}}\\
-\subfigure[]{\includegraphics[width=0.45\textwidth]{img/hist_rice.jpg}}
-\caption{(a) Imagen original. (b) Imagen segmentada. (c) Histograma de la imagen original. Se puede ver que en t=71 se produce un mÌnimo con respecto a los otros niveles de gris y que por eso se escoge como umbral. \label{img:rice}}
-\end{center}
+\begin{figure}
+\centering
+	\subfloat{\includegraphics[width=0.3\textwidth]{img/rice}}
+	\subfloat{\includegraphics[width=0.3\textwidth]{img/umbra-rice}}
+	\subfloat{\includegraphics[width=0.3\textwidth]{img/hist-rice}}
+	\caption{(a) Imagen original. (b) Imagen segmentada. (c) Histograma de la imagen original. Se puede ver que en t=71 se produce un m√≠nimo con respecto a los otros niveles de gris y que por eso se escoge como umbral.}
+	\label{img:rice}
 \end{figure}
 
 
-\REV{soluciÛn al pq...} Se debe tener en cuenta que la umbralizaciÛn es un mÈtodo r·pido y de coste computacional bajo por lo que se puede realizar en tiempo real. Como sÛlo basa su algorÌtmica en el histograma de la imagen hace que sea una mÈtodo sencillo e intuitivo aunque esto tambiÈn hace que tenga problemas ante el ruido y objetos o fondos que no sean uniformes.
+\REV{soluci√≥n al pq...} Se debe tener en cuenta que la umbralizaci√≥n es un m√©todo r√°pido y de coste computacional bajo por lo que se puede realizar en tiempo real. Como s√≥lo basa su algor√≠tmica en el histograma de la imagen hace que sea una m√©todo sencillo e intuitivo aunque esto tambi√©n hace que tenga problemas ante el ruido y objetos o fondos que no sean uniformes.
 
-La soluciÛn que se presenta en este trabajor se haya por medio de lÛgica difusa. Se han utilizado funciones REF, de Dombi, de agregaciÛn y penalti. En el capÌtulo \ref{basicos} se hace menciÛn a todos estos conceptos y se explican ponÌendose en pr·ctica a partir del capÌtulo \ref{monoumbral}. En el capÌtulo \ref{cap:conclusiones} se presentan todas las conclusiones obtenidas asÌ como las lÌneas de trabajo futuro.
+La soluci√≥n que se presenta en este trabajor se haya por medio de l√≥gica difusa. Se han utilizado funciones REF, de Dombi, de agregaci√≥n y penalti. En el cap√≠tulo \ref{basicos} se hace menci√≥n a todos estos conceptos y se explican pon√≠endose en pr√°ctica a partir del cap√≠tulo \ref{monoumbral}. En el cap√≠tulo \ref{cap:conclusiones} se presentan todas las conclusiones obtenidas as√≠ como las l√≠neas de trabajo futuro.
 
-%La umbralizaciÛn es r·pida, de coste computacional bajo y se puede realizar en tiempo real.
+%La umbralizaci√≥n es r√°pida, de coste computacional bajo y se puede realizar en tiempo real.
 %Sencilla e intuitiva.
-%TÈcnica ˙tili si el fondo y los objetos son uniformes.
+%T√©cnica √∫tili si el fondo y los objetos son uniformes.
 %Problemas: el ruido, niveles de gris similares entre obejto y fondo, solapamientos de objetos...
-%La obtenciÛn de un umbral se basar· en el histograma de la imagen. No se considera la informaciÛn espacial.
+%La obtenci√≥n de un umbral se basar√° en el histograma de la imagen. No se considera la informaci√≥n espacial.
 
 % 1.4. REELEVANCIA
 \section{Reelevancia}\label{sec:reelevancia}
 
-En el campo de la medicina \cite{lib:suri} se ha experimentado una mejora sustancial en la efectividad de las pruebas mÈdicas gracias a diferentes opciones como los rayos X, la tomografÌa computerizada, la resonancia magnÈtica, la tomografÌa por emisiÛn de positrones (PET), im·genes de ultrasonidos y otras. La revoluciÛn digital y el gran poder de procesamiento que disponen los ordenadores ha conseguido que los profesionales comprendan la compleja anatomÌa humana, aunque esto no ha sido suficiente ya que se ha visto necesario poder obtener los bordes, las superficies y la segmentaciÛn de los Ûrganos. Estos Ûrganos segmentados y sus bordes son clave para poder conseguir que un especialista mÈdico pueda hacer una cirugÌa adecuada para muchas ramas de la medicina, debido a la importancia de tener datos en tiempo real. \REV{[Insertar figura que vaya con esto].}
+En el campo de la medicina \cite{lib:suri} se ha experimentado una mejora sustancial en la efectividad de las pruebas m√©dicas gracias a diferentes opciones como los rayos X, la tomograf√≠a computerizada, la resonancia magn√©tica, la tomograf√≠a por emisi√≥n de positrones (PET), im√°genes de ultrasonidos y otras. La revoluci√≥n digital y el gran poder de procesamiento que disponen los ordenadores ha conseguido que los profesionales comprendan la compleja anatom√≠a humana, aunque esto no ha sido suficiente ya que se ha visto necesario poder obtener los bordes, las superficies y la segmentaci√≥n de los √≥rganos. Estos √≥rganos segmentados y sus bordes son clave para poder conseguir que un especialista m√©dico pueda hacer una cirug√≠a adecuada para muchas ramas de la medicina, debido a la importancia de tener datos en tiempo real. \REV{[Insertar figura que vaya con esto].}
 
 
-Pruebas mÈdicas
-LocalizaciÛn de tumores y otras patologÌas
-Medida de vol˙menes de tejido
-CirugÌa guiada por ordenador
-DiagnÛstico
-PlanificaciÛn del tratamiento
-Estudio de la estructura anatÛmica
+Pruebas m√©dicas
+Localizaci√≥n de tumores y otras patolog√≠as
+Medida de vol√∫menes de tejido
+Cirug√≠a guiada por ordenador
+Diagn√≥stico
+Planificaci√≥n del tratamiento
+Estudio de la estructura anat√≥mica
 
-An·lisis autom·tico de detecciÛn de errores.
+An√°lisis autom√°tico de detecci√≥n de errores.
 
 Sensor de huella digital
-LocalizaciÛn de objetos en im·genes de satÈlite (teledetecciÛn).
+Localizaci√≥n de objetos en im√°genes de sat√©lite (teledetecci√≥n).
 \REV{Alargar esto}
 
 
 % 1.5. OBJETIVOS
-\section{PropÛsito y objetivos}\label{sec:objetivos}
+\section{Prop√≥sito y objetivos}\label{sec:objetivos}
 
-Este proyecto se centra en estudiar tÈcnicas de segmentaciÛn para un ˙nico umbral y la generalizaciÛn de estas en m˙ltiples umbrales en im·genes en blanco y negro e intentar mejorar las tÈcnicas de las que actualmente se disponen intentando generalizarlas de forma que los par·metros no dependan del problema. 
+Este proyecto se centra en estudiar t√©cnicas de segmentaci√≥n para un √∫nico umbral y la generalizaci√≥n de estas en m√∫ltiples umbrales en im√°genes en blanco y negro e intentar mejorar las t√©cnicas de las que actualmente se disponen intentando generalizarlas de forma que los par√°metros no dependan del problema. 
 
-Adem·s, para poder conseguir el propÛsito anterior se estipularon los siguiente objetivos:
+Adem√°s, para poder conseguir el prop√≥sito anterior se estipularon los siguiente objetivos:
 \begin{itemize}
-	\item Investigar y conocer tÈcnicas actuales de segmentaciÛn de imagen de forma que estas sean el punto de partida.
-	\item Analizar y evaluar las funciones que J. Dombi propone en \cite{art:dombi}. Comparar estas con las funciones REF y sustituirlas en la construcciÛn de los conjuntos difusos para conocer sus efectos.
-	\item Implementar diferentes algoritmos de segmentaciÛn con el conocimiento adquirido anteriormente evaluando su mejora y haciendo las correcciones necesarias con la intenciÛn de generalizar el mÈtodo de forma m·xima.
-	\item Implementar diferentes algoritmos que incluyan la agregaciÛn de las diferentes funciones estudiadas para la segmentaciÛn en los puntos anteriores comprobando si esto mejora los resultados anteriores.
-	\item Analizar todos los puntos anteriores a fin de concluir los resultados del trabajo asÌ como dirimir si se ha podido conseguir cumplir el propÛsito inicial.
+	\item Investigar y conocer t√©cnicas actuales de segmentaci√≥n de imagen de forma que estas sean el punto de partida.
+	\item Analizar y evaluar las funciones que J. Dombi propone en \cite{art:dombi}. Comparar estas con las funciones REF y sustituirlas en la construcci√≥n de los conjuntos difusos para conocer sus efectos.
+	\item Implementar diferentes algoritmos de segmentaci√≥n con el conocimiento adquirido anteriormente evaluando su mejora y haciendo las correcciones necesarias con la intenci√≥n de generalizar el m√©todo de forma m√°xima.
+	\item Implementar diferentes algoritmos que incluyan la agregaci√≥n de las diferentes funciones estudiadas para la segmentaci√≥n en los puntos anteriores comprobando si esto mejora los resultados anteriores.
+	\item Analizar todos los puntos anteriores a fin de concluir los resultados del trabajo as√≠ como dirimir si se ha podido conseguir cumplir el prop√≥sito inicial.
 \end{itemize}
 
-%1.6 AN¡LISIS BIBLIOGR¡FICO
-\section{An·lisis bibliogr·fico}
+%1.6 AN√ÅLISIS BIBLIOGR√ÅFICO
+\section{An√°lisis bibliogr√°fico}
 
-No tengo claro aun que poner aquÌ. PrÛximamente.
+No tengo claro aun que poner aqu√≠. Pr√≥ximamente.
