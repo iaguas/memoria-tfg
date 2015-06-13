@@ -1,0 +1,132 @@
+% main file
+\documentclass[12pt, twoside, a4paper, openright]{book}
+
+
+\usepackage[latin1]{inputenc}
+\usepackage[spanish]{babel}
+\usepackage[pdftex,usenames,dvipsnames]{color}
+\usepackage{subfigure} 
+\usepackage{babelbib}
+\usepackage{pdfpages}
+\usepackage{cite}
+
+\usepackage{style/pfclistings}
+
+% Paquetes de la AMS:
+\usepackage{amsmath, amsthm, amsfonts}
+
+
+\newcommand{\egilea}{Iñigo Aguas Ardaiz}
+\newcommand{\izenburua}{Título}
+\newcommand{\data}{2013ko maiatzaren 25}
+
+\newtheorem{theorem}{Teorema}[section]
+\newtheorem{corolary}[theorem]{Corolario}
+\newtheorem{lemma}[theorem]{Lema}
+\newtheorem{proposition}[theorem]{Proposición}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definición}
+\theoremstyle{remark}
+\newtheorem{rem}[theorem]{Observación}
+
+\input{template/my-packages}
+
+\newcommand{\espezialitatea}{IngenierÃƒÂ­a de Computadores}
+
+% Cosas para la parte matemática
+\def\RR{\mathbb{R}}
+\def\ZZ{\mathbb{Z}}
+\def\FF{\mathcal{F}}
+\def\unitinterval{[0,1]}
+\def\xinunitinterval{\forall x\in\unitinterval}
+\def\xyinunitinterval{\forall x, y\in\unitinterval}
+\def\tsucesion{t_i, t_j, \dots, t_l}
+\def\tilda1{\tilde{1}}
+
+\newcommand{\abs}[1]{\left\vert#1\right\vert}
+\newcommand{\unitspace}[1][1]{
+	\ifnum#1=1
+		\unitinterval \rightarrow \unitinterval
+	\else
+		\unitinterval^#1 \rightarrow \unitinterval
+	\fi}
+\newcommand{\REV}[1]{{\color{red}\Large#1}}
+
+
+\renewcommand{\labelenumi}{(\arabic{enumi})}
+
+\title{\izenburua}
+\author{\egilea}
+
+\begin{document}
+\frontmatter
+\includepdf{graficos/portada.pdf}
+
+% \maketitle
+% \input{template/cover}
+\cleardoublepage
+
+
+\input{0-abstract-en}
+\cleardoublepage
+
+\input{0-abstract-es}
+\cleardoublepage
+
+% Remove parskip for toc
+% \setlength{\parskip}{0ex plus 0.5ex minus 0.2ex}
+\setcounter{tocdepth}{2}	% Titles level degree at table of contents
+\tableofcontents			% Show a table of contents
+
+%\newpage
+%\listoffigures
+
+%\newpage
+%\listoftables
+
+% Change to a more spaced text-style
+\setlength{\parskip}{1.3ex plus 0.2ex minus 0.2ex}
+\renewcommand{\baselinestretch}{1.3}
+
+	\fancyhf{}
+	\fancyhf[OLH]{\rightmark}
+	\fancyhf[ERH]{\leftmark}
+	\fancyhf[ORH,ELH]{\thepage}
+
+\mainmatter
+\input{1-intro}
+\input{2-preliminares}
+\input{3-monoumbral}
+\input{4-multiumbral}
+\input{5-conclusiones}
+
+%\noappendicestocpagenum
+%\appendixpage
+%\addappheadtotoc
+%\appendix
+% Adjustments headers
+%\pagestyle{fancy}
+%\fancyhead[LO]{\leftmark}
+%\ifdefined\euskaraz
+%	\fancyhead[RE]{\emph{\thechapter eranskina}}
+%\else
+%	\fancyhead[RE]{\emph{Anexo \thechapter}}
+%\fi
+\renewcommand{\headrulewidth}{0.5pt}
+
+% \input{A-appendix}
+
+\backmatter
+
+%\bibliographystyle{ieeetr} % Use the "unsrtnat" BibTeX style for formatting the Bibliography
+\bibliographystyle{babamspl}
+\bibliography{bibliografia}
+\nocite{*}
+%\bibliography{bibliografia}{} % The references (bibliography) information are stored in the file named "Bibliography.bib"
+
+% In case we are using a glossary
+% \glstoctrue
+% \glsaddall
+% \printglossaries
+
+\end{document}

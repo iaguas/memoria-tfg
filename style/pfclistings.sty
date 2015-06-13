@@ -1,0 +1,73 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{style/pfclistings} [2014/04/06 Extractos de cÃ³digo con minted]
+
+\RequirePackage[chapter]{minted}
+\newcaptionname{spanish}{\listingscaption}{Extracto de código}
+\newcaptionname{spanish}{\listoflistingscaption}{Extractos de código}
+\crefname{listing}{extracto}{extractos}
+\definecolor{mintedbackground}{rgb}{0.95,0.95,0.95}
+\newmintedfile{js}{
+  %bgcolor=mintedbackground,
+  %fontfamily=tt,
+  fontsize={\small},
+  linenos=true,
+  numbersep=5pt,
+  frame=leftline,
+  framerule=0.4pt,
+  %xleftmargin={0.75cm},
+  framesep=2mm,
+  funcnamehighlighting=true,
+  tabsize=4,
+  samepage=false, %with this setting you can force the list to appear on the same page
+  %my options
+}
+
+\newmintedfile{html}{
+  %bgcolor=mintedbackground,
+  %fontfamily=tt,
+  fontsize={\small},
+  linenos=true,
+  numbersep=5pt,
+  frame=leftline,
+  framerule=0.4pt,
+  %xleftmargin={0.75cm},
+  framesep=2mm,
+  funcnamehighlighting=true,
+  tabsize=4,
+  samepage=false, %with this setting you can force the list to appear on the same page
+  %my options
+}
+
+\newmintedfile{xml}{
+  %bgcolor=mintedbackground,
+  %fontfamily=tt,
+  fontsize={\small},
+  linenos=true,
+  numbersep=5pt,
+  frame=leftline,
+  framerule=0.4pt,
+  %xleftmargin={0.75cm},
+  framesep=2mm,
+  funcnamehighlighting=true,
+  tabsize=4,
+  samepage=false, %with this setting you can force the list to appear on the same page
+  %my options
+}
+
+\newmintedfile{json}{
+  %bgcolor=mintedbackground,
+  %fontfamily=tt,
+  fontsize={\small},
+  linenos=true,
+  numbersep=5pt,
+  frame=leftline,
+  framerule=0.4pt,
+  %xleftmargin={0.75cm},
+  framesep=2mm,
+  funcnamehighlighting=true,
+  tabsize=4,
+  samepage=false, %with this setting you can force the list to appear on the same page
+  %my options
+}
+
+\newmintinline{js}{}

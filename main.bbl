@@ -1,0 +1,222 @@
+\begin{thebibliography}{10}
+  \providecommand{\bysame}{\leavevmode\hbox to3em{\hrulefill}\thinspace}
+  \providecommand{\MR}{\relax\ifhmode\unskip\space\fi MR }
+  % \MRhref is called by the amsart/book/proc definition of \MR.
+  \providecommand{\MRhref}[2]{%
+    \href{http://www.ams.org/mathscinet-getitem?mr=#1}{#2}
+  }
+  \providecommand{\href}[2]{#2}
+  \providebibliographyfont{name}{}%
+  \providebibliographyfont{lastname}{}%
+  \providebibliographyfont{title}{\emph}%
+  \providebibliographyfont{jtitle}{\btxtitlefont}%
+  \providebibliographyfont{etal}{}%
+  \providebibliographyfont{journal}{}%
+  \providebibliographyfont{volume}{\textbf}%
+  \providebibliographyfont{ISBN}{\MakeUppercase}%
+  \providebibliographyfont{ISSN}{\MakeUppercase}%
+  \providebibliographyfont{url}{\url}%
+  \providebibliographyfont{numeral}{}%
+  \providecommand\btxprintamslanguage[1]{\ (#1)}
+  \expandafter\btxselectlanguage\expandafter {\btxfallbacklanguage}
+
+\expandafter\btxselectlanguage\expandafter {\btxfallbacklanguage}
+\bibitem {lib:boden}
+\btxnamefont {M.\btxfnamespacelong A. \btxlastnamefont {Boden}}, \btxtitlefont
+  {\btxifchangecase {Inteligencia artificial y hombre natural}{Inteligencia
+  artificial y hombre natural}}, \btxpublisherfont {Tecnos}, 1984.
+
+\bibitem {art:refbarrenechea}
+\btxnamefont {H.~\btxlastnamefont {Bustince}}, \btxnamefont
+  {E.~\btxlastnamefont {Barrenechea}}\btxandcomma {} \btxandlong {}
+  \btxnamefont {M.~\btxlastnamefont {Pagola}}, \btxjtitlefont {\btxifchangecase
+  {Restricted equivalence functions}{Restricted equivalence functions}},
+  \btxjournalfont {Fuzzy sets and systems} \btxvolumefont {157} (2006),
+  \btxnumbershort {.}~17, 2333--2346.
+
+\bibitem {art:barrenechea}
+\btxnamefont {H.~\btxlastnamefont {Bustince}}, \btxnamefont
+  {E.~\btxlastnamefont {Barrenechea}}\btxandcomma {} \btxandlong {}
+  \btxnamefont {M.~\btxlastnamefont {Pagola}}, \btxjtitlefont {\btxifchangecase
+  {Image thresholding using restricted equivalence functions and maximizing the
+  measures of similarity}{Image thresholding using restricted equivalence
+  functions and maximizing the measures of similarity}}, \btxjournalfont {Fuzzy
+  sets and systems} \btxvolumefont {158} (2007), \btxnumbershort {.}~5,
+  496--516.
+
+\bibitem {art:bustinceowa}
+\btxnamefont {H.~\btxlastnamefont {Bustince}}, \btxnamefont
+  {T.~\btxlastnamefont {Calvo}}, \btxnamefont {B.~de~\btxlastnamefont {Baets}},
+  \btxnamefont {J.~\btxlastnamefont {Fodor}}, \btxnamefont {R.~\btxlastnamefont
+  {Mesiar}}, \btxnamefont {J.~\btxlastnamefont {Montero}}, \btxnamefont
+  {D.~\btxlastnamefont {Paternain}}\btxandcomma {} \btxandlong {} \btxnamefont
+  {\btxlastnamefont {A.Pradera}}, \btxjtitlefont {\btxifchangecase {A class of
+  aggregation functions encompassing two-dimensional owa operators}{A class of
+  aggregation functions encompassing two-dimensional OWA operators}},
+  \btxjournalfont {Information Sciences} \btxvolumefont {180} (2010),
+  1977--1989.
+
+\bibitem {art:busticepenalty}
+\btxnamefont {H.~\btxlastnamefont {Bustince}}, \btxnamefont
+  {A.~\btxlastnamefont {Jurio}}, \btxnamefont {A.~\btxlastnamefont {Pradera}},
+  \btxnamefont {R.~\btxlastnamefont {Mesiar}}\btxandcomma {} \btxandlong {}
+  \btxnamefont {G.~\btxlastnamefont {Beliakov}}, \btxjtitlefont
+  {\btxifchangecase {Generalization of the weighted voting method using penalty
+  functions constructed via faithful restricted dissimilarity
+  functions}{Generalization of the weighted voting method using penalty
+  functions constructed via faithful restricted dissimilarity functions}},
+  \btxjournalfont {European Journal of operational research} \btxvolumefont
+  {225} (2013), 472--478.
+
+\bibitem {art:calvo}
+\btxnamefont {T.~\btxlastnamefont {Calvo}} \btxandlong {} \btxnamefont
+  {G.~\btxlastnamefont {Beliakov}}, \btxjtitlefont {\btxifchangecase
+  {Aggregation functions based on penalties}{Aggregation functions based on
+  penalties}}, \btxjournalfont {Fuzzy sets and systems} \btxvolumefont {161}
+  (2010), 1420--1436.
+
+\bibitem {art:calvoagregacion}
+\btxnamefont {T.~\btxlastnamefont {Calvo}} \btxandlong {} \btxnamefont
+  {R.~\btxlastnamefont {Mesiar}}, \btxjtitlefont {\btxifchangecase {Aggregation
+  operators: ordering and bounds}{Aggregation operators: ordering and bounds}},
+  \btxjournalfont {Fuzzy sets and systems} \btxvolumefont {139} (2003),
+  685--697.
+
+\bibitem {art:choquet}
+\btxnamefont {G.~\btxlastnamefont {Choquet}}, \btxjtitlefont {\btxifchangecase
+  {Theory of capacities}{Theory of capacities}}, \btxjournalfont {Ann. Inst.
+  Fourier} \btxvolumefont {5} (1955), 131--295.
+
+\bibitem {art:churchland}
+\btxnamefont {P.\btxfnamespacelong M. \btxlastnamefont {Churchland}}
+  \btxandlong {} \btxnamefont {P.\btxfnamespacelong S. \btxlastnamefont
+  {Churchland}}, \btxjtitlefont {\btxifchangecase {?`podr{\'\i}a pensar una
+  m{\'a}quina?}{?`Podr{\'\i}a pensar una m{\'a}quina?}}, \btxjournalfont
+  {Investigaci{\'o}n y ciencia} (1990), \btxnumbershort {.}~162, 18--25.
+
+\bibitem {art:dombi}
+\btxnamefont {J.~\btxlastnamefont {Dombi}}, \btxjtitlefont {\btxifchangecase
+  {Equivalence operators that are associative}{Equivalence operators that are
+  associative}}, \btxjournalfont {Information Sciences} \btxvolumefont {281}
+  (2014), 281--294.
+
+\bibitem {art:fan1}
+\btxnamefont {J.~\btxlastnamefont {Fan}} \btxandlong {} \btxnamefont
+  {W.~\btxlastnamefont {Xie}}, \btxjtitlefont {\btxifchangecase {Some notes on
+  similarity measure and proximity measure}{Some notes on similarity measure
+  and proximity measure}}, \btxjournalfont {Fuzzy sets and systems}
+  \btxvolumefont {101} (1999), 403--412.
+
+\bibitem {art:fan2}
+\btxnamefont {J.~\btxlastnamefont {Fan}}, \btxnamefont {W.~\btxlastnamefont
+  {Xie}}\btxandcomma {} \btxandlong {} \btxnamefont {J.~\btxlastnamefont
+  {Pei}}, \btxjtitlefont {\btxifchangecase {Subsethood measures: new
+  definitions}{Subsethood measures: new definitions}}, \btxjournalfont {Fuzzy
+  sets and systems} \btxvolumefont {106} (1999), 201--209.
+
+\bibitem {lib:gonzalez}
+\btxnamefont {R.\btxfnamespacelong C. \btxlastnamefont {Gonzalez}} \btxandlong
+  {} \btxnamefont {R.\btxfnamespacelong E. \btxlastnamefont {Woods}},
+  \btxtitlefont {\btxifchangecase {Digital image procesing}{Digital image
+  procesing}}, \btxpublisherfont {Pearson Prentice Hall}, 2008.
+
+\bibitem {lib:mcneill}
+\btxnamefont {F.\btxfnamespacelong M. \btxlastnamefont {McNeill}} \btxandlong
+  {} \btxnamefont {E.~\btxlastnamefont {Thro}}, \btxtitlefont {\btxifchangecase
+  {Fuzzy logic. a practical approach.}{Fuzzy logic. A practical approach.}},
+  \btxpublisherfont {AP Professional}, 1994.
+
+\bibitem {art:montero}
+\btxnamefont {J.~\btxlastnamefont {Montero}}, \btxnamefont {D.~\btxlastnamefont
+  {G{\'o}mez}}, \btxnamefont {V.~\btxlastnamefont {L{\'o}pez}}, \btxnamefont
+  {J.\btxfnamespacelong T. \btxlastnamefont {Rodr{\'\i}guez}}\btxandcomma {}
+  \btxandlong {} \btxnamefont {B.~\btxlastnamefont {Victoriano}}, \btxtitlefont
+  {\btxifchangecase {Sobre funciones y reglas de agregaci{\'o}n}{Sobre
+  funciones y reglas de agregaci{\'o}n}}, ESTYLF, 2010.
+\btxkeywordlanguage {\btxannotation
+  {http://www.uhu.es/estylf2010/trabajos/SS02-06.pdf}}
+
+\bibitem {art:sugenochoquet}
+\btxnamefont {T.~\btxlastnamefont {Murofushi}} \btxandlong {} \btxnamefont
+  {M.~\btxlastnamefont {Sugeno}}, \btxjtitlefont {\btxifchangecase {A theory of
+  fuzzy measures: representations, teh choquet integral and null sets}{A theory
+  of fuzzy measures: representations, teh Choquet Integral and Null Sets}},
+  \btxjournalfont {Journal of mathematical analysis and applications}
+  \btxvolumefont {159} (1990), 532--549.
+
+\bibitem {art:otsu}
+\btxnamefont {N.~\btxlastnamefont {Otsu}}, \btxjtitlefont {\btxifchangecase {A
+  threshold selection method from gray-level histograms}{A threshold selection
+  method from gray-level histograms}}, \btxjournalfont {IEEE Trans. Systems,
+  Man, and Cybernetics} \btxvolumefont {9} (1979), \btxnumbershort {.}~1,
+  62--66.
+
+\bibitem {art:paternain}
+\btxnamefont {D.~\btxlastnamefont {Paternain}}, \btxnamefont
+  {J.~\btxlastnamefont {Fern{\'a}ndez}}, \btxnamefont {H.~\btxlastnamefont
+  {Bustince}}, \btxnamefont {R.~\btxlastnamefont {Mesiar}}\btxandcomma {}
+  \btxandlong {} \btxnamefont {G.~\btxlastnamefont {Beliakov}}, \btxjtitlefont
+  {\btxifchangecase {Construction of image reduction operators using averaging
+  aggregation functions}{Construction of image reduction operators using
+  averaging aggregation functions}}, \btxjournalfont {Fuzzy sets and systems}
+  \btxvolumefont {261} (2015), 87--111.
+
+\bibitem {lib:penrose}
+\btxnamefont {R.~\btxlastnamefont {Penrose}}, \btxtitlefont {\btxifchangecase
+  {La nueva mente del emperador}{La nueva mente del emperador}},
+  \btxpublisherfont {Mondadori}, 1991.
+
+\bibitem {art:searle}
+\btxnamefont {J.\btxfnamespacelong R. \btxlastnamefont {Searle}},
+  \btxjtitlefont {\btxifchangecase {?`es la mente un programa
+  inform{\'a}tico?}{?`Es la mente un programa inform{\'a}tico?}},
+  \btxjournalfont {Investigaci{\'o}n y ciencia} (1990), \btxnumbershort
+  {.}~162, 10--17.
+
+\bibitem {lib:sonka}
+\btxnamefont {M.~\btxlastnamefont {Sonka}}, \btxnamefont {V.~\btxlastnamefont
+  {Halvac}}\btxandcomma {} \btxandlong {} \btxnamefont {R.~\btxlastnamefont
+  {Boyle}}, \btxtitlefont {\btxifchangecase {Image processing, analysis and
+  machine vision}{Image processing, analysis and machine vision}},
+  \btxpublisherfont {Thomson}, 2008.
+
+\bibitem {lib:suri}
+\btxnamefont {J.\btxfnamespacelong S. \btxlastnamefont {Suri}}, \btxnamefont
+  {S.\btxfnamespacelong K. \btxlastnamefont {Setarehdan}}\btxandcomma {}
+  \btxandlong {} \btxnamefont {S.~\btxlastnamefont {Singh}}, \btxtitlefont
+  {\btxifchangecase {Advanced algorithmic approaches to medical image
+  segmentation}{Advanced algorithmic approaches to medical image
+  segmentation}}, \btxpublisherfont {Springer}, 2002.
+
+\bibitem {art:thtrillas}
+\btxnamefont {E.~\btxlastnamefont {Trillas}}, \btxjtitlefont {\btxifchangecase
+  {Sobre las funciones de negaci{\'o}n en la teor{\'\i}a de conjuntos
+  difusos}{Sobre las funciones de negaci{\'o}n en la teor{\'\i}a de conjuntos
+  difusos}}, \btxjournalfont {Stochastica} \btxvolumefont {III} (1979),
+  \btxnumbershort {.}~1, 47--59.
+
+\bibitem {lib:ross}
+\btxnamefont {A.\btxfnamespacelong M. \btxlastnamefont {Turing}}, \btxnamefont
+  {M.~\btxlastnamefont {Scriven}}, \btxnamefont {J.\btxfnamespacelong R.
+  \btxlastnamefont {Lucas}}, \btxnamefont {K.~\btxlastnamefont {Gunderson}},
+  \btxnamefont {H.~\btxlastnamefont {Putnam}}, \btxnamefont
+  {P.~\btxlastnamefont {Ziff}}, \btxnamefont {J.\btxfnamespacelong
+  J.\btxfnamespacelong C. \btxlastnamefont {Smart}}\btxandcomma {} \btxandlong
+  {} \btxnamefont {N.~\btxlastnamefont {Smart}}, \btxtitlefont
+  {\btxifchangecase {Controversia sobre mentes y m{\'a}quinas}{Controversia
+  sobre mentes y m{\'a}quinas}}, \btxpublisherfont {Ediciones Orbis}, 1985.
+
+\bibitem {art:yagerowa}
+\btxnamefont {R.\btxfnamespacelong R. \btxlastnamefont {Yager}}, \btxjtitlefont
+  {\btxifchangecase {Families of owa operators}{Families of OWA operators}},
+  \btxjournalfont {Fuzzy sets and systems} \btxvolumefont {59} (1993),
+  125--148.
+\btxkeywordlanguage {\btxannotation
+  {http://ac.els-cdn.com/016501149390194M/1-s2.0-016501149390194M-main.pdf?_tid=a2340fcc-0f93-11e5-857a-00000aacb35d&acdnat=1433956426_3699ac161a223ddf7c10077c88c6241c}}
+
+\bibitem {art:zadeh}
+\btxnamefont {L.\btxfnamespacelong A. \btxlastnamefont {Zadeh}}, \btxjtitlefont
+  {\btxifchangecase {Fuzzy sets}{Fuzzy sets}}, \btxjournalfont {Inform. Control
+  8} (1965), 338--353.
+
+\end{thebibliography}

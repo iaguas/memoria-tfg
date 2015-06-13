@@ -1,0 +1,537 @@
+% Codificación del archivo / fitxategiaren kudeaketa
+\usepackage{ucs}
+%\usepackage[utf8x]{inputenc}
+\usepackage[T1]{fontenc}
+
+
+% ################################################################
+% #######     SIZE OF THE PAGES                     ##############
+% ################################################################
+\usepackage[left=3.5cm, right=2.5cm, top=4.0cm, bottom=3.0cm]{geometry}
+% \usepackage[left=1.5cm, right=2.5cm, top=2.0cm, bottom=2.0cm]{geometry}
+
+
+% ################################################################
+% #######     HEADERS                               ##############
+% ################################################################
+\usepackage{fancyhdr}           % Para cambiar las cabeceras de las pginas
+
+\pagestyle{fancy}
+\renewcommand{\chaptermark}[1]{ \markboth{#1}{} }
+\renewcommand{\sectionmark}[1]{ \markright{#1}{} }
+
+\fancyhf{}
+\fancyhead[LE,RO]{\thepage}
+\fancyhead[RE]{\textit{ \nouppercase{\leftmark}} }
+\fancyhead[LO]{\textit{ \nouppercase{\rightmark}} }
+
+\fancypagestyle{plain}{ %
+  \fancyhf{} % remove everything
+  \renewcommand{\headrulewidth}{0pt} % remove lines as well
+  \renewcommand{\footrulewidth}{0pt}
+}
+
+
+	% Redefine plain page style
+	\fancypagestyle{plain}{
+		\fancyhf{}
+		\renewcommand{\headrulewidth}{0pt}
+		\fancyfoot[LE,RO]{\thepage}
+	}
+
+	% Define pagestyle
+	\pagestyle{fancy}
+	\fancyhf{}
+	% \renewcommand{\chaptermark}[1]{\markboth{ \emph{#1}}{}}
+	\fancyhead[LO]{}
+	\fancyhead[RE]{\leftmark}
+	\fancyfoot[LE,RO]{\thepage}
+
+	% Code for creating empty pages
+	% No headers on empty pages before new chapter
+	% \makeatletter
+	% \def\cleardoublepage{\clearpage\if@twoside \ifodd\c@page\else
+		% \hbox{}
+		% \thispagestyle{plain}
+		% \newpage
+		% \if@twocolumn\hbox{}\newpage\fi\fi\fi}
+	% \makeatother \clearpage{\pagestyle{plain}\cleardoublepage}
+
+	% Otra opción: considerar si funciona
+	% this next section (till \makeatother) makes sure that blank pages
+	%% are actually completely blank, cause they're not usually
+	\makeatletter
+	\def\cleardoublepage{\clearpage\if@twoside \ifodd\c@page\else
+		\hbox{}
+		\vspace*{\fill}
+		\thispagestyle{empty}
+		\newpage
+		\if@twocolumn\hbox{}\newpage\fi\fi\fi}
+	\makeatother
+
+
+	% \pagestyle{fancy}				% use fancyhdr style
+	% \setlength{\headheight}{13pt}
+
+	% Limpiar estilo actual
+	% \fancyhead{}
+	% \fancyfoot{}
+	% % or \fancyhf{}
+
+	% \renewcommand{\headrulewidth}{0.4pt}    % Cabecera: subraya la cabecera (fijar en "0pt" si no se desea).
+	% \renewcommand{\footrulewidth}{0pt}      % Pié: subraya el pie de página (fijar en "0pt" si no se desea).
+
+	% There are seven letters you need to know before you can define your own header/footer:
+	% E: Even page
+	% O: Odd page
+	% L: Left field
+	% C: Center field
+	% R: Right field
+	% H: Header
+	% F: Footer
+
+% 	\fancyhead[CO,CE]{---Draft---}
+% 	\fancyfoot[CO,CE]{Confidential}
+
+% 	\fancyfoot[RO, LE] {\thepage}
+% 	% or \fancyhf[FRO,FLE]...
+% 
+% 	\fancyhead[RE]{\nouppercase{\leftmark}}	% Cabecera: incluye información del nivel superior (Capítulo) % a la derecha (R) de las páginas pares (E), evitando escribir % todo en mayúsculas (que sería la opción por defecto).
+% 	% or \fancyhf[HRE]...
+% 
+% 	\fancyhead[LO]{\nouppercase{\rightmark}}% Cabecera: incluyer información del nivel inferior (Sección) % a la izquierda (L) de las páginas impares (O), evitando escribir % todo en mayúsculas (que sería la opción por defecto).
+
+	% \renewcommand{\chaptermark}[1]{%
+		% \markboth{\small\slshape\chaptername{} \thechapter: #1}{}
+		% }
+	% \renewcommand{\sectionmark}[1]{%
+		% \markright{\small\slshape\thesection : #1}
+		% }
+
+\renewcommand{\chaptermark}[1]{\markboth{#1}{}}
+\renewcommand{\sectionmark}[1]{\markright{\thesection\ #1}}
+
+
+%% which sections are numbered
+\setcounter{secnumdepth}{2}
+
+ 
+% ################################################################
+% #######     Bibliografia                          ##############
+% ################################################################
+% \usepackage{natbib}
+% \newcommand{\citenp}[2][ ]{\citeauthor{#2}#1 (\citeyear{#2})}
+% \bibpunct{}{}{;}{a}{,}{,~}
+% \newcommand{\myetal}{\emph{et~al.}}
+% \bibliographystyle{plainnat4}
+%\bibliographystyle{apalike}
+%\bibliographystyle{ieeetr}
+
+% To insert development comments (todos, corrections...)
+\usepackage[textsize=scriptsize,textwidth=2cm]{todonotes}
+% How to use: 
+% - \todo{comentario/iruzkina} (insert into tex)
+% - \todo[inline]{}
+
+% ################################################################
+% #######     FONT TYPES                            ##############
+% ################################################################
+% Charter
+%\usepackage[bitstream-charter]{mathdesign}
+% 	\renewcommand{\rmdefault}{mdbch} % charter
+\DeclareSymbolFont{usualmathcal}{OMS}{cmsy}{m}{n}
+\DeclareSymbolFontAlphabet{\mathcal}{usualmathcal}
+%\usepackage{charter}
+% \renewcommand{\rmdefault}{bch}
+% \renewcommand{\bfdefault}{b}
+
+% times erabili beharrean
+\usepackage{mathptmx}
+\usepackage[scaled=.90]{helvet}
+
+% \renewcommand{\rmdefault}{ppl}
+% \usepackage{mathpazo} % palatino
+% \linespread{1.05}        % Palatino needs more leading
+% \usepackage[bitstream-charter]{mathdesign}
+% \usepackage{libertine}
+
+%\usepackage[scaled]{berasans}
+
+%\usepackage[scaled]{beramono}
+% \renewcommand{\sfdefault}{fxbf}
+	% libertine
+% 		\renewcommand{\rmdefault}{fxlj} % Linux libertine 
+
+
+% Sans serif
+
+
+% ################################################################
+% #######     GRAPHICS                              ##############
+% ################################################################
+\usepackage{graphicx}
+\DeclareGraphicsExtensions{.png,.gif,.jpg,.pdf,.bmp}
+% \graphicspath{./irudiak/}
+% \newcommand{\irudia}[3]{%
+	% \begin{figure}[htb!]
+	% \centering%
+	% \includegraphics[width=#2]{#1}
+	% \caption{#3}
+	% \label{fig:#1}
+	% \end{figure}
+% }
+
+\usepackage[figuresright]{rotating}
+
+\newcommand{\fitx}[1]{\texttt{#1}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%  PARRAFOEN ESTILOA    %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\frenchspacing
+\widowpenalty=1000
+
+% \titlespacing{\section}{1pc}{0ex plus .1ex minus .2ex}{1pc}
+% \titlespacing{\section}{0pt}{*1}{*1}
+\setlength{\parindent}{0cm} % anula indentacion de parrafos
+\setlength{\parskip}{1.5ex plus 0.5ex minus 0.5ex}   % establece separacion entre parrafos a 8 puntos
+
+\setlength\headheight{15pt}
+
+\usepackage{setspace} % Lerroen arteko espazioa
+%\singlespacing
+\onehalfspacing
+%\doublespacing
+%\setstretch{1.1}
+
+% hobeto ``justifika''tzeko
+%\usepackage[protrusion=true,expansion=true]{microtype}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%% IZENBURUEN ESTILOA   %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage[sf,outermarks]{titlesec}
+% \usepackage[compact]{titlesec}
+
+\titleformat{\chapter}[display]
+  {\bfseries\Large}
+  {\filleft \Large\MakeUppercase{\chaptertitlename}\ \Huge\thechapter}
+  {4ex}
+  {\titlerule
+	\vspace{2ex}%
+	\filright}
+  [\vspace{2ex}%
+   \titlerule]
+
+% ATalen formatua
+\renewcommand{\thepart}{\arabic{part}}
+\titleformat{\part}[display]
+  {\bfseries \Large}
+  {\filcenter \Huge\thepart. \Huge\MakeUppercase{\partname}}
+  {4ex}
+  {%marra
+    \vspace{2ex}%
+    \filcenter \huge  \filright} %filcenter
+  [\vspace{2ex}%
+   ]
+
+
+
+
+
+%usepackage{calc} % para hacer calculos al establecer las medias ej: \textwidth -2px
+% \usepackage{sectsty}
+% \newcommand{\cabecerasformatosection}[1]{%
+	% {\makebox[0.98\linewidth][l]{#1}}
+% }
+% \newcommand{\cabecerasformatosubsection}[1]{%
+	% {\makebox[0.98\linewidth][l]{\textsl{#1}}}
+% }
+% \newcommand{\cabecerasformatosubsubsection}[1]{%
+	% {\framebox[1.1\width][l]{#1}}
+% }
+% \sectionfont{\cabecerasformatosection}
+% \subsectionfont{\cabecerasformatosubsection}
+% \subsubsectionfont{\cabecerasformatosubsubsection}
+% \sectionfont{\sffamily}
+% \subsectionfont{\sffamily\textsl}
+% \subsubsectionfont{\sffamily}
+
+
+\usepackage{appendix}
+% \usepackage{glossaries}
+% Erabilera 
+% http://en.wikibooks.org/wiki/LaTeX/Glossary
+% latexmk erabiliz gero, ikusi http://tex.stackexchange.com/questions/1226/how-to-make-latexmk-use-makeglossaries
+
+% Glosario-en eskuliburu zabaldua
+% http://osl.ugr.es/CTAN/macros/latex/contrib/glossaries/glossaries-user.html#x1-140002.2
+
+
+
+\usepackage{color}  
+\usepackage{xcolor}
+\usepackage{colortbl}
+
+\definecolor{light-gray}{cmyk}{0,0,0,.3} 
+\definecolor{orange}{rgb}{1,0.7,0}
+\definecolor{light-brown}{RGB}{184,134,11}
+
+\definecolor{gray90}{gray}{.90}
+\definecolor{gray75}{gray}{.75}
+\definecolor{gray95}{gray}{.95}
+
+\definecolor{lightgray}{gray}{.8}
+\definecolor{lightlightgray}{gray}{.95}
+
+\definecolor{atzekokolorea}{gray}{.97}
+\definecolor{atzekokoloreasol}{gray}{.7}
+\definecolor{atzekokoloreafitx}{gray}{.97}
+\definecolor{atzekokoloreafitx_markoa}{gray}{.65}
+
+\usepackage{textcomp} % XML kodea formateatzeko
+
+\usepackage{listings}
+
+\lstset{
+    tabsize=4,
+    basicstyle=\scriptsize,
+    upquote=true,
+    aboveskip={1.5\baselineskip},
+    columns=fixed,
+    showstringspaces=false,
+    extendedchars=true,
+    breaklines=true,
+    showtabs=false,
+    showspaces=false,
+    showstringspaces=false,
+    identifierstyle=\ttfamily,
+    commentstyle=\color[rgb]{0.133,0.545,0.133},
+    stringstyle=\color[rgb]{0.627,0.126,0.941}\ttfamily,
+    morekeywords={SCORE},keywordstyle=\color{red},
+    emph={SCORE,CODE,ID,LEMA,POS},emphstyle=\color{light-brown},
+    moreemph={[2]top,num,ENtitle,TERM,WF,SYNSET,ENdesc,ENnarr,EStitle,ESdesc,ESnarr,EXP,DOC,DOCNO,DOCID,HEADLINE,TEXT},emphstyle={[2]\color{blue}}
+}
+
+
+
+\lstset{ frame=Ltb,
+     framerule=0pt,
+     aboveskip=0.5cm,
+     framextopmargin=3pt,
+     framexbottommargin=3pt,
+     framexleftmargin=0.4cm,
+     framesep=0pt,
+     rulesep=.4pt,
+     backgroundcolor=\color{gray90},
+     rulesepcolor=\color{black},
+     %
+     stringstyle=\ttfamily,
+     showstringspaces = false,
+     basicstyle=\small\ttfamily,
+     commentstyle=\color{gray45},
+     keywordstyle=\bfseries,
+     %
+     numbers=left,
+     numbersep=15pt,
+     numberstyle=\tiny,
+     numberfirstline = false,
+     breaklines=true,
+   }
+ 
+\lstnewenvironment{listing}[1][]
+   {\lstset{#1}\pagebreak[0]}{\pagebreak[0]}
+\lstdefinestyle{consola}
+    {
+        numbers=none,
+        xleftmargin=\parindent,
+        xrightmargin=\parindent,
+        aboveskip=3mm,
+        belowskip=0.01mm,
+        basicstyle=\scriptsize\bf\ttfamily,
+        backgroundcolor=\color{gray75}
+    }
+\lstdefinestyle{no_fileconf}
+{
+    numbers=none,
+    xleftmargin=\parindent,
+    xrightmargin=\parindent,
+    aboveskip=3mm,
+    belowskip=0.01mm,
+    basicstyle=\footnotesize\ttfamily,
+    backgroundcolor=\color{gray90},
+}
+\lstdefinestyle{fileconf}
+{
+        xleftmargin=\parindent,
+        xrightmargin=\parindent,
+        aboveskip=3mm,
+        belowskip=0.01mm,
+        basicstyle=\footnotesize\ttfamily,
+        backgroundcolor=\color{gray95},
+}
+
+\lstset{
+	float=[*],
+	lineskip=0pt,
+	inputencoding=utf8x,
+	extendedchars=\true,
+% 	texcl=true,
+    basicstyle=\scriptsize\ttfamily,             % print whole listing small
+	backgroundcolor=\color{atzekokolorea},
+	framesep=3pt,frame=single,framerule=0.6pt,framexleftmargin=1pt,
+	tabsize=4, 
+	linewidth=0.98\linewidth,
+	xleftmargin=5pt,
+	breaklines=true,
+	moredelim=[il][\sffamily\scriptsize\slshape\itshape\color{GRISARGIA}]{º},
+	moredelim=[is][\bfseries]{ª}{ª},
+%     keywordstyle=\color{black}\bfseries,
+% 	fontadjust=true,
+                                   % underlined bold black keywords
+%     identifierstyle=,              % nothing happens
+%     commentstyle=\color{white}, 	% white comments
+%     stringstyle=\ttfamily,         % typewriter type for strings
+%     showstringspaces=false,        % no special string spaces
+%     showtabtruee,        % no special string spaces
+% 	upquote=true,
+	keepspaces=true,
+	% showspaces=true,
+	% showtabs=true,
+	columns=fullflexible
+	}
+
+\lstset{
+  literate={á}{{\'a}}1
+           {é}{{\'e}}1
+           {í}{{\'i}}1
+           {ó}{{\'o}}1
+           {ú}{{\'u}}1
+		   {ñ}{{\~{n}}}1
+}
+
+
+% \renewcommand*\thelstnumber{(\the\value{lstnumber})}
+
+% \lstnewenvironment{komandoak}{\lstset{upquote=true,escapechar=}}{}
+% ,numbers=left, stepnumber=1, numbersep=5pt
+\lstnewenvironment{komandoak}{
+	\lstset{
+			upquote=true,
+			escapeinside={(!}{!)},
+% 			escapebegin=\begin{bfseries},escapeend=\end{bfseries},
+% 			morecomment=[l]{\#},
+% 			commentstyle=\itshape,
+			frameround=tttt
+				}}{}
+
+
+\usepackage{longtable}
+\usepackage{multirow}
+\usepackage{multicol}
+
+\usepackage{tabulary}
+
+\usepackage{amsmath}
+\usepackage{url}
+\usepackage{bm} % bold maths symbols
+
+\usepackage{paralist} % compactenum...
+\usepackage{booktabs} %\tauletan \toprule, \bottomrule...
+% \usepackage{algorithmic} % algoritmoen zerrenda lortzeko
+% \usepackage{algorithm} % algoritmoen zerrenda lortzeko
+
+% \usepackage{soul} % text highlighting \hl
+
+% \usepackage[Bjornstrup]{fncychap} 
+% \ChTitleVar{\raggedleft\LARGE\bfseries}
+
+\usepackage{tocbibind} % hau ez badut jartzen, gaien aurkibidea eta bibliografia ez dira agertzen pdf-ko bookmark-ean
+
+% ################################################################
+% #######     HIZKUNTZA / IDIOMA                    ##############
+% ################################################################
+
+
+% Azaleko testua
+\ifdefined\euskaraz
+	\newcommand{\upvehu}{Euskal Herriko Unibertsitatea UPV/EHU}
+	\newcommand{\gradua}{Informatika Ingeniaritzako Gradua}
+	\newcommand{\gapizenburua}{Gradu Amaierako Proiektua}
+	\newcommand{\informatikafakultatea}{Informatika Fakultatea}
+	\newcommand{\abstract}{Laburpena}
+\else
+	\newcommand{\upvehu}{Universidad del País Vasco UPV/EHU}
+	\newcommand{\gradua}{Grado en Ingeniería Informática}
+	\newcommand{\gapizenburua}{Proyecto de Fin de Grado}
+	\newcommand{\informatikafakultatea}{Facultad de Informática}
+	\newcommand{\abstract}{Resumen}
+\fi
+
+\usepackage[font=small,labelfont=bf]{caption}
+
+\ifdefined\euskaraz
+	\usepackage[basque]{babel}
+	% \hyphenation{Ko-man-do-in-ter-pre-ta-tzailea ba-te-ra-ga-rri-ta-suna ezau-garri}
+
+	\addto\captionsbasque{
+		\renewcommand{\contentsname}{Gaien aurkibidea}
+		\renewcommand{\listfigurename}{Irudien aurkibidea}
+		\renewcommand{\listtablename}{Taulen aurkibidea}
+		% \renewcommand{\listalgorithmname}{Algoritmoen zerrenda}
+		\renewcommand{\appendixname}{Eranskina}%
+		\renewcommand{\appendixpagename}{Eranskinak}
+		\renewcommand{\appendixtocname}{Eranskinak}
+		% \renewcommand{\bibname}{Bibliografia}
+		% \renewcommand{\abstractname}{Laburpena}
+		%% Hau ez badut jartzen, Irudia eta Taula maiuskulaz jartzen ditu
+		\renewcommand{\tablename}{Taula}
+		\renewcommand{\figurename}{Irudia}
+		% Glosategietarako
+		% \renewcommand*{\glossaryname}{Glosategia}%
+		% \renewcommand*{\acronymname}{Akronimoa}%
+		% \renewcommand*{\entryname}{Notazioa}%
+		% \renewcommand*{\descriptionname}{Deskribapena}%
+		% \renewcommand*{\symbolname}{Symboloa}%
+		% \renewcommand*{\pagelistname}{Orri zerrenda}%
+		% \renewcommand*{\glssymbolsgroupname}{Symboloak}%
+		% \renewcommand*{\glsnumbersgroupname}{Zenbakiak}%
+}
+
+	%% Captionak euskarazko ordenean
+	\DeclareCaptionLabelFormat{euskaraz}{#2\bothIfSecond{\nobreakspace}{#1}}
+	\captionsetup{labelformat=euskaraz}
+\else
+	\usepackage[spanish]{babel}
+	\addto\captionsspanish{
+		\renewcommand{\tablename}{Tabla}
+		\renewcommand{\listtablename}{Indice de tablas}
+		\renewcommand{\appendixname}{Anexo}
+		\renewcommand{\appendixpagename}{Anexos}
+		\renewcommand{\appendixtocname}{Anexos}
+	}
+	
+	% tabla de contenido sin numeracion 
+	% \renewcommand\contentsname{Tabla de contenido}
+	% lista de figuras 
+	% \renewcommand\listfigurename{Lista de figuras}
+	% \clearpage
+
+	% lista de tablas
+	% \renewcommand\listtablename{Lista de tablas}
+		% \renewcommand{tablename}{tabla}
+\fi
+
+\usepackage[hyperindex,bookmarks,colorlinks=true,citecolor=blue,urlcolor=blue,linkcolor=blue,unicode]{hyperref}
+
+\hypersetup{
+	pdfauthor = {\egilea},
+	pdftitle = {\izenburua},
+	pdfsubject = {\gapizenburua - \informatikafakultatea},
+	pdfkeywords = {\today},
+	pdfcreator = {},
+	pdfproducer = {}
+}
+
+% \makeglossaries	% according to manual, in the preamble and after hyperref
+
+% line in order to check if utf-8 is properly configured: áéíóúñ
