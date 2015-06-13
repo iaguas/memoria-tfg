@@ -131,3 +131,7 @@ sympy-plots-for-*.tex/
 .tpbuild
 figures/
 main.pdf
+
+*.swp
+
+*.pygstyle
