@@ -6,13 +6,13 @@
 \usepackage{pdfpages}
 \usepackage{amsthm}
 
+%\usepackage{style/pfclistings}
 % Paquete para la escritura de algoritmos.
 % http://www.rosapolis.net/2008/04/21/escribir-algoritmos-en-latex/
 \usepackage{algorithm}
 \usepackage{algorithmic}
 \input{spanishAlgorithmic}
 
-%\usepackage{style/pfclistings}
 
 
 \title{Segmentación de imágenes a través de lógica difusa y funciones REF, de Dombi y penalti}
@@ -37,6 +37,9 @@
 %\newcommand{\espezialitatea}{Ingeniería de Computadores}
 
 % Cosas para la parte matemática
+\def\tonee{t_{(1)}}
+\def\ttwo{t_{(2)}}
+\def\tthree{t_{(3)}}
 \def\RR{\mathbb{R}}
 \def\ZZ{\mathbb{Z}}
 \def\FF{\mathcal{F}}
@@ -53,6 +56,13 @@
 	\else
 		\unitinterval^#1 \rightarrow \unitinterval
 	\fi}
+
+\DeclareMathOperator{\Pr}{Pr}
+\DeclareMathOperator{\ln}{ln}
+\DeclareMathOperator{\max}{max}
+\DeclareMathOperator{\min}{min}
+
+
 \newcommand{\REV}[1]{{\color{red}\Large#1}}
 
 
