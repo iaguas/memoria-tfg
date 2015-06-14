@@ -26,7 +26,7 @@
 \RequirePackage{tikz}
 %\RequirePackage{tikz-uml}
 %\RequirePackage{pgf-umlcd}
-%\usetikzlibrary{positioning,decorations.pathreplacing,shapes}
+\usetikzlibrary{positioning,decorations.pathreplacing,shapes}
 \usetikzlibrary{positioning,fit,babel,shapes.multipart,calc}
 \usetikzlibrary{arrows.meta,bending}
 \usetikzlibrary{external}

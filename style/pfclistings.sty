@@ -1,8 +1,9 @@
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesPackage{style/pfclistings} [2014/04/06 Extractos de cÃ³digo con minted]
+\ProvidesPackage{style/pfclistings} [2014/04/06 Extractos de código con minted]
+% ftp://ftp.dante.de/tex-archive/macros/latex/contrib/minted/minted.pdf
 
 \RequirePackage[chapter]{minted}
-\newcaptionname{spanish}{\listingscaption}{Extracto de código}
+\newcaptionname{spanish}{\listingscaption}{Extracto de c\'odigo}
 \newcaptionname{spanish}{\listoflistingscaption}{Extractos de código}
 \crefname{listing}{extracto}{extractos}
 \definecolor{mintedbackground}{rgb}{0.95,0.95,0.95}
@@ -77,7 +78,7 @@
   %fontfamily=tt,
   fontsize={\small},
   linenos=true,
-  numbersep=5pt,
+  numbersep=2pt,
   frame=leftline,
   framerule=0.4pt,
   %xleftmargin={0.75cm},
