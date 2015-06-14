@@ -15,9 +15,9 @@
 %\usepackage{style/pfclistings}
 
 
-\title{Título}
+\title{Segmentación de imágenes a través de lógica difusa y funciones REF, de Dombi y penalti}
 \author{Iñigo Aguas Ardaiz}
-\date{2013ko maiatzaren 25}
+\date{25 de junio de 2015}
 
 \renewcommand{\shorthandsspanish}{}
 \pretolerance=20000
@@ -34,7 +34,7 @@
 
 %\input{template/my-packages}
 
-\newcommand{\espezialitatea}{Ingeniería de Computadores}
+%\newcommand{\espezialitatea}{Ingeniería de Computadores}
 
 % Cosas para la parte matemática
 \def\RR{\mathbb{R}}
@@ -62,16 +62,15 @@
 
 \begin{document}
 %\frontmatter
-\includepdf{graficos/portada.pdf}
+\includepdf{graficos/portadaTipografia.pdf}
 
 % \maketitle
 % \input{template/cover}
 \cleardoublepage
 
+\subfile{contenidos/0-abstract-en}
 
-\subfile{0-abstract-en}
-
-\subfile{0-abstract-es}
+\subfile{contenidos/0-abstract-es}
 
 \cleardoublepage
 
@@ -81,8 +80,7 @@
 \tableofcontents			% Show a table of contents
 
 %\newpage
-%\listoffigures
-
+\listoffigures
 \listofalgorithms
 %\newpage
 %\listoftables
@@ -97,16 +95,16 @@
 	%\fancyhf[ORH,ELH]{\thepage}
 
 %\mainmatter
-\input{1-intro}
-\input{2-preliminares}
-\input{3-monoumbral}
-\input{4-multiumbral}
-\input{5-conclusiones}
+\input{contenidos/1-intro}
+\input{contenidos/2-preliminares}
+\input{contenidos/3-monoumbral}
+\input{contenidos/4-multiumbral}
+\input{contenidos/5-conclusiones}
 
 %\noappendicestocpagenum
 %\appendixpage
 %\addappheadtotoc
-%\appendix
+\appendix
 % Adjustments headers
 %\pagestyle{fancy}
 %\fancyhead[LO]{\leftmark}
@@ -117,7 +115,7 @@
 %\fi
 %\renewcommand{\headrulewidth}{0.5pt}
 
-% \input{A-appendix}
+\input{contenidos/A-appendix}
 
 %\backmatter
 
