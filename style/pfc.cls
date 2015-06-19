@@ -4,7 +4,7 @@
 
 \PassOptionsToClass{a4paper,12pt,titlepage=firstiscover,openright}{scrreprt}
 \PassOptionsToClass{abstract,parskip=full,headings=twolinechapter,numbers=autoendperiod}{scrreprt}
-\PassOptionsToClass{twoside,BCOR=6mm}{scrreprt}
+\PassOptionsToClass{twoside,BCOR=10mm}{scrreprt}
 
 \DeclareOption*{%
    \PassOptionsToClass{\CurrentOption}{scrreprt}%
