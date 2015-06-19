@@ -50,8 +50,8 @@ Debido a la formulación de este tarbajo, se sustituirá la aplicación anterior
 
 \begin{equation} \label{eq:conjdifusosdombimono}
     \mu_{Q_t}(q) = \left\{ \begin{aligned}
-        F \left(d,\left(\frac{q}{L-1}, \frac{m_b(t)}{L-1}\right)\right) = \frac{1}{2}\left(1 + \left(1-2\frac{q}{L-1}\right)^d\cdot\left(1-2\frac{m_b(t)}{L-1}\right)^d\right)& \quad\text{si}\ q\leq t,\\
-        F \left(\left(d,\frac{q}{L-1}, \frac{m_o(t)}{L-1}\right)\right) = \frac{1}{2}\left(1 + \left(1-2\frac{q}{L-1}\right)^d\cdot\left(1-2\frac{m_o(t)}{L-1}\right)^d\right)& \quad\text{si}\ q> t.
+        F \left(w,\left(\frac{q}{L-1}, \frac{m_b(t)}{L-1}\right)\right) = \frac{1}{2}\left(1 + \left(1-2\frac{q}{L-1}\right)^w\cdot\left(1-2\frac{m_b(t)}{L-1}\right)^w\right)& \quad\text{si}\ q\leq t,\\
+        F \left(w,\left(\frac{q}{L-1}, \frac{m_o(t)}{L-1}\right)\right) = \frac{1}{2}\left(1 + \left(1-2\frac{q}{L-1}\right)^w\cdot\left(1-2\frac{m_o(t)}{L-1}\right)^w\right)& \quad\text{si}\ q> t.
      \end{aligned}\right.
 \end{equation}
 \REV{Está bien definido cómo he metido el parámetro d??}
@@ -111,7 +111,7 @@ En este algoritmo, utilizaremos 4 versiones, en función del par de automorfismo
 \REQUIRE Una imagen $Q$ en escala de grises donde sus píxeles estén entre $0$ y $L-1$.
 \ENSURE El umbral óptimo $t*$ a partir del cual se divide $Q$ en objeto y fondo.
 \FOR {$t$:=0 hasta $L-1$}
-\STATE Calcular los conjuntos $Q_t$ como se describe en la definición \ref{def:conjuntodifusosmonoumbral}.
+\STATE Calcular los conjuntos $Q_t$ como se describe en la definición \ref{def:conjuntodifusomonoumbral}.
 \STATE Calcular los conjuntos $H$ como se muestra en la definición \ref{def:conjuntoHmonoumbral}.
 \STATE Calcular la $SM(Q_t, H(Q_t))$.
 \ENDFOR
@@ -133,8 +133,32 @@ $$\mu_{Q_t}(q) = \left\{ \begin{aligned}
 Además:
 $$SM(Q_t, H(Q_t)) = M^{L-1}_{q=0}(h(q)REF(\mu_{Q_t}(q), \mu_{H(Q_t)}(q)))$$
 
+
+%ALGORITMO GLOBAL
+\subsection{Otros algoritmos}
+\subsubsection{Algoritmo de umbralización global}
+\begin{algorithm}
+\begin{algorithmic}[1]
+\REQUIRE Una imagen $Q$ en escala de grises donde sus píxeles estén entre $0$ y $L-1$.
+\ENSURE El umbral óptimo $t$ a partir del cual se divide $Q$ en objeto y fondo.
+\STATE t0 = 128; 
+\COMMENT{Se selecciona un umbral inicial cualquiera, aquí se tomará el valor medio de los posibles}
+\REPEAT
+\STATE $G1 = \{(x, y) | q(x, y) > t0\}$
+\STATE $G2 = \{(x, y) | q(x, y) \leq t0\}$
+\STATE $m1 = \frac{1}{\abs{G1}} \sum_{i\in G1} i$
+\STATE $m2 = \frac{1}{\abs{G2}} \sum_{i\in G2} i$
+\STATE $t = \frac{m1+m2}{2}$
+\UNTIL {$\abs{t0-t} < \varepsilon$}
+\COMMENT {El valor $\varepsilon$ es un cierto error dispuesto por el programador.}
+\RETURN $t$
+\end{algorithmic}
+\caption{Umbralización global.}\label{alg:global}
+\end{algorithm}
+
+
 % ALGORTIMO DE OTSU
-\subsection{Algoritmo de Otsu}
+\subsubsection{Algoritmo de Otsu}
 
 El algoritmo de Otsu \cite{art:otsu}...
 
@@ -168,15 +192,15 @@ $$\sigma_B^2(t*) = \max_{1\leq k <L}\sigma_B^2(t)$$
 \REV{El umbral de 1..L en vez de 0..L-1}
 
 % ALGORITMO DE LA ENTROPÍA DE RENYI
-\subsection{Algoritmo de maximización de la entropía de Renyi}
+\subsubsection{Algoritmo de maximización de la entropía de Renyi}
 Este algoritmo enunciado en \cite{art:sahoo}...
 
 
 
 Método de el anterior KAPUT
 $$H_T=-\sum_{i=0}^{L-1} p_i \ln p_i$$
-$$H_C_0(t)=-\sum_{i=0}^{t} \frac{p_i}{p(C_0)} \ln \frac{p_i}{p(C_0)}$$
-$$H_C_1(t)=-\sum_{i=t+1}^{L-1} \frac{p_i}{p(C_1)} \ln \frac{p_i}{p(C_1)}$$
+$$H_{C_0}(t)=-\sum_{i=0}^{t} \frac{p_i}{p(C_0)} \ln \frac{p_i}{p(C_0)}$$
+$$H_{C_1}(t)=-\sum_{i=t+1}^{L-1} \frac{p_i}{p(C_1)} \ln \frac{p_i}{p(C_1)}$$
 $$p(C_0)\sum_{i=0}^{t}p_i$$
 $$p(C_1)\sum_{i=0}^{t}p_i$$
 $$p(C_0)+p(C_1)=1$$
@@ -188,23 +212,23 @@ $$H_{T}^{\alpha}(t) = \frac{1}{1-\alpha}\ln \sum_{i=0}^{L-1}\left(p_i\right)^\al
 $$H_{C_0}^{\alpha}(t) = \frac{1}{1-\alpha}\ln \sum_{i=0}^{t}\left(\frac{p_i}{p(C_0)}\right)^\alpha$$
 $$H_{C_1}^{\alpha}(t) = \frac{1}{1-\alpha}\ln \sum_{i=t}^{L-1}\left(\frac{p_i}{p(C_1)}\right)^\alpha$$
 $$t^*(\alpha)=\max_{0\leq t<L}\left\{H_{C_0}^{\alpha}(t)+H_{C_1}^{\alpha}(t)\right\}$$
-$$t^*(\alpha)=\left\{\begin{split}
+$$t^*(\alpha)=\left\{\begin{aligned}
     t^*_1 & \text{  si  }0<\alpha<1,\\
     t^*_2 & \text{  si  }\alpha\rightarrow1,\\
     t^*_3 & \text{  si  }1<\alpha<\infty.
-\end{split}\right.$$
+\end{aligned}\right.$$
 $$t^*_c = t_{(1)} \left(p(t_{(1)})+\frac{1}{4}\omega\beta_1\right)
         + \frac{1}{4}t_{(2)}\omega\beta_2
         + t_{(3)} \left(1-p(t_{(3)})+\frac{1}{4}\omega\beta_3\right)$$
 donde...
 $$p(t)=\sum_{i=1}^t(p_i); \omega=p(t_{(3)})-p(t_{(1)})$$
 y...
-$$(\beta_1, \beta_2, \beta_3) =  \left\{\begin{split}
+$$(\beta_1, \beta_2, \beta_3) =  \left\{\begin{aligned}
     (1, 2, 1) & \quad\text{si} &\abs{\tonee-\ttwo}\leq 5 \text{ y } \abs{\ttwo-\tthree}\leq 5,\\
     (1, 2, 1) & \quad\text{si} &\abs{\tonee-\ttwo}  >  5 \text{ y } \abs{\ttwo-\tthree}  >  5,\\
     (0, 1, 3) & \quad\text{si} &\abs{\tonee-\ttwo}\leq 5 \text{ y } \abs{\ttwo-\tthree}  >  5,\\
     (3, 1, 0) & \quad\text{si} &\abs{\tonee-\ttwo}  >  5 \text{ y } \abs{\ttwo-\tthree}\leq 5,   
-\end{split}\right.$$
+\end{aligned}\right.$$
 
 por ello, se sabe que:
 $$\min\{t_1^*, t^*_2, t^*_3 \}\leq t_c^* \leq\max\{t_1^*, t^*_2, t^*_3\} = \tonee \leq t_c^* \leq \tthree$$
@@ -215,12 +239,12 @@ $$\min\{t_1^*, t^*_2, t^*_3 \}\leq t_c^* \leq\max\{t_1^*, t^*_2, t^*_3\} = \tone
 \ENSURE El umbral óptimo $t*$ a partir del cual se divide $Q$ en objeto y fondo.
 
 \STATE $\alpha = [0.3, 0.99999, 10]$
-\COMMENT{Para facilitar la implementación, tendremos en cuenta únicamente un alfa de cada uno de los casos, cuando se estabilizan cada uno de los casos.}
+\COMMENT{Para facilitar la implementación, tendremos en cuenta únicamente un alfa de cada uno de los casos, cuando se estabilizan cada uno de los casos}
 \FOR {$\alpha_i \in \alpha$}
     \STATE $H_T=0$
 \FOR {$t'=0$ hasta $L-1$}
-        \STATE $p_C_0 = \sum_{i=0}^{t'}p_i$
-        \STATE $p_C_0 = \sum_{i=t'+1}^{L-1}p_i$
+        \STATE $p_{C_0} = \sum_{i=0}^{t'}p_i$
+        \STATE $p_{C_1} = \sum_{i=t'+1}^{L-1}p_i$
         \STATE $H_{C_0}^{\alpha}(t') = \frac{1}{1-\alpha}\ln \sum_{i=0}^{t'}\left(\frac{p_i}{p(C_0)}\right)^\alpha$
         \STATE $H_{C_1}^{\alpha}(t') = \frac{1}{1-\alpha}\ln \sum_{i=t'}^{L-1}\left(\frac{p_i}{p(C_1)}\right)^\alpha$
         \STATE $H_T(t') = H_T(t') + H_{C_0} +H_{C_1}$
@@ -246,7 +270,7 @@ $$\min\{t_1^*, t^*_2, t^*_3 \}\leq t_c^* \leq\max\{t_1^*, t^*_2, t^*_3\} = \tone
 
 
 % ALGORTIMO K-MEANS
-\subsection{Algoritmo {\em $k$-means}}
+\subsubsection{Algoritmo {\em k-means}}
 
 
 \begin{algorithm}
@@ -257,6 +281,7 @@ $$\min\{t_1^*, t^*_2, t^*_3 \}\leq t_c^* \leq\max\{t_1^*, t^*_2, t^*_3\} = \tone
 \STATE M = columnas(Q);
 \STATE $\mu$ = aleatorios(K);
 \STATE J = 0;
+\COMMENT {Coste}
 \REPEAT 
     \FOR {$i=1$ hasta N}
         \FOR {$j=1$ hasta M}
@@ -278,9 +303,27 @@ $$\min\{t_1^*, t^*_2, t^*_3 \}\leq t_c^* \leq\max\{t_1^*, t^*_2, t^*_3\} = \tone
 
 
 %coste
-$$J = \sum_{i=0}^N \sum_{j=0^M} \abs{\abs{q(i,j) - \mu_{c_i}}}^2$$
+%$$J = \sum_{i=0}^N \sum_{j=0^M} \abs{\abs{q(i,j) - \mu_{c_i}}}^2$$
 %
-$$c_{i,j} =\min_{j=1,\dots,K} \abs{\abs{q(i,j)-\mu(j)}}^2$$
+%$$c_{i,j} =\min_{j=1,\dots,K} \abs{\abs{q(i,j)-\mu(j)}}^2$$
 % 
-$$\frac{d}{d \mu_j} = \sum_{i\in cluster_j} \abs{\abs{q(i,j)-\mu(j)}}^2 = -2\sum_{i\in cluster_j}(q(i,j)-\mu(j))=0$$
-$$\mu(j) = \frac{1}{\abs{cluster_j}} \sum_{i\in cluster_j}q_i$$
+%$$\frac{d}{d \mu_j} = \sum_{i\in cluster_j} \abs{\abs{q(i,j)-\mu(j)}}^2 = -2\sum_{i\in cluster_j}(q(i,j)-\mu(j))=0$$
+%$$\mu(j) = \frac{1}{\abs{cluster_j}} \sum_{i\in cluster_j}q_i$$
+
+
+
+
+
+Hemos quedado en que hay que calcular t+1 pesos. Para ello se dan las funciones que siguen:
+
+\begin{equation}
+Q(r) = \left\{\begin{aligned}
+    0 & \quad\text{si} \quad& r<0,5\\
+    \frac{r-0,5}{0,5} & \quad\text{si} & 0,5\leq r \leq 1\\
+    1 & \quad\text{si}\quad & r > 1
+\end{aligned}\right.
+\end{equation}
+y construimos los pesos...
+$$w_i=Q\left(\frac{i}{t+1}\right) - Q\left(\frac{i-1}{t+1}\right)
+\text{ donde }\sum w_i=1$$
+

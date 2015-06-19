@@ -6,6 +6,8 @@
 \usepackage{pdfpages}
 \usepackage{amsthm}
 
+\usepackage{subfigure}
+
 %\usepackage{style/pfclistings}
 % Paquete para la escritura de algoritmos.
 % http://www.rosapolis.net/2008/04/21/escribir-algoritmos-en-latex/
@@ -31,7 +33,7 @@
 \theoremstyle{definition}
 \newtheorem{definition}[theorem]{Definición}
 \theoremstyle{remark}
-\newtheorem{rem}[theorem]{Observación}
+\newtheorem{remark}[theorem]{Observación}
 
 %\input{template/my-packages}
 
@@ -43,6 +45,7 @@
 \def\tthree{t_{(3)}}
 \def\RR{\mathbb{R}}
 \def\ZZ{\mathbb{Z}}
+\def\NN{\mathbb{N}}
 \def\FF{\mathcal{F}}
 \def\unitinterval{[0,1]}
 \def\xinunitinterval{\forall x\in\unitinterval}
@@ -66,7 +69,7 @@
 \hyphenation{}
 
 \newcommand{\REV}[1]{{\color{red}\Large#1}}
-
+\newcommand{\MATLAB}{\textsc{MatLab}}
 
 \renewcommand{\labelenumi}{(\arabic{enumi})}
 
