@@ -13,15 +13,16 @@
 \usepackage{algorithmic}
 \input{spanishAlgorithmic}
 
-
+%\usepackage[none]{hyphenat}
 
 \title{Segmentación de imágenes a través de lógica difusa y funciones REF, de Dombi y penalti}
 \author{Iñigo Aguas Ardaiz}
 \date{25 de junio de 2015}
 
-\renewcommand{\shorthandsspanish}{}
-\pretolerance=20000
-\tolerance=30000
+%\setlength{\parskip}{5mm}
+%\renewcommand{\shorthandsspanish}{}
+%\pretolerance=20000
+%\tolerance=30000
 
 \newtheorem{theorem}{Teorema}[section]
 \newtheorem{corolary}[theorem]{Corolario}
@@ -57,11 +58,12 @@
 		\unitinterval^#1 \rightarrow \unitinterval
 	\fi}
 
-\DeclareMathOperator{\Pr}{Pr}
-\DeclareMathOperator{\ln}{ln}
-\DeclareMathOperator{\max}{max}
-\DeclareMathOperator{\min}{min}
+%\DeclareMathOperator{\Pr}{Pr}
+%\DeclareMathOperator{\ln}{ln}
+%\DeclareMathOperator{\max}{max}
+%\DeclareMathOperator{\min}{min}
 
+\hyphenation{}
 
 \newcommand{\REV}[1]{{\color{red}\Large#1}}
 
@@ -78,8 +80,13 @@
 % \input{template/cover}
 \cleardoublepage
 
+\pagenumbering{Roman}
+\setcounter{page}{1}
+\addcontentsline{toc}{chapter}{Abstract}
 \subfile{contenidos/0-abstract-en}
 
+\cleardoublepage
+\addcontentsline{toc}{chapter}{Resumen}
 \subfile{contenidos/0-abstract-es}
 
 \cleardoublepage
@@ -87,11 +94,17 @@
 % Remove parskip for toc
 % \setlength{\parskip}{0ex plus 0.5ex minus 0.2ex}
 \setcounter{tocdepth}{2}	% Titles level degree at table of contents
+\addcontentsline{toc}{chapter}{Índice general}
 \tableofcontents			% Show a table of contents
+\cleardoublepage
 
 %\newpage
 \listoffigures
+\addcontentsline{toc}{chapter}{Índice de figuras}
+\cleardoublepage
 \listofalgorithms
+\addcontentsline{toc}{chapter}{Índice de algoritmos}
+\cleardoublepage
 %\newpage
 %\listoftables
 
@@ -105,9 +118,11 @@
 	%\fancyhf[ORH,ELH]{\thepage}
 
 %\mainmatter
+\pagenumbering{arabic}
+\setcounter{page}{1}
 \input{contenidos/1-intro}
 \input{contenidos/2-preliminares}
-\input{contenidos/3-monoumbral}
+\input{contenidos/3-segmentaciondombi}
 \input{contenidos/4-multiumbral}
 \input{contenidos/5-conclusiones}
 
