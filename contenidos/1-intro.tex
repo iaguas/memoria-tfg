@@ -16,7 +16,7 @@ En definitiva, en este trabajo se motiva en la idea de hacer posible lo que much
 
 % 1.2. DEFINICIÓN
 \section{Definición del problema}\label{sec:definicion}
-El problema de la segmentación consiste en poder conocer dentro de una imagen qué parte de ella pertenece al objeto y cual al fondo. Así, por ejemplo, en la figura \ref{img:ejemplomolino} el lector podrá diferenciar claramente un molino del pueblo que se ve en el fondo de la imagen. El hecho de diferenciar un objeto del fondo de una imagen es un proceso que no supone ninguna dificultad para la mente humana; es algo que realizamos inconscientemente cientos de veces durante el día, sin que nos cueste ningún esfuerzo. Sin embargo, la misma tarea puede resultar muy complicada o imposible de realizar a través de un programa informático. Podría ser como aquel hidalgo que veía gigantes en lugar molinos\footnote{En el IV centenario de la publicación de la segunda parte de ``El Quijote''}.
+El problema de la segmentación consiste en poder conocer dentro de una imagen qué parte de ella pertenece al objeto y cual al fondo. Así, por ejemplo, en la figura \ref{img:ejemplomolino} el lector podrá diferenciar claramente un molino del pueblo que se ve en el fondo de la imagen. El hecho de diferenciar un objeto del fondo de una imagen es un proceso que no supone ninguna dificultad para la mente humana; es algo que realizamos inconscientemente cientos de veces durante el día, sin que nos cueste ningún esfuerzo. Sin embargo, la misma tarea puede resultar muy complicada o imposible de realizar a través de un programa informático. Podría ser como aquel hidalgo que veía gigantes en lugar molinos\footnote{En el IV centenario de la publicación de la segunda parte de ``El Quijote''.}.
 
 \begin{figure}
 	\centering
@@ -57,10 +57,13 @@ En este trabajo se va a centrar la segmentación por medio de las técnicas de u
 
 \begin{figure}
 \centering
-	\subfloat{\includegraphics[width=0.3\textwidth]{img/rice}}
-	\subfloat{\includegraphics[width=0.3\textwidth]{img/umbra-rice}}\\
-	\subfloat{\includegraphics[width=0.4\textwidth]{img/hist-rice}}
-	\caption{(a) Imagen original. (b) Imagen segmentada. (c) Histograma de la imagen original. Se puede ver que en t=71 se produce un mínimo con respecto a los otros niveles de gris y que por eso se escoge como umbral.}
+	\subfigure[Imagen original.]
+	{\includegraphics[width=0.25\textwidth]{img/rice}}\quad
+	\subfigure[Imagen segmentada.]
+	{\includegraphics[width=0.25\textwidth]{img/umbra-rice}}\quad
+	\subfigure[Histograma original.]
+	{\includegraphics[width=0.35\textwidth]{img/hist-rice}}
+	\caption{Proceso de segmentación. Se puede ver que en $t=71$ se produce un mínimo con respecto a los otros niveles de gris y que por eso se escoge como umbral.}
 	\label{img:rice}
 \end{figure}
 
