@@ -47,24 +47,23 @@ Como parece lógico a la vista de la definición \ref{def:conjuntodifusomonoumbr
 \end{enumerate}
 
 Debido a la formulación de este tarbajo, se sustituirá la aplicación anterior que actúa como función $F$ en la definición \ref{def:conjuntodifusomonoumbral} por la función de Dombi \cite{art:dombi} definidas en \ref{def:dombi}. De esta forma, en este caso, los conjuntos difusos quedarán como explica la ecuación \ref{eq:conjdifusosdombimono}.
-
 \begin{equation} \label{eq:conjdifusosdombimono}
     \mu_{Q_t}(q) = \left\{ \begin{aligned}
         F \left(w,\left(\frac{q}{L-1}, \frac{m_b(t)}{L-1}\right)\right) = \frac{1}{2}\left(1 + \left(1-2\frac{q}{L-1}\right)^w\cdot\left(1-2\frac{m_b(t)}{L-1}\right)^w\right)& \quad\text{si}\ q\leq t,\\
         F \left(w,\left(\frac{q}{L-1}, \frac{m_o(t)}{L-1}\right)\right) = \frac{1}{2}\left(1 + \left(1-2\frac{q}{L-1}\right)^w\cdot\left(1-2\frac{m_o(t)}{L-1}\right)^w\right)& \quad\text{si}\ q> t.
      \end{aligned}\right.
 \end{equation}
-\REV{Está bien definido cómo he metido el parámetro d??}
-Además, el último paso del bucle, en la línea \ref{lin:alg1:similitud}, se lleva a cabo la busqueda de la similitud frente al conjunto $\tilda1$. Para poder llevar a cabo este cálculo, tal y como se especifica en la definición \ref{def:similitud}, necesitamos utilizar una función $REF$, que será $1-\abs{x-y}^2$ y la agregación $M$, la media aritmética ($\frac{1}{n}\sum_1^n x_i$). De esta forma, quedará como sigue:
+%\REV{Está bien definido cómo he metido el parámetro d??}
+Además, el último paso del bucle, en la línea \ref{lin:alg1:similitud} (Algoritmo \ref{alg:algoritmo1}=, se lleva a cabo la busqueda de la similitud frente al conjunto $\tilda1$. Para poder llevar a cabo este cálculo, tal y como se especifica en la definición \ref{def:similitud}, necesitamos utilizar una función $REF$, que será $REF_2=1-\abs{x-y}^2$, y la agregación $M$, la media aritmética ($M=\frac{i=1}{n}\sum_1^n x_i$). De esta forma, quedará como sigue:
 \begin{equation}\label{eq:similitud}
-    SM(\tilda1, Q_{t}) = M^{L-1}_{q=0}(h(q)REF_2(1,\mu_{Q_t}(q)))
+    SM(\tilda1, Q_{t}) = M^{L-1}_{q=0}(h(q)\cdot REF_2(1,\mu_{Q_t}(q)))
 \end{equation}
 
 
 % ALGORITMO DEL ÁREA
 \subsection{Algoritmo del área}
 
-Este algoritmo, que se presenta en \cite{art:barrenechea}, pretende hayar un nuevo umbral a través de la creación de una función $REF$ 
+Este algoritmo, que se presenta en \cite{art:barrenechea} también, pretende hayar un nuevo umbral a través de la creación de una función $REF$, tal y como se explica en el teorema \ref{prop:contruccionref}.
 
 \begin{algorithm}
 \begin{algorithmic}[1]
@@ -80,7 +79,21 @@ A(Q_t)= \sum_{q=0}^{t} h(q)\varphi_1^{-1}\left(1-\abs{\varphi_2\left(\frac{q}{L-
 \caption{Umbralización del área}\label{alg:algoritmo2}
 \end{algorithm}
 
-En este algoritmo, utilizaremos 4 versiones, en función del par de automorfismos que utilicemos. 
+Esta es, realmente, una nueva versión del algoritmo de maximización de similitud anterior. Por esta razón, se prepara una formulación para conocer la relación de la similitud en función del área ($A$) que se ha calculado. Se intentará, por tanto, simplificarlo retirando la función de similitud $SM$.
+\begin{proposition}
+Dada una agregación $M$, la media aritmética, y la función $REF_2$, una función de equivalencia restringida formada según la definición \ref{def:ref}. Si se construyen dos conjuntos difusos $Q_{t_1}$ y $Q_{t_2}$ de acuerdo a definición \ref{def:conjuntodifusomonoumbral} de la imagen $Q$. Si disponemos de una medida de similitud presentada en \ref{def:similitud} podemos afirmar que:
+$$SM(\tilda1, Q_{t_1})\leq SM(\tilda1, Q_{t_1})\quad \text{si y sólo si}\quad A(Q_{t_1})\leq A(Q_{t_1})$$
+\end{proposition}
+\begin{proof}
+Sabiendo que $REF(1,x)=x, \xinunitinterval$, entonces:
+$$SM(\tilda1, Q_{t_1}) 
+= \frac{1}{\sum_{q=0}^{L-1}h(q)}\sum_{q=0}^{L-1}\left( h(q)REF_2(1, \mu_{Q_{t_1}}(q))\right) 
+= \frac{1}{\sum_{q=0}^{L-1}h(q)}\sum_{q=0}^{L-1}\left( h(q)\mu_{Q_{t_1}}(q)\right)
+= \frac{A(Q_{t_1})}{\sum_{q=0}^{L-1}h(q)}.$$
+Por esta razón, también se podrá decir que $SM(\tilda1, Q_{t_2}) = \frac{A(Q_{t_2})}{\sum_{q=0}^{L-1}h(q)}$ lo que prueba la proposición anterior.
+\end{proof}
+
+En este algoritmo, se utilizan 3 pares de automorfismos para darle forma al área. 
 
 %\begin{table}[h!]\begin{center}
 %\resizebox*{14cm}{!}{\begin{tabular}{c||c|c||c} 
@@ -95,30 +108,17 @@ En este algoritmo, utilizaremos 4 versiones, en función del par de automorfismo
 %\end{table}
 
 \begin{enumerate}\label{enum:funcionesalg2}
-    \item Tomando $\varphi_1(x) = \varphi_2(x) = x, \xinunitinterval$.
+    \item Se toma $\varphi_1(x) = \varphi_2(x) = x, \xinunitinterval$.
     $$A(Q_t) = sum_{q=0}^{L-1} h(q) - \left(\sum_{q=0}^{t} \left(1-\abs{\frac{q}{L-1}-\frac{m_b(t)}{L-1}}\right) - \sum_{q=t+1}^{L-1} \left(1-\abs{\frac{q}{L-1}-\frac{m_o(t)}{L-1}}\right)\right)$$
-    \item Tomando $\varphi_1(x) = x^d \text{ con } d\neq0, \xinunitinterval \text{ y } \varphi_2(x)=x, \xinunitinterval$.
-    $$\sum_{q=0}^{t} h(q) \left(1-\abs{\frac{q}{L-1}-\frac{m_b(t)}{L-1}}\right) - \sum_{q=t+1}^{L-1} h(q) \left(1-\abs{(\frac{q}{L-1}-\frac{m_o(t)}{L-1}}\right)$$
-    \item Tomando $\varphi_1(x) = 1-\sqrt{1-x}, \xinunitinterval \text{ y } \varphi_2(x)=x,\xinunitinterval$
+    \item Se toma $\varphi_1(x) = x^d \text{ con } d\neq0, \xinunitinterval \text{ y } \varphi_2(x)=x, \xinunitinterval$.
+    $$\sum_{q=0}^{t} h(q) \left(1-\abs{\frac{q}{L-1}-\frac{m_b(t)}{L-1}}\right) - \sum_{q=t+1}^{L-1} h(q) \left(1-\abs{\frac{q}{L-1}-\frac{m_o(t)}{L-1}}\right)$$
+    \item Se toma $\varphi_1(x) = 1-\sqrt{1-x}, \xinunitinterval \text{ y } \varphi_2(x)=x,\xinunitinterval$
     $$\sum_{q=0}^{L-1} h(q) - \left(\sum_{q=0}^{L-1} h(q) \left(\frac{q}{L-1}-\frac{m_b(t)}{L-1}\right)^2 - \sum_{q=t+1}^{L-1} h(q) \left(\frac{q}{L-1}-\frac{m_o(t)}{L-1}\right)^2\right)$$
 \end{enumerate}
+En total, se dispondrá de 4 versiones diferentes si tenemos en cuenta que en la (2) dispondremos $d=0,5$ y $d=2$.
 
 % ALGORITMO 3
-\subsection{Algoritmo de selección del umbral óptimo}
-
-\begin{algorithm}
-\begin{algorithmic}[1]
-\REQUIRE Una imagen $Q$ en escala de grises donde sus píxeles estén entre $0$ y $L-1$.
-\ENSURE El umbral óptimo $t*$ a partir del cual se divide $Q$ en objeto y fondo.
-\FOR {$t$:=0 hasta $L-1$}
-\STATE Calcular los conjuntos $Q_t$ como se describe en la definición \ref{def:conjuntodifusomonoumbral}.
-\STATE Calcular los conjuntos $H$ como se muestra en la definición \ref{def:conjuntoHmonoumbral}.
-\STATE Calcular la $SM(Q_t, H(Q_t))$.
-\ENDFOR
-\RETURN \{$t*$ | max($SM$)\}
-\end{algorithmic}
-\caption{Selección del umbral optimo}\label{alg:algoritmo3}
-\end{algorithm}
+\subsection{Algoritmo de selección del umbral óptimo}\label{sec:algoritmo3}
 
 \begin{definition}\label{def:conjuntoHmonoumbral}
 Dada $Q$, una imagen en la escala de L niveles de gris, y $t$, un nivel de gris de forma que $0\leq t\leq L-1$, se calcula su conjunto $H(Q_t)$ como
@@ -130,14 +130,35 @@ $$\mu_{Q_t}(q) = \left\{ \begin{aligned}
  \end{aligned}\right.$$
  \end{definition}
 
-Además:
+En el algoritmo, necesitaremos, después, calcular la similitud que existe entre el conjunto $Q_t$ y el conjunto $H(Q_t)$. Para ello aplicamos la definición \ref{def:similitud}:
 $$SM(Q_t, H(Q_t)) = M^{L-1}_{q=0}(h(q)REF(\mu_{Q_t}(q), \mu_{H(Q_t)}(q)))$$
+Tendremos en cuenta que $M$ seguirá siendo la media aritmética y $REF=1-\abs{x-y}^2 \xinunitinterval$. Si a través de la uniformidad simplificamos la expresión anterior, obtendremos:
+$$SM(Q_t, H(Q_t)) = \frac{1}{\sum_{q=0}^{L-1}h(q)} \sum_{q=0}^{L-1}\left(h(q)(1-(\mu_{Q_t}(q)-\mu_H{(Q_t)}(q))^2)\right)$$
+dfsdf
+
+\begin{algorithm}[!ht]
+\begin{algorithmic}[1]
+\REQUIRE Una imagen $Q$ en escala de grises donde sus píxeles estén entre $0$ y $L-1$.
+\ENSURE El umbral óptimo $t^*$ a partir del cual se divide $Q$ en objeto y fondo.
+\FOR {$t$:=0 hasta $L-1$}
+\STATE Calcular los conjuntos $Q_t$ como se describe en la definición \ref{def:conjuntodifusomonoumbral}.
+\STATE Calcular los conjuntos $H$ como se muestra en la definición \ref{def:conjuntoHmonoumbral}.
+\STATE Calcular la $SM(Q_t, H(Q_t))$.
+\ENDFOR
+\RETURN \{$t*$ | max($SM$)\}
+\end{algorithmic}
+\caption{Selección del umbral óptimo}\label{alg:algoritmo3}
+\end{algorithm}
+
 
 
 %ALGORITMO GLOBAL
 \subsection{Otros algoritmos}
 \subsubsection{Algoritmo de umbralización global}
-\begin{algorithm}
+
+Entre los algoritmos que se encargan de segmentar la imagen con un único umbral, este es el más simple aunque en ocasiones podemos obtener resultados suficientemente buenos según que aplicación queramos darle.
+
+\begin{algorithm}[!ht]
 \begin{algorithmic}[1]
 \REQUIRE Una imagen $Q$ en escala de grises donde sus píxeles estén entre $0$ y $L-1$.
 \ENSURE El umbral óptimo $t$ a partir del cual se divide $Q$ en objeto y fondo.
@@ -156,16 +177,41 @@ $$SM(Q_t, H(Q_t)) = M^{L-1}_{q=0}(h(q)REF(\mu_{Q_t}(q), \mu_{H(Q_t)}(q)))$$
 \caption{Umbralización global.}\label{alg:global}
 \end{algorithm}
 
+En este sentido, para el buen funcionamiento del algoritmo es necesario que la imagen tenga una clara separación entre el objeto y el fondo, expresada con un valle en el histograma de la imagen. Se debe tener cuidado al elegir el parámetro $\varepsilon$ ya que de él depende el número de iteraciones del bucle. Normalmente, conforme este crece, menor es el número de iteraciones necesarias para un resultado adecuado.
+
 
 % ALGORTIMO DE OTSU
 \subsubsection{Algoritmo de Otsu}
 
-El algoritmo de Otsu \cite{art:otsu}...
+El algoritmo de Otsu \cite{art:otsu} basa su técnica de umbralización, también, en el histograma de la imagen que recibe. Para ello, trata las probabilidades que se le ortorgan a cada uno de los niveles de gris de los que dispone la imagen. Si tomamos una imagen $Q$ que tenga sus intensidades entre $[1, 2, \dots, L]$, podremos expresar la probablidad de cada intensidad como
+$$p_i = \frac{n_i}{N}, \quad p_i \geq 0\quad\text{ sabiendo que }\quad\sum_{i=1}^{L}p_i=1$$
+siendo $n_i$ el número de píxeles de intensidad $i$ y $N$ el número total de píxeles en la imagen $Q$.
+
+Ahora, supondremos que podemos clasificar los elementos de la imagen en dos clases, $C_0$ y $C_1$ que tendrán a los píxeles $[1,\dots,k]$ y $[k+1,\dots,L]$ respectivamente. Definirán su probabilidad como
+$$\omega_0 = \Pr(C_0) = \sum_{i=1}^{t}p_i=\omega_0(t)\qquad\text{y}\qquad
+\omega_1 = \Pr(C_1) = \sum_{i=t+1}^{L}p_i=\omega_1(t)$$
+y su media como
+$$\mu_0=\sum_{i=1}^t i \Pr(i|C_0) = \sum_{i=1}^t \frac{ip_i}{\omega_0} = \frac{\mu(t)}{\omega(t)}\qquad\text{y}\qquad
+\mu_1=\sum_{i=t+1}^{L} i \Pr(i|C_1) = \sum_{i=t+1}^{L} \frac{ip_i}{\omega_1} = \frac{\mu_T-\mu(t)}{1-\omega(t)}$$
+donde
+$$\omega(k)\sum_{i=1}^k ip_i   \qquad\text{y}\qquad   \mu(k)=\sum_{i=1}^k ip_i$$
+
+Por último, se puede definir
+$$\mu_T = \mu(L) = \sum_{i=1}^L ip_i$$
+y todas estas definiciones podemos asegurar que cumplirán que
+$$\omega_0\mu_0+\omega_1\mu_1 = \mu_T   \qquad\text{y}\qquad   \omega_0+\omega_1 = 1$$
+Con la intención de evaluar lo adecuado o no que es cada umbral $t$, podemos definir la varianza de cada uno como 
+$$\sigma_B^2(t) = \omega_0(\mu_0-\mu_T)^2 + \omega_1(\mu_1-\mu_T)^2 = \omega_0\omega_1(\mu_1-\mu_0)^2$$
+Con todo ello, para encontrar el umbral óptimo $t^*$ sólo deberemos encontrar aquella varianza que maximice a las demás. 
+$$\sigma_B^2(t*) = \max_{1\leq k <L}\left\{\sigma_B^2(t)\right\}$$
+
+Al resumir todo lo anterior en lenguaje algorítmico se encuentra:
+\REV{El umbral de 1..L en vez de 0..L-1}
 
 \begin{algorithm}
 \begin{algorithmic}[1]
 \REQUIRE Una imagen $Q$ en escala de grises donde sus píxeles estén entre $0$ y $L-1$.
-\ENSURE El umbral óptimo $t*$ a partir del cual se divide $Q$ en objeto y fondo.
+\ENSURE El umbral óptimo $t^*$ a partir del cual se divide $Q$ en objeto y fondo.
 \FOR {$t$:=0 hasta $L-1$}
 \STATE $\omega_0$(t) = $\sum_{i=1}^{t}p_i$
 \STATE $\mu_0$(t) = $\sum_{i=1}^t \frac{ip_i}{\omega_0}$
@@ -173,56 +219,48 @@ El algoritmo de Otsu \cite{art:otsu}...
 \STATE $\mu_1$(t) = $\sum_{i=t+1}^L \frac{ip_i}{\omega_1}$
 \STATE $\sigma_B^2(t) = \omega_0\omega_1(\mu_1-\mu_0)^2$
 \ENDFOR
-\RETURN \{$t*$ | max_t($\sigma_B^2$)\}
+\RETURN \{$t^*$ | $max_t(\sigma_B^2$)\}
 \end{algorithmic}
-\caption{Selección del umbral óptimo de Otsu.}\label{alg:otsu}
+\caption{Selección del umbral óptimo según Otsu.}\label{alg:otsu}
 \end{algorithm}
 
-$$p_i = \frac{n_i}{N}, \quad p_i \geq 0, \sum_{i=1}^{L}p_i=1$$
-$$\omega_0 = \Pr(C_0) = \sum_{i=1}^{t}p_i=\omega_0(t)$$
-$$\omega_1 = \Pr(C_1) = \sum_{i=t+1}^{L}p_i=\omega_1(t)$$
-$$\mu_0=\sum_{i=1}^t i \Pr(i|C_0) = \sum_{i=1}^t \frac{ip_i}{\omega_0} = \frac{\mu(t)}{\omega(t)}$$
-$$\mu_1=\sum_{i=t+1}^{L} i \Pr(i|C_1) = \sum_{i=t+1}^{L} \frac{ip_i}{\omega_1} = \frac{\mu_T-\mu(t)}{1-\omega(t)}$$
-$$\mu(k)=\sum_{i=1}^k ip_i$$
-$$\mu_T = \mu(L) = \sum_{i=1}^L ip_i$$
-$$\omega_0\mu_0+\omega_1\mu_1 = \mu_T$$
-$$\omega_0+\omega_1 = 1$$
-$$\sigma_B^2(t) = \omega_0(\mu_0-\mu_T)^2 + \omega_1(\mu_1-\mu_T)^2 = \omega_0\omega_1(\mu_1-\mu_0)^2$$
-$$\sigma_B^2(t*) = \max_{1\leq k <L}\sigma_B^2(t)$$
-\REV{El umbral de 1..L en vez de 0..L-1}
 
 % ALGORITMO DE LA ENTROPÍA DE RENYI
 \subsubsection{Algoritmo de maximización de la entropía de Renyi}
-Este algoritmo enunciado en \cite{art:sahoo}...
+Este algoritmo, enunciado en \cite{art:sahoo}, busca el umbral óptimo de la imagen a través de la maximización de la entropía que se produce en la imagen definida por Renyi. Al igual que en el algoritmo de Otsu se empieza definiendo dos clases, la correspondiente al fondo y la del objeto. Para cada una de ellas se define su probabilidad
+$$p(C_0)=\sum_{i=0}^{t}p_i\qquad\text{y}\qquad p(C_1)=\sum_{i=t+1}^{L-1}p_i$$
+donde con ambas probabilidades se cumple que $p(C_0)+p(C_1)=1$.
 
+%Método de el anterior KAPUT
+%$$H_T=-\sum_{i=0}^{L-1} p_i \ln p_i$$
+%$$H_{C_0}(t)=-\sum_{i=0}^{t} \frac{p_i}{p(C_0)} \ln \frac{p_i}{p(C_0)}$$
+%$$H_{C_1}(t)=-\sum_{i=t+1}^{L-1} \frac{p_i}{p(C_1)} \ln \frac{p_i}{p(C_1)}$$
+%$$p(C_0)\sum_{i=0}^{t}p_i$$
+%$$p(C_1)\sum_{i=0}^{t}p_i$$
+%$$p(C_0)+p(C_1)=1$$
 
+%$$C_0:\frac{p_0}{p(C_0)},\frac{p_1}{p(C_0)},\dots,\frac{p_t}{p(C_0)}$$
+%$$C_1:\frac{p_0}{p(C_1)},\frac{p_1}{p(C_1)},\dots,\frac{p_t}{p(C_1)}$$
+%$$H_{T}^{\alpha}(t) = \frac{1}{1-\alpha}\ln \sum_{i=0}^{L-1}\left(p_i\right)^\alpha \quad\text{con }\alpha\neq 1$$
+A continuación se define la entropía para ambas clases sabiendo que $\alpha\neq 1$.
+$$H_{C_0}^{\alpha}(t) = \frac{1}{1-\alpha}\ln \sum_{i=0}^{t}\left(\frac{p_i}{p(C_0)}\right)^\alpha \qquad\text{y}\qquad 
+H_{C_1}^{\alpha}(t) = \frac{1}{1-\alpha}\ln \sum_{i=t}^{L-1}\left(\frac{p_i}{p(C_1)}\right)^\alpha$$
 
-Método de el anterior KAPUT
-$$H_T=-\sum_{i=0}^{L-1} p_i \ln p_i$$
-$$H_{C_0}(t)=-\sum_{i=0}^{t} \frac{p_i}{p(C_0)} \ln \frac{p_i}{p(C_0)}$$
-$$H_{C_1}(t)=-\sum_{i=t+1}^{L-1} \frac{p_i}{p(C_1)} \ln \frac{p_i}{p(C_1)}$$
-$$p(C_0)\sum_{i=0}^{t}p_i$$
-$$p(C_1)\sum_{i=0}^{t}p_i$$
-$$p(C_0)+p(C_1)=1$$
+Llegado este punto, se puede encontrar el umbral óptimo $t^*(\alpha)$ aquel que maximice la suma de las entropías de las clases:
+$$t^*(\alpha)=\max_{0\leq t<L}\left\{H_{C_0}^{\alpha}(t)+H_{C_1}^{\alpha}(t)\right\}.$$
 
-Método correcto
-$$C_0:\frac{p_0}{p(C_0)},\frac{p_1}{p(C_0)},\dots,\frac{p_t}{p(C_0)}$$
-$$C_1:\frac{p_0}{p(C_1)},\frac{p_1}{p(C_1)},\dots,\frac{p_t}{p(C_1)}$$
-$$H_{T}^{\alpha}(t) = \frac{1}{1-\alpha}\ln \sum_{i=0}^{L-1}\left(p_i\right)^\alpha \quad\text{con }\alpha\neq 1$$
-$$H_{C_0}^{\alpha}(t) = \frac{1}{1-\alpha}\ln \sum_{i=0}^{t}\left(\frac{p_i}{p(C_0)}\right)^\alpha$$
-$$H_{C_1}^{\alpha}(t) = \frac{1}{1-\alpha}\ln \sum_{i=t}^{L-1}\left(\frac{p_i}{p(C_1)}\right)^\alpha$$
-$$t^*(\alpha)=\max_{0\leq t<L}\left\{H_{C_0}^{\alpha}(t)+H_{C_1}^{\alpha}(t)\right\}$$
+Por medio de experimentación se ha comprobado que el umbral anterior no es igual para todos los valores de $\alpha$. Este hecho se formaliza de la siguiente forma:
 $$t^*(\alpha)=\left\{\begin{aligned}
     t^*_1 & \text{  si  }0<\alpha<1,\\
     t^*_2 & \text{  si  }\alpha\rightarrow1,\\
     t^*_3 & \text{  si  }1<\alpha<\infty.
 \end{aligned}\right.$$
+
+Por esta razón, se hace necesario emcontrar un umbral $t$ que no sea dependiente de $\alpha$. Para ello se deben calcular un umbral para cada una de las 3 situaciones enumeradas y ordenarlos de mayor a menor, algo que simbolizaremos como $\tonee\leq\ttwo\leq\tthree$. De estas forma, definiremos el umbral óptimo de la imagen como 
 $$t^*_c = t_{(1)} \left(p(t_{(1)})+\frac{1}{4}\omega\beta_1\right)
         + \frac{1}{4}t_{(2)}\omega\beta_2
         + t_{(3)} \left(1-p(t_{(3)})+\frac{1}{4}\omega\beta_3\right)$$
-donde...
-$$p(t)=\sum_{i=1}^t(p_i); \omega=p(t_{(3)})-p(t_{(1)})$$
-y...
+en donde tendremos en cuenta que $p(t)=\sum_{i=1}^t(p_i)$ y $\omega=p(t_{(3)})-p(t_{(1)})$ además del vector $(\beta_1, \beta_2, \beta_3)$ que se toma así:
 $$(\beta_1, \beta_2, \beta_3) =  \left\{\begin{aligned}
     (1, 2, 1) & \quad\text{si} &\abs{\tonee-\ttwo}\leq 5 \text{ y } \abs{\ttwo-\tthree}\leq 5,\\
     (1, 2, 1) & \quad\text{si} &\abs{\tonee-\ttwo}  >  5 \text{ y } \abs{\ttwo-\tthree}  >  5,\\
@@ -230,8 +268,9 @@ $$(\beta_1, \beta_2, \beta_3) =  \left\{\begin{aligned}
     (3, 1, 0) & \quad\text{si} &\abs{\tonee-\ttwo}  >  5 \text{ y } \abs{\ttwo-\tthree}\leq 5,   
 \end{aligned}\right.$$
 
-por ello, se sabe que:
+En definitiva, el umbral $t^*_c$ puede verse como una media ponderada de los valores de $t_1^*, t^*_2, t^*_3$ por lo que se puede afirmar 
 $$\min\{t_1^*, t^*_2, t^*_3 \}\leq t_c^* \leq\max\{t_1^*, t^*_2, t^*_3\} = \tonee \leq t_c^* \leq \tthree$$
+esta agregación consigue evitar los malos resultados que podrían darse si no se utilizara un parámetro $\alpha$ correcto al igual que integra todas las características de la imagen.
 
 \begin{algorithm}
 \begin{algorithmic}[1]
@@ -239,7 +278,7 @@ $$\min\{t_1^*, t^*_2, t^*_3 \}\leq t_c^* \leq\max\{t_1^*, t^*_2, t^*_3\} = \tone
 \ENSURE El umbral óptimo $t*$ a partir del cual se divide $Q$ en objeto y fondo.
 
 \STATE $\alpha = [0.3, 0.99999, 10]$
-\COMMENT{Para facilitar la implementación, tendremos en cuenta únicamente un alfa de cada uno de los casos, cuando se estabilizan cada uno de los casos}
+\STATE \COMMENT{Para facilitar la implementación, tendremos en cuenta únicamente un alfa de cada uno de los casos, cuando se estabilizan cada uno de los casos}
 \FOR {$\alpha_i \in \alpha$}
     \STATE $H_T=0$
 \FOR {$t'=0$ hasta $L-1$}
@@ -263,15 +302,31 @@ $$\min\{t_1^*, t^*_2, t^*_3 \}\leq t_c^* \leq\max\{t_1^*, t^*_2, t^*_3\} = \tone
     \STATE $\beta$ = [3, 1, 0];
 \ENDIF
 \STATE $t^*_c = t_{(1)} \left(p(t_{(1)})+\frac{1}{4}\omega\beta_1\right) + \frac{1}{4}t_{(2)}\omega\beta_2 + t_{(3)} \left(1-p(t_{(3)})+\frac{1}{4}\omega\beta_3\right)$
-\RETURN $t^*$
+\RETURN $t^*_c$
 \end{algorithmic}
 \caption{Selección del umbral óptimo maximizando la entropía de Renyi.}\label{alg:renyi}
 \end{algorithm}
 
 
 % ALGORTIMO K-MEANS
-\subsubsection{Algoritmo {\em k-means}}
+\subsubsection{Algoritmo {\em K-means}}
+Lo primero que se debe destacar del algoritmo de {\em K-means} es que, a diferencia de los algoritmos anteriores que segmentaban las imágenes con tecnicas de umbralización, este lo hace por medio de la agrupación de píxeles en regiones. Esto hace que este algoritmo sea muy difente del resto y que no base sus fundamentos teóricos en el manejo del histograma. Incluye, también, la posibilidad directa de hacer segmentación con más de un objeto ya que la $K$ indica el número de regiones en las que se dividirá la imagen.
 
+Para poder obtener cada una de las regiones, deberemos encontrar los píxeles $(x,y)$ que pertenecen a cada una. Este se consigue con la minimización de la función de coste que dados los centros $\mu_1, \dots,\mu_n$ se define como
+$$J=\sum_{i=1}^{N*M}\abs{\abs{q(x,y)_i-\mu_{c_i}}}^2.$$
+En vista de lo anteior, se definirá la pertenencia de un pixel a un centro $c_k$ como 
+$$\min_{k=1,\dots,K} \abs{\abs{q(x,y)-\mu(k)}}^2.$$
+
+Para poder actualizar los centros deberemos hacer la minimización de la función de coste que, evidentemente, se obtendrá en aquel lugar donde la derivada se haga 0. 
+$$\frac{d}{d \mu_k} = \sum_{i\in cluster_k} \abs{\abs{q(x,y)_i-\mu_k}}^2 = -2\sum_{i\in cluster_k}(q(x,y)-\mu_k=0$$
+por lo que, cada uno de los centros se encontrará como 
+$$\mu_k = \frac{1}{\abs{cluster_k}}\sum_{i\in cluster_k}q(x,y)_i$$
+
+Se debe tener en cuenta que al obtener una región tenemos que buscar un método para poder representarla y operar con ella. Debido a la gran cantidad de datos que dispondríamos de cada una se estima que la mejor forma de identificarla es con su centro $\mu_R$. 
+
+Como se podrá observar, para el cálculo de los centros se necesita conocer la pertenencia de cada uno de los píxeles y para obtener la pertenencia es necesario disponer de los centros. Esta paradoja hace que nos sea imposible comenzar el proceso si no es asignando unos primeros datos al azar y esperando a que el algoritmo converja conforme el número de iteraciones crezca.
+
+Por último, debemos señalar que para que el bucle tenga una condición de parada esta será puesta en función del error, ya que como se ha mostrado este irá disminuyendo hasta estabilizarse. Así mismo, al terminar de procesar la imagen, deberemos devolverla ya que no de dispone de un umbral $t$ que divida la misma.
 
 \begin{algorithm}
 \begin{algorithmic}[1]
@@ -298,7 +353,7 @@ $$\min\{t_1^*, t^*_2, t^*_3 \}\leq t_c^* \leq\max\{t_1^*, t^*_2, t^*_3\} = \tone
 \ENDFOR
 \RETURN imgSegmentada;
 \end{algorithmic}
-\caption{Umbralización por medio de {\em $k$-means}.}\label{alg:kmeans}
+\caption{Segmentación por medio de {\em $k$-means}.}\label{alg:kmeans}
 \end{algorithm}
 
 
@@ -314,16 +369,16 @@ $$\min\{t_1^*, t^*_2, t^*_3 \}\leq t_c^* \leq\max\{t_1^*, t^*_2, t^*_3\} = \tone
 
 
 
-Hemos quedado en que hay que calcular t+1 pesos. Para ello se dan las funciones que siguen:
+%Hemos quedado en que hay que calcular t+1 pesos. Para ello se dan las funciones que siguen:
 
-\begin{equation}
-Q(r) = \left\{\begin{aligned}
-    0 & \quad\text{si} \quad& r<0,5\\
-    \frac{r-0,5}{0,5} & \quad\text{si} & 0,5\leq r \leq 1\\
-    1 & \quad\text{si}\quad & r > 1
-\end{aligned}\right.
-\end{equation}
-y construimos los pesos...
-$$w_i=Q\left(\frac{i}{t+1}\right) - Q\left(\frac{i-1}{t+1}\right)
-\text{ donde }\sum w_i=1$$
+%\begin{equation}
+%Q(r) = \left\{\begin{aligned}
+%    0 & \quad\text{si} \quad& r<0,5\\
+%    \frac{r-0,5}{0,5} & \quad\text{si} & 0,5\leq r \leq 1\\
+%    1 & \quad\text{si}\quad & r > 1
+%\end{aligned}\right.
+%\end{equation}
+%y construimos los pesos...
+%$$w_i=Q\left(\frac{i}{t+1}\right) - Q\left(\frac{i-1}{t+1}\right)
+%\text{ donde }\sum w_i=1$$
 
