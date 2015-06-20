@@ -2,6 +2,11 @@
 
 Este capítulo pretende ser una introducción a todos los conceptos teóricos necesarios para la correcta comprensión del trabajo que se detalla en esta memoria. 
 
+
+\section{Procesamiento digital de imagen}\label{sec:procesamiento}
+\input{contenidos/3-0-procesamiento}
+
+
 % LOGICA DIFUSA
 \section{Lógica difusa}\label{sec:logicadifusa}
 La lógica difusa fue ideada por el matemático L. A. Zadeh \cite{art:zadeh} en 1965 con la intención de poder extender la lógica clásica o {\em crips} de forma que permitiera manejar y procesar la información que se compone de términos inexactos, imprecisos o subjetivos. Es, al fin y al cabo, un intento de imitar la la forma de deducción del cerebro humano para trasladarlo a las máquinas. Se comenzará recordando la lógica clásica para después extender los conceptos a la difusa.
@@ -44,6 +49,7 @@ Esta nueva función de pertenencia hace que podamos distinguir 3 zonas dentro de
 
 Más formalmente, denotaremos al conjunto que incluye a todos los conjuntos difusos como $\FF(x)$ a todos aquellos que se encuentran definidos sobre un referencial finito ($|X| = n$) por lo que $X$ no será un conjunto vacío.
  
+ \newpage
 
 % FUNCIONES REF
 \section{Funciones de equivalencia restringida}\label{sec:ref}
@@ -72,17 +78,26 @@ Una función $REF  : [0, 1] \rightarrow [0, 1]$ es llamada de equivalencia restr
 	\item $\forall x, y, z \in [0, 1]$, si $x\leq y\leq z$, entonces $REF(x, y)\geq REF(x, z)$ y  $REF(y, z)\leq REF(x, z)$
 	\end{enumerate}
 \end{definition}
+
 \begin{proposition}\label{prop:contruccionref}
 Para construir funciones $REF$ únicamente necesitaremos de dos automorfismos $\varphi_{1}$ y $\varphi_{2}$ de forma que: 
 $$REF(x,y) = \varphi_1^{-1}(1-|\varphi_2(x)-\varphi_2(y)|) \quad\text{con}\quad c(x) = \varphi_2^{-1}(1-\varphi_2(x)).$$ 
-Además, si tenemos una REF y un automorfismo en $\unitinterval$, la aplicación de estos ($F=\varphi \circ REF$) es otra REF.
+Además, si tenemos una $REF$ y un automorfismo en $\unitinterval$, la aplicación de estos ($F=\varphi \circ REF$) es otra $REF$.
 \end{proposition}
-\REV{Teorema que hace que estos automorfismos puedan ser 1 solo?}
+
+\begin{theorem}\label{th:ref}
+Una función continua $REF:\unitinterval^2 \rightarrow\unitinterval$ que cumpla que $REF(1,x)=x, \xinunitinterval$, es una función $REF$ asociada con la función $I:\unitinterval^2\rightarrow\unitinterval$ con $I$ continua y asociativa si y sólo si existe un automorfismo $\varphi$ en $\unitinterval$ tal que:
+$$REF(x,y)=\varphi^{-1}(1-\abs{(\varphi(x)-\varphi(y))})\quad\text{ y }\quad c(x)=\varphi^{-1}(1-\varphi(x))$$
+\end{theorem}
+
+%\REV{Teorema que hace que estos automorfismos puedan ser 1 solo?} No lo pongo pq no lo utilizo.
+
+\newpage
 
 % FUNCIONES DE AGREGACIÓN
 \section{Funciones de agregación}\label{sec:agregacion}
-\REV{funciones de agregación vs operadores de agregación}
-Las funciones de agregación tienen como propósito reducir las dimensiones de la información a partir de la combinación de los datos de entrada obteniendo una salida que los represente \cite{art:montero, art:calvoagregacion}. Su aplicación se extiende en muchos casos prácticos y teóricos como la lógica multievaluada, control difuso, la toma de decisión, etc \REV{cita}\cite{}.  Se definirá una función de agregación como sigue:
+\REV{funciones de agregación vs operadores de agregación ¿Qué es más correco para nombrarlos?}
+Las funciones de agregación tienen como propósito reducir las dimensiones de la información a partir de la combinación de los datos de entrada obteniendo una salida que los represente \cite{art:montero, art:calvoagregacion}. Su aplicación se extiende en muchos casos prácticos y teóricos como la lógica multievaluada, control difuso, la toma de decisión, etc \cite{art:paternain}.  Se definirá una función de agregación como sigue:
 
 \begin{definition}\label{def:agregacion}
 Se dice que $M : \unitinterval^n \rightarrow \unitinterval$ es una función de agregación de dimensión $n$ siempre que satisfaga:
@@ -103,12 +118,14 @@ En este proyecto se utilizarán mayoritariamente las funciones de agregación id
 En esta sección se introduce el concepto de las funciones de media ponderada ordenada (OWA, {\em  ordered weighted averaging}) \cite{art:yagerowa, art:paternain, art:bustinceowa}. Basa su idea en generar una media, ordenando primero los elementos a agregar, para luego darles mayor relevancia a una parte de ellos. Este tipo de función generaliza la media aritmética, siendo esta aquella en la que todos los elementos del vector de pesos son iguales.
 
 \begin{definition}\label{def:owa}
-Una  función $F:\unitspace{n}$ será una función OWA de dimensión $n$ si existe un vector de pesos $w=(w_{1},w_{2},\dots,w_{n})\in \unitinterval^{n}$ siempre que $\sum_{i}w_{i}=1$ de forma que
+Una  función $F:\unitinterval^n\rightarrow\unitinterval$ será una función OWA de dimensión $n$ si existe un vector de pesos $w=(w_{1},w_{2},\dots,w_{n})\in \unitinterval^{n}$ siempre que $\sum_{i}w_{i}=1$ de forma que
 $$F(x_{1},\dots,x_{n})=\sum^{n}_{j=1}w_{j}x_{\sigma(j)}$$
 sabiendo que $x_{\sigma(j)}$ es el $j$-ésimo mayor elemento del vector $(x_{1},\dots,x_{n})$.
 \end{definition}
 
-Por tanto para poder obtener un resultado adecuado, deberá utilizarse un vector de pesos $w$ que se adecue a las necesidades del problema. En este trabajo se emplea la versión `menor que la mitad' que tiene como vector de pesos a $w=(w_{1}\dots w_{i}, w_{i+1}\dots w_{n})$ sabiendo que $\abs{1, \dots, i}=\abs{i+1,\dots,n}$ de forma que $w_{j}=\frac{1}{2n}$ si $1\leq j\leq i$ y $w_{j}=0$ en el resto de los casos.
+Por tanto para poder obtener un resultado adecuado, deberá utilizarse un vector de pesos $w$ que se adecue a las necesidades del problema. En este trabajo se emplea la versión `menor que la mitad' \REV{nombre} que tiene como vector de pesos a $w=(w_{1}\dots w_{i}, w_{i+1}\dots w_{n})$ sabiendo que $\abs{1, \dots, i}=\abs{i+1,\dots,n}$ de forma que $w_{j}=\frac{1}{2n}$ si $1\leq j\leq i$ y $w_{j}=0$ en el resto de los casos.\REV{buscar la versión buena, esto es sólo para los cardinales pares}.
+
+Además, en la segunda parte del trabajo, se empea el OWA ``la mayoría de'' donde destaca con su vector de pesos a aquellos elementos mayores que los otros, esto es, a los que se encuentran en una posición superior a la mitad del vector ordenado.
 
 % CHOQUET
 \subsection{Integral Choquet}
@@ -139,7 +156,8 @@ $$\sum_{i=1}^{n} w_{\sigma, i}^{\mu} \cdot x_{\sigma(i)}.$$
 \section{Funciones de similitud}\label{sec:similitud}
 El concepto de similitud \cite{art:fan1, art:fan2} surge cuando queremos medir cómo de parecidos son dos conjuntos difusos. Este concepto es muy parecido al de REF, pero su diferencia radica en que en este caso se utilizan conjuntos y no elementos. Por esta razón, utilizamos las REF como base para definir las funciones de similitud.
 \begin{definition}\label{def:similitud}
-Dada una función $M$ de agregación (definición \ref{def:agregacion}) y una función $REF$ (definión \ref{def:ref}) llamaremos a $SM$ función de similitud si $SM : \FF(X) \times \FF(X) \rightarrow [0,1]$ está definida tal que $SM(A,B)=M^n_{i=1}REF(\mu_A(x_i), \mu_B(x_i))$
+Dada una función $M$ de agregación (definición \ref{def:agregacion}) y una función $REF$ (definión \ref{def:ref}) llamaremos a $SM$ función de similitud si $SM : \FF(X) \times \FF(X) \rightarrow [0,1]$ está definida tal que 
+$$SM(A,B)=M^n_{i=1}REF(\mu_A(x_i), \mu_B(x_i))$$
 y satisface las siguientes condiciones:
 	\begin{enumerate}
 	\item $SM(A, B) = SM(B, A), \forall A, B \in \FF(X)$;
@@ -150,8 +168,9 @@ y satisface las siguientes condiciones:
 	\end{enumerate}	
 \end{definition}
 
+\begin{remark}
 Durante el desarrollo de este trabajo se buscará la similitud entre conjuntos difusos y el conjunto $\tilda1$. Se define el conjunto $\tilda1 =\{(u_{i}, \mu_{\tilda1}(x)=1)|u_{i}\in U \}$, esto es, aquel en el que todos sus elementos tienen pertenencia absoluta.
-
+\end{remark}
 
 
 % FUNCIONES PENALTI
@@ -163,7 +182,7 @@ La función $P:[0,1]^{n+1}\REV{?}\rightarrow \RR^{+} = [+, \infty]$ es una funci
 \begin{enumerate}
 	\item $P(x, y) \geq 0, \forall x, y$
 	\item $P(x, y) = 0$ si $x_{i}=y \forall i=1,\dots ,n$
-	\item para cualquier $x$ fijado, el conjunto de minimizadores de $P(x, y)$ o bien un \REV{producto único} o un intervalo. \REV{reescrito} $P(x,y)$ es cuasiconvexa en $y$ para cualquier $x$, esto es, $P(x, \lambda\cdot y_{1} +(1-\lambda)\cdot y_{2})\leq \max(P(x, y_{1}), P(x, y_{2}))$.
+	\item $P(x,y)$ es cuasiconvexa en $y$ para cualquier $x$, esto es, $P(x, \lambda\cdot y_{1} +(1-\lambda)\cdot y_{2})\leq \max(P(x, y_{1}), P(x, y_{2}))$.
 \end{enumerate}
 \end{definition}
 La función en la que se basan las penalti es $$f(x)=\arg\min_{y} P(x,y)$$ si $y$ es el único mínimo e $y=\frac{a+b}{2}$ si el conjunto de minimizadores es el intervalo $(a, b)$.
@@ -178,13 +197,22 @@ Todas las funciones de agregación llamadas medias pueden ser escritas como una 
 Las funciones de Dombi \cite{art:dombi} son operadores de equivalencia con una definición diferente a las REF presentadas en la sección \ref{sec:ref}. Con esta relación lo que se pretende conocer es como de iguales son dos elementos de un conjunto difuso dado, pero aplicando nuevas ideas para la construcción del resultado. 
 \REV{Definición completa?}
 \begin{definition}\label{def:dombi}
-Denotaremos $D$ como una función de equivalencia de Dombi cuando tengamos que 
+Dados $x=(x_1, x_2, \dots,x_n)$ y $w=(w_1,w_2,\dots,w_n)$, denotaremos $D$ como una función de equivalencia de Dombi cuando tengamos que 
 $$D(w,x)=\frac{1}{2}\left(1+\prod(1-2x_{i})^{w_{i}}\right)$$
 \end{definition}
-\REV{propiedades}
+\begin{lemma}
+La función de equivalencia de Dombi, $D$, cumplirá las siguientes propiedades:
+\begin{enumerate}
+	\item $D:\unitinterval\times\unitspace \text{ es continua}$;
+	\item $D((w_1,w_2),(0,0)) = 1$;\quad$D((w_1,w_2),(1,1)) = 1$;
+	\item $D((w_1,w_2),(0,1)) = 0$;\quad$D((w_1,w_2),(1,0)) = 0$;
+	\item $D((w_1,w_2),(x,c(x))) = 0$.
+\end{enumerate}
+\end{lemma}
+%\REV{propiedades}
 
-\REV{Existe también el operador con pesos}
 
+\newpage
 
 
 %NOTACIÓN
@@ -196,31 +224,11 @@ A lo largo del trabajo se asumirá la notación que sigue para estos conceptos.
     \item[Imagen]: la denotaremos con $Q$.
     \item[Coordenadas de un pixel]: $(x,y)$.
     \item[Máximo nivel de gris]: $L$.
+    \item[Número de filas de $Q$]: $N$.
+    \item[Número de columnas de $Q$]: $M$.
     \item[Intensidad de un pixel]: $q(x,y)$ de forma que $0\leq q(x,y)\leq L-1, \forall (x,y)\in Q$.  
     \item[Histograma]: $h(q)$. Función para conocer el número de pixeles con la intensidad $q$. 
     \item[Media de una imagen]:$$m_Q=\frac{\sum_{q=0}^{L-1}qh(q)}{\sum_{q=0}^{L-1}h(q)}$$
     \item[Área de una imagen]: $$A(Q) = \sum_{q=0}^{L-1} q h(q)$$
 \end{description}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
