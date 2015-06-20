@@ -6,7 +6,6 @@
 \usepackage{pdfpages}
 \usepackage{amsthm}
 
-\usepackage{subfigure}
 
 %\usepackage{style/pfclistings}
 % Paquete para la escritura de algoritmos.
@@ -54,13 +53,14 @@
 \def\tilda1{\tilde{1}}
 
 \newcommand{\abs}[1]{\left\vert#1\right\vert}
-\newcommand{\unitspace}[1][1]{
-	\ifnum#1=1
+%\newcommand{\unitspace}[1][1]{
+\newcommand{\unitspace}{
+%	\ifnum#1==1
 		\unitinterval \rightarrow \unitinterval
-	\else
-		\unitinterval^#1 \rightarrow \unitinterval
-	\fi}
-
+%	\else
+%		\unitinterval^#1 \rightarrow \unitinterval
+%	\fi}
+}
 %\DeclareMathOperator{\Pr}{Pr}
 %\DeclareMathOperator{\ln}{ln}
 %\DeclareMathOperator{\max}{max}
