@@ -9,26 +9,26 @@ Este capítulo pretende ser una introducción a todos los conceptos teóricos ne
 
 % LOGICA DIFUSA
 \section{Lógica difusa}\label{sec:logicadifusa}
-La lógica difusa fue ideada por el matemático L. A. Zadeh \cite{art:zadeh} en 1965 con la intención de poder extender la lógica clásica o {\em crips} de forma que permitiera manejar y procesar la información que se compone de términos inexactos, imprecisos o subjetivos. Es, al fin y al cabo, un intento de imitar la la forma de deducción del cerebro humano para trasladarlo a las máquinas. Se comenzará recordando la lógica clásica para después extender los conceptos a la difusa.
+La lógica difusa fue introducida por el matemático L. A. Zadeh \cite{art:zadeh} en 1965 con la intención de poder extender la lógica clásica o {\em crips} de forma que permitiera manejar y procesar la información que se compone de términos inexactos, imprecisos o subjetivos. Es, al fin y al cabo, un intento de imitar la la forma de deducción del cerebro humano para trasladarlo a las máquinas. Se comenzará recordando la lógica clásica para después extender los conceptos a la difusa.
 
-En primer lugar, definiremos el conjunto del universo finito, $U$,  con el que se  trabajará, de forma que se contengan todos aquellos elementos con los que se desee trabajar, esto es, $U = {u_{1}, u_{2}, \dots, u_{n}}$. En la lógica clásica simplemente asignamos verdadero o falso a cada uno de los elementos del conjunto que se estudia. Por esta razón, al definir un conjunto $A$ podremos decir que este contiene o no a los elementos del universo $U$ con una certeza absoluta. De esta manera, daremos un valor de 1 cuando $u_{i}$ esté incluido en $A$ (verdadero) y un valor de 0 cuando no lo esté (falso). En esta última idea se refleja por medio de la función de pertenencia al conjunto  $A$, $\mu_{A}$ (ecuación \ref{eq:logicaclasica}).
+En primer lugar, definiremos el universo finito, $U$,  con el que se  trabajará, de forma que contenga todos aquellos elementos con los que se desee trabajar, esto es, $U = \{u_{1}, u_{2}, \dots, u_{n}\}$. En la lógica clásica simplemente asignamos verdadero o falso a cada uno de los elementos del conjunto que se estudia. Por esta razón, al definir un conjunto $A$ podremos decir que este contiene o no a los elementos del universo $U$ con una certeza absoluta. De esta manera, daremos un valor de 1 cuando $u_{i}$ esté incluido en $A$ (verdadero) y un valor de 0 cuando no lo esté (falso). En esta última idea se refleja por medio de la función de pertenencia al conjunto  $A$, $\mu_{A}$ (ecuación \ref{eq:logicaclasica}).
 \begin{equation}\label{eq:logicaclasica}
 \begin{aligned} 
 	A = \{(u_{i}, \mu_{A}(u_{i})) | u_{i}\in U\}\\
 	\mu_{A}:U\rightarrow \{0,1\} \text{ tal que}\\
 	\mu_{A}(u) = \left\{ \begin{aligned}
-		1 \quad\text{si}\quad u\in U\\
-		0 \quad\text{si}\quad u\notin U
+		1 \quad\text{si}\quad u\in A\\
+		0 \quad\text{si}\quad u\notin A
  	\end{aligned}\right.
 \end{aligned}
 \end{equation}
 %\REV{revisar ecuación con respecto al ejemplo} Se da más adelante la concreta.
 
-Se puede plantear el problema que nos dé a conocer si una persona es alta o no. Para la lógica clásica, este razonamiento se simplificará en buscar un valor a partir del cual podamos definir que cierta persona es alta. Para el siguiente ejemplo, tomaremos 1,75 metros como referencia. De este modo, $\mu_{A}=1 \text{ si } u>1,75$ y en otro caso $\mu_{A}=0$. En la figura \ref{fig:altoclasica} se puede ver la representación del concepto `alto' para las posibles alturas que se pueden presentar.
+ Podemos considerar el problema de determinar si una persona es alta o no. Para la lógica clásica, este razonamiento se simplificará en buscar un valor a partir del cual podamos definir que cierta persona es alta. Para el siguiente ejemplo, tomaremos 1,75 metros como referencia, donde $A$ es el conjunto de las personas altas. De este modo, $\mu_{A}=1 \text{ si } u>1,75$ y en otro caso $\mu_{A}=0$. En la figura \ref{fig:altoclasica} se puede ver la representación del concepto `alto' para las posibles alturas que se pueden presentar.
 
 \subfile{graficos/logicaclasicagraf}
 
-Por otra parte, la lógica difusa dispone de la función de pertenencia más compleja, lo que nos hace poder decir que alguien es `poco alto' o `bastante alto' ya que no daremos un par de valores ($\{0,1\}$) sino todos los contenidos en el intervalo que definen. Así $\mu_{A}$ será una función que asigna un valor entre 0 y 1 a cada elemento de $A$.\begin{equation}\label{eq:logicadifusa}
+Por otra parte, la lógica difusa dispone de la función de pertenencia más compleja, lo que nos hace poder decir que alguien es `poco alto' o `bastante alto' ya que no daremos un par de valores ($\{0,1\}$) sino cualquiera de los contenidos en el intervalo que definen. Así $\mu_{A}$ será una función que asigna un valor entre 0 y 1 a cada elemento de $A$.\begin{equation}\label{eq:logicadifusa}
 \begin{aligned} 
 	A = \{(u_{i}, \mu_{A}(u_{i})) | u_{i}\in U\}\\
 	\mu_{A}:U\rightarrow [0,1]
@@ -39,15 +39,15 @@ Si continuamos con el ejemplo se verá que el conjunto alto ($A$) esta vez se de
 \begin{equation}\label{eq:ejemplodifusa}                
 	\mu_{A}(u) = \left\{ \begin{aligned}
 		1 \quad&\text{si}\quad u\geq 2\\
-		2u + 1,5 \quad&\text{si}\quad 1.5>u>2\\
+		2u + 1,5 \quad&\text{si}\quad 1.5>u>2  \REV{ecuación errónea}\\
 		0 \quad&\text{si}\quad u\leq 1.5
  	\end{aligned}\right.
  \end{equation}           
-Esta nueva función de pertenencia hace que podamos distinguir 3 zonas dentro de su representación (figura \ref{fig:altodifusa}). Se tendrá de nuevo el área `alto' y `no alto' que hacen que su pertenencia sea certera. Se dispondrá, también, una parte de la pertenencia a la que llamaremos 'difuso' donde el conjunto no afirma ser ni `alto' ni `no alto' sino que está en una situación intermedia. En este caso se habla de que el elemento $a_{i}$ que se encuentra ahí pertenece a $A$ con grado $\mu_{A}(a_{i})$.
+Esta nueva función de pertenencia hace que podamos distinguir 3 zonas dentro de su representación (figura \ref{fig:altodifusa}). Se tendrá de nuevo la etiqueta `alto' y `no alto' que hacen que su pertenencia sea certera. Se dispondrá, también, una parte de la pertenencia a la que llamaremos 'difuso' donde el conjunto no afirma ser ni `alto' ni `no alto' sino que está en una situación intermedia. En este caso se habla de que el elemento $a_{i}$ que se encuentra ahí pertenece a $A$ con grado $\mu_{A}(a_{i})$.
                 
 \subfile{graficos/logicadifusagraf}
 
-Más formalmente, denotaremos al conjunto que incluye a todos los conjuntos difusos como $\FF(x)$ a todos aquellos que se encuentran definidos sobre un referencial finito ($|X| = n$) por lo que $X$ no será un conjunto vacío.
+Más formalmente, denotaremos al conjunto que incluye a todos los conjuntos difusos como $\FF(u)$ a todos aquellos que se encuentran definidos sobre un referencial finito ($|U| = n$) por lo que $U$ no será un conjunto vacío.
  
  \newpage
 
@@ -80,7 +80,7 @@ Una función $REF  : [0, 1] \rightarrow [0, 1]$ es llamada de equivalencia restr
 \end{definition}
 
 \begin{proposition}\label{prop:contruccionref}
-Para construir funciones $REF$ únicamente necesitaremos de dos automorfismos $\varphi_{1}$ y $\varphi_{2}$ de forma que: 
+Sean dos automorfismos $\varphi_{1}$ y $\varphi_{2}$, se llamará función $REF$ a la construcción que cumpla que: 
 $$REF(x,y) = \varphi_1^{-1}(1-|\varphi_2(x)-\varphi_2(y)|) \quad\text{con}\quad c(x) = \varphi_2^{-1}(1-\varphi_2(x)).$$ 
 Además, si tenemos una $REF$ y un automorfismo en $\unitinterval$, la aplicación de estos ($F=\varphi \circ REF$) es otra $REF$.
 \end{proposition}
@@ -96,7 +96,7 @@ $$REF(x,y)=\varphi^{-1}(1-\abs{(\varphi(x)-\varphi(y))})\quad\text{ y }\quad c(x
 
 % FUNCIONES DE AGREGACIÓN
 \section{Funciones de agregación}\label{sec:agregacion}
-\REV{funciones de agregación vs operadores de agregación ¿Qué es más correco para nombrarlos?}
+%\REV{funciones de agregación vs operadores de agregación ¿Qué es más correco para nombrarlos?} -> Funciones de agregación.
 Las funciones de agregación tienen como propósito reducir las dimensiones de la información a partir de la combinación de los datos de entrada obteniendo una salida que los represente \cite{art:montero, art:calvoagregacion}. Su aplicación se extiende en muchos casos prácticos y teóricos como la lógica multievaluada, control difuso, la toma de decisión, etc \cite{art:paternain}.  Se definirá una función de agregación como sigue:
 
 \begin{definition}\label{def:agregacion}
@@ -112,26 +112,27 @@ Una función de agregación $M$ será llamada media si
 $$ \min(x_{1}, \dots, x_{n})  \leq M(x_{1}, \dots, x_{n}) \leq \max(x_{1}, \dots, x_{n}).$$
 \end{definition}
 
-En este proyecto se utilizarán mayoritariamente las funciones de agregación idempotentes, esto es, que cumplen que $M(x,\dots ,x)=x, \forall x$. Entre las funciones que utilizaremos encontramos la media aritmética, el mínimo, el máximo o la media geométrica. Además, se definen a continuación otras que no son de uso tan común.
+En este proyecto se utilizarán mayoritariamente las funciones de agregación idempotentes, esto es, que cumplen que $M(x,\dots ,x)=x, \forall x$. En particular, una función de agregación idempotente es una media. Entre las funciones que utilizaremos encontramos la media aritmética, el mínimo, el máximo o la media geométrica. Además, se definen a continuación otras que no son de uso tan común.
 % OWA
 \subsection{Funciones OWA}
-En esta sección se introduce el concepto de las funciones de media ponderada ordenada (OWA, {\em  ordered weighted averaging}) \cite{art:yagerowa, art:paternain, art:bustinceowa}. Basa su idea en generar una media, ordenando primero los elementos a agregar, para luego darles mayor relevancia a una parte de ellos. Este tipo de función generaliza la media aritmética, siendo esta aquella en la que todos los elementos del vector de pesos son iguales.
+En esta sección se introduce el concepto de las funciones de media ponderada ordenada (OWA, {\em  ordered weighted averaging}) \cite{art:yagerowa, art:paternain, art:bustinceowa}. Se basan en la idea de generar una media, ordenando primero los elementos a agregar, para luego darles mayor relevancia a una parte de ellos. Este tipo de función generaliza la media aritmética, siendo esta aquella \REV{EI OWA} en la que todos los elementos del vector de pesos son iguales.
 
 \begin{definition}\label{def:owa}
-Una  función $F:\unitinterval^n\rightarrow\unitinterval$ será una función OWA de dimensión $n$ si existe un vector de pesos $w=(w_{1},w_{2},\dots,w_{n})\in \unitinterval^{n}$ siempre que $\sum_{i}w_{i}=1$ de forma que
+Una  función $F:\unitinterval^n\rightarrow\unitinterval$ será una función OWA de dimensión $n$ si existe un vector $w=(w_{1},w_{2},\dots,w_{n})\in \unitinterval^{n}$ tal que $\sum_{i}w_{i}=1$ de forma que
 $$F(x_{1},\dots,x_{n})=\sum^{n}_{j=1}w_{j}x_{\sigma(j)}$$
-sabiendo que $x_{\sigma(j)}$ es el $j$-ésimo mayor elemento del vector $(x_{1},\dots,x_{n})$.
+donde $x_{\sigma(j)}$ es el $j$-ésimo mayor elemento del vector $(x_{1},\dots,x_{n})$.
 \end{definition}
 
-Por tanto para poder obtener un resultado adecuado, deberá utilizarse un vector de pesos $w$ que se adecue a las necesidades del problema. En este trabajo se emplea la versión `menor que la mitad' \REV{nombre} que tiene como vector de pesos a $w=(w_{1}\dots w_{i}, w_{i+1}\dots w_{n})$ sabiendo que $\abs{1, \dots, i}=\abs{i+1,\dots,n}$ de forma que $w_{j}=\frac{1}{2n}$ si $1\leq j\leq i$ y $w_{j}=0$ en el resto de los casos.\REV{buscar la versión buena, esto es sólo para los cardinales pares}.
+Por tanto para poder obtener un resultado adecuado, deberá utilizarse un vector de pesos $w$ que se adecúe a las necesidades del problema. En este trabajo se emplea la versión `al menos la mitad' %\REV{nombre}. Solucionado.
+ que tiene como vector de pesos a $w=(w_{1}\dots w_{i}, w_{i+1}\dots w_{n})$ sabiendo que $\abs{1, \dots, i}=\abs{i+1,\dots,n}$ de forma que $w_{j}=\frac{1}{2n}$ si $1\leq j\leq i$ y $w_{j}=0$ en el resto de los casos.\REV{buscar la versión buena, esto es sólo para los cardinales pares}.\REV{volver a redactar. Incluir construcción.}
 
-Además, en la segunda parte del trabajo, se empea el OWA ``la mayoría de'' donde destaca con su vector de pesos a aquellos elementos mayores que los otros, esto es, a los que se encuentran en una posición superior a la mitad del vector ordenado.
+Además, en la segunda parte del trabajo, se emplea el OWA `la mayoría de' donde destaca con su vector de pesos a aquellos elementos mayores que los otros, esto es, a los que se encuentran en una posición superior a la mitad del vector ordenado. \REV{volver a redactar. incluir construcción.}
 
 % CHOQUET
 \subsection{Integral Choquet}
-Este otro tipo de función \cite{art:choquet, art:sugenochoquet} de agregación pretende dar una nueva de forma de representar un conjunto de datos en una única salida. De esta forma, se define primeramente una medida a través de la cual se calculará la forma en la que cada elemento del conjunto de datos tendrá reelevancia en la agregación final. Para ello definimos el concepto de medida difusa.
+Para este otro tipo de función \cite{art:choquet, art:sugenochoquet} de agregación se pretende dar una nueva de forma de representar un conjunto de datos en una única salida. De esta forma, se define primeramente una medida a través de la cual se calculará la forma en la que cada elemento del conjunto de datos tendrá reelevancia en la agregación final. Para ello definimos el concepto de medida difusa.
 \begin{definition}\label{def:medidadifusa}
-Dado $U$ un universo finito; $\mathcal{P}(U)$ el conjunto de todos los subcojuntos de $U$. Una medida difusa será aquella función $\mu:\mathcal{P}(U)\rightarrow\unitinterval$ que satisface que:
+Dado $U$ un universo finito; $\mathcal{P}(U)$ el conjunto de todos los subcojuntos de $U$. Una medida difusa es una función $\mu:\mathcal{P}(U)\rightarrow\unitinterval$ que satisface que:
 \begin{enumerate}
 	\item $\mu(\emptyset)=0$ y $\mu(U)=1$.
 	\item $A\subseteq B \Rightarrow \mu(A)\leq\mu (B), \forall A, B \subseteq U$.
@@ -141,7 +142,7 @@ Dado $U$ un universo finito; $\mathcal{P}(U)$ el conjunto de todos los subcojunt
 A continuación definimos la función Integral Choquet conociendo que tomaremos su versión discreta por el contexto en el que se está trabajando.
 
 \begin{definition}\label{def:choquet}
-Dada una función $\sigma$  con correspondencia directa con todos los elementos de un vector $x$ de forma que $x_{k}=\sigma(k), \forall k\in\{1,\dots,n\}$. Sabiendo que $x_{\sigma(j)}$ es el $j$-ésimo mayor elemento del vector $(x_{1},\dots,x_{n})$. La integral discreta de Choquet con respecto a la medida difusa $\mu$ es 
+Dado un vector $(x_1,\dots,x_n)$, sea $\sigma$ una permutación de $\{1,...,n\}$ tal que $x_{\sigma(j)}$ es el $j$-ésimo mayor elemento del vector $(x_{1},\dots,x_{n})$. La integral discreta de Choquet con respecto a la medida difusa $\mu$ es 
 $$Ch_{\mu}(x)=\sum_{i=1}^{n}x_{\sigma(i)}(\mu(\{\sigma(i),\dots,\sigma(n)\})-\mu(\{\sigma(i+1),\dots,\sigma(n)\}))$$
 tomando la convención de que $\{\sigma(n+1),\sigma(n)\}=\emptyset$.
 \end{definition}
@@ -154,7 +155,7 @@ $$\sum_{i=1}^{n} w_{\sigma, i}^{\mu} \cdot x_{\sigma(i)}.$$
 
 % FUNCIONES DE SIMILITUD
 \section{Funciones de similitud}\label{sec:similitud}
-El concepto de similitud \cite{art:fan1, art:fan2} surge cuando queremos medir cómo de parecidos son dos conjuntos difusos. Este concepto es muy parecido al de REF, pero su diferencia radica en que en este caso se utilizan conjuntos y no elementos. Por esta razón, utilizamos las REF como base para definir las funciones de similitud.
+El concepto de similitud \cite{art:fan1, art:fan2} surge cuando queremos medir cómo de parecidos son dos conjuntos difusos. Este concepto es muy parecido al de REF, pero en este caso se consideran conjuntos y no elementos. Por esta razón, utilizamos las REF como base para definir las funciones de similitud.
 \begin{definition}\label{def:similitud}
 Dada una función $M$ de agregación (definición \ref{def:agregacion}) y una función $REF$ (definión \ref{def:ref}) llamaremos a $SM$ función de similitud si $SM : \FF(X) \times \FF(X) \rightarrow [0,1]$ está definida tal que 
 $$SM(A,B)=M^n_{i=1}REF(\mu_A(x_i), \mu_B(x_i))$$
@@ -201,7 +202,7 @@ Dados $x=(x_1, x_2, \dots,x_n)$ y $w=(w_1,w_2,\dots,w_n)$, denotaremos $D$ como 
 $$D(w,x)=\frac{1}{2}\left(1+\prod(1-2x_{i})^{w_{i}}\right)$$
 \end{definition}
 \begin{lemma}
-La función de equivalencia de Dombi, $D$, cumplirá las siguientes propiedades:
+La función de equivalencia de Dombi, $D$, cumple las siguientes propiedades:
 \begin{enumerate}
 	\item $D:\unitinterval\times\unitspace \text{ es continua}$;
 	\item $D((w_1,w_2),(0,0)) = 1$;\quad$D((w_1,w_2),(1,1)) = 1$;
