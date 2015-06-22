@@ -5,7 +5,7 @@
 \usepackage{subfig} 
 \usepackage{pdfpages}
 \usepackage{amsthm}
-
+\usepackage{multirow}
 
 %\usepackage{style/pfclistings}
 % Paquete para la escritura de algoritmos.
@@ -39,6 +39,7 @@
 %\newcommand{\espezialitatea}{Ingeniería de Computadores}
 
 % Cosas para la parte matemática
+\def\unmedio{\frac{1}{2}}
 \def\tonee{t_{(1)}}
 \def\ttwo{t_{(2)}}
 \def\tthree{t_{(3)}}
@@ -70,6 +71,7 @@
 
 \newcommand{\REV}[1]{{\color{red}\Large#1}}
 \newcommand{\MATLAB}{\textsc{MatLab}}
+\newcommand{\bb}{\bfseries}
 
 \renewcommand{\labelenumi}{(\arabic{enumi})}
 
@@ -81,6 +83,13 @@
 
 % \maketitle
 % \input{template/cover}
+\cleardoublepage
+
+%Frase celebre
+%Sólo podemos ver poco del futuro, pero lo suficiente para darnos cuenta de que hay mucho que hacer
+%\chapter*{}
+%\begin{flushright}\em\Large \\[5cm]``Las máquinas me sorprenden\\ con mucha frecuencia.''\\[1cm]\textsc{Alan M. Turing} \end{flushright}
+%\includepdf{graficos/frasecelebre.pdf}
 \cleardoublepage
 
 \pagenumbering{Roman}

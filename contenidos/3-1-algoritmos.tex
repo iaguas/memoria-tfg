@@ -37,6 +37,7 @@ $$\mu_{Q_t}(q) = \left\{ \begin{aligned}
  \end{aligned}\right.$$
  \end{definition}
 
+\begin{remark}
 Como parece lógico a la vista de la definición \ref{def:conjuntodifusomonoumbral}, es necesario poder enumerar aquellas funciones que se utilizarán como $REF$ y como automorfismo $\varphi$. Para todos los casos se tendrá $\varphi = x$ y, además, se distinguirán las siguientes funciones $REF$:
 \begin{enumerate}
     \item $REF(x,y)=1-\abs{x-y}$
@@ -45,6 +46,7 @@ Como parece lógico a la vista de la definición \ref{def:conjuntodifusomonoumbr
     \item $REF(x,y)=(1-\abs{x-y})^2$
     \item $REF(x,y)=(1-\abs{x-y})^{0.5}$
 \end{enumerate}
+\end{remark}
 
 Debido a la formulación de este tarbajo, se sustituirá la aplicación anterior que actúa como función $F$ en la definición \ref{def:conjuntodifusomonoumbral} por la función de Dombi \cite{art:dombi} definidas en \ref{def:dombi}. De esta forma, en este caso, los conjuntos difusos quedarán como explica la ecuación \ref{eq:conjdifusosdombimono}.
 \begin{equation} \label{eq:conjdifusosdombimono}
@@ -74,7 +76,7 @@ Este algoritmo, que se presenta en \cite{art:barrenechea} también, pretende hay
 A(Q_t)= \sum_{q=0}^{t} h(q)\varphi_1^{-1}\left(1-\abs{\varphi_2\left(\frac{q}{L-1}\right)-\varphi_2\left(\frac{m_b(t)}{L-1}\right)}\right) + \\ \sum_{q=t+1}^{L-1} h(q)\varphi_1^{-1}\left(1-\abs{\varphi_2\left(\frac{q}{L-1}\right)-\varphi_2\left(\frac{m_o(t)}{L-1}\right)}\right)
 \end{split}\end{equation*}
 \ENDFOR
-\RETURN \{$t$ | max($A$)\}
+\RETURN \{$t$ | max($A(Q_t)$)\}
 \end{algorithmic}
 \caption{Umbralización del área}\label{alg:algoritmo2}
 \end{algorithm}
@@ -153,8 +155,8 @@ dfsdf
 
 
 %ALGORITMO GLOBAL
-\subsection{Otros algoritmos}
-\subsubsection{Algoritmo de umbralización global}
+\subsection{Otros algoritmos}\label{sec:otrosalgoritmos}
+\subsubsection{Algoritmo de umbralización global}\label{sec:algoritmoglobal}
 
 Entre los algoritmos que se encargan de segmentar la imagen con un único umbral, este es el más simple aunque en ocasiones podemos obtener resultados suficientemente buenos según que aplicación queramos darle.
 
@@ -181,7 +183,7 @@ En este sentido, para el buen funcionamiento del algoritmo es necesario que la i
 
 
 % ALGORTIMO DE OTSU
-\subsubsection{Algoritmo de Otsu}
+\subsubsection{Algoritmo de Otsu}\label{sec:algoritmootsu}
 
 El algoritmo de Otsu \cite{art:otsu} basa su técnica de umbralización, también, en el histograma de la imagen que recibe. Para ello, trata las probabilidades que se le ortorgan a cada uno de los niveles de gris de los que dispone la imagen. Si tomamos una imagen $Q$ que tenga sus intensidades entre $[1, 2, \dots, L]$, podremos expresar la probablidad de cada intensidad como
 $$p_i = \frac{n_i}{N}, \quad p_i \geq 0\quad\text{ sabiendo que }\quad\sum_{i=1}^{L}p_i=1$$
@@ -226,7 +228,7 @@ Al resumir todo lo anterior en lenguaje algorítmico se encuentra:
 
 
 % ALGORITMO DE LA ENTROPÍA DE RENYI
-\subsubsection{Algoritmo de maximización de la entropía de Renyi}
+\subsubsection{Algoritmo de maximización de la entropía de Renyi}\label{sec:algoritmorenyi}
 Este algoritmo, enunciado en \cite{art:sahoo}, busca el umbral óptimo de la imagen a través de la maximización de la entropía que se produce en la imagen definida por Renyi. Al igual que en el algoritmo de Otsu se empieza definiendo dos clases, la correspondiente al fondo y la del objeto. Para cada una de ellas se define su probabilidad
 $$p(C_0)=\sum_{i=0}^{t}p_i\qquad\text{y}\qquad p(C_1)=\sum_{i=t+1}^{L-1}p_i$$
 donde con ambas probabilidades se cumple que $p(C_0)+p(C_1)=1$.
@@ -309,7 +311,7 @@ esta agregación consigue evitar los malos resultados que podrían darse si no s
 
 
 % ALGORTIMO K-MEANS
-\subsubsection{Algoritmo {\em K-means}}
+\subsubsection{Algoritmo {\em K-means}}\label{sec:algoritmokmeans}
 Lo primero que se debe destacar del algoritmo de {\em K-means} es que, a diferencia de los algoritmos anteriores que segmentaban las imágenes con tecnicas de umbralización, este lo hace por medio de la agrupación de píxeles en regiones. Esto hace que este algoritmo sea muy difente del resto y que no base sus fundamentos teóricos en el manejo del histograma. Incluye, también, la posibilidad directa de hacer segmentación con más de un objeto ya que la $K$ indica el número de regiones en las que se dividirá la imagen.
 
 Para poder obtener cada una de las regiones, deberemos encontrar los píxeles $(x,y)$ que pertenecen a cada una. Este se consigue con la minimización de la función de coste que dados los centros $\mu_1, \dots,\mu_n$ se define como
