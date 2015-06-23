@@ -126,7 +126,18 @@ donde $x_{\sigma(j)}$ es el $j$-ésimo mayor elemento del vector $(x_{1},\dots,x
 Por tanto para poder obtener un resultado adecuado, deberá utilizarse un vector de pesos $w$ que se adecúe a las necesidades del problema. En este trabajo se emplea la versión `al menos la mitad' %\REV{nombre}. Solucionado.
  que tiene como vector de pesos a $w=(w_{1}\dots w_{i}, w_{i+1}\dots w_{n})$ sabiendo que $\abs{1, \dots, i}=\abs{i+1,\dots,n}$ de forma que $w_{j}=\frac{1}{2n}$ si $1\leq j\leq i$ y $w_{j}=0$ en el resto de los casos.\REV{buscar la versión buena, esto es sólo para los cardinales pares}.\REV{volver a redactar. Incluir construcción.}
 
-Además, en la segunda parte del trabajo, se emplea el OWA `la mayoría de' donde destaca con su vector de pesos a aquellos elementos mayores que los otros, esto es, a los que se encuentran en una posición superior a la mitad del vector ordenado. \REV{volver a redactar. incluir construcción.}
+\REV{reescrito}
+Además, en la segunda parte del trabajo, se emplea el OWA `la mayoría de'. Este OWA pretende destacar aquellos elementos que son mayores en el vector $x$. Esto se hace realidad por medio de un vector de pesos donde son nulos los pesos relativos a aquellas $x_i$ más pequeñas. Para la construcción del vector de pesos, utilizaremos la ecuación \ref{eq:pesosowamayoria}
+
+\begin{equation}\label{eq:pesosowamayoria}
+	 w_i = Q\left(\frac{i}{t+1}\right) - Q\left(\frac{i}{t+1}\right), \forall i\in \{1, \dots, n\}, \text{   sabiendo que}
+\end{equation}
+	 $$Q(r) = \left\{\begin{aligned}
+	 	0 					&\quad \text{si}\quad r<0,5\\
+	 	\frac{r-0,5}{0,5}	&\quad \text{si}\quad 0,5\leq r\leq 1\\
+	 	1 					&\quad \text{si}\quad r>1\\
+	\end{aligned}\right.$$
+
 
 % CHOQUET
 \subsection{Integral Choquet}
@@ -169,7 +180,7 @@ y satisface las siguientes condiciones:
 	\end{enumerate}	
 \end{definition}
 
-\begin{remark}
+\begin{remark}\label{obs:funcionesref}
 Durante el desarrollo de este trabajo se buscará la similitud entre conjuntos difusos y el conjunto $\tilda1$. Se define el conjunto $\tilda1 =\{(u_{i}, \mu_{\tilda1}(x)=1)|u_{i}\in U \}$, esto es, aquel en el que todos sus elementos tienen pertenencia absoluta.
 \end{remark}
 
@@ -201,7 +212,7 @@ Las funciones de Dombi \cite{art:dombi} son operadores de equivalencia con una d
 Dados $x=(x_1, x_2, \dots,x_n)$ y $w=(w_1,w_2,\dots,w_n)$, denotaremos $D$ como una función de equivalencia de Dombi cuando tengamos que 
 $$D(w,x)=\frac{1}{2}\left(1+\prod(1-2x_{i})^{w_{i}}\right)$$
 \end{definition}
-\begin{lemma}
+\begin{lemma}\label{def:propiedadesdombi}
 La función de equivalencia de Dombi, $D$, cumple las siguientes propiedades:
 \begin{enumerate}
 	\item $D:\unitinterval\times\unitspace \text{ es continua}$;
@@ -212,8 +223,6 @@ La función de equivalencia de Dombi, $D$, cumple las siguientes propiedades:
 \end{lemma}
 %\REV{propiedades}
 
-
-\newpage
 
 
 %NOTACIÓN

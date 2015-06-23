@@ -7,7 +7,7 @@ Dentro del procesamiento de imagenes digitales se encuentra la visión artificia
 No hay una clara frontera entre el procesamiento de imagen y la visión artificial, esto hace que se hable de un paradigma que incluye 3 tipos de procesos; de bajo nivel, medio nivel y alto nivel. Dentro del nivel bajo se pueden incluir todos los procesos primitivos que tienen como objetivo reducir el ruido, realzar el contraste o ajustar la nitidez, por ejemplo. En un segundo nivel, más avanzado, se encuentran todos los procesos que tienen como entrada una imagen y obtienen atributos de esta. Pueden ser procesos como la segmentación (que se tratará aquí), descripción de objetos de la imagen o recocimiento de los mismos. En el último nivel se encuentran todas aquellas técnicas que hacen que todo ``tenga sentido'' ya que hacen que el análisis imite a la forma cognitiva de la mente humana.
 
 
-\subsection{Imágenes digitales}
+\subsection{Imágenes digitales}\label{sec:imagenesdigitales}
 Como ya se ha explicado en el apartado anterior, se habla de imagen digital cuando se puede ser capaz de determinar todos sus elementos (píxeles), es decir, estos son de forma finita y discreta. A partir de esta idea, se dispone de dos formas de representación para las imágenes en niveles de gris, en los rangos $[0,1]\in\RR$ y $[0,255]\in\NN$. En el primer caso diremos que la imagen está normalizada. Además, las imágenes digitales serán representadas por una matriz que contendrá cada uno de sus píxeles de manera ordenada.
 
 
@@ -32,7 +32,7 @@ Se define el histograma de una imagen $Q$ con niveles de gris en el intervalo [0
 Un ejemplo gráfico de la función de histograma para una imagen puede encontrarse en la figura \ref{img:rice}.
 
 
-\subsection{Herramienta para el procesamiento digital: \MATLAB}
+\subsection{Herramienta para el procesamiento digital: \MATLAB}\label{sec:matlab}
 \MATLAB\ (abreviatura de {\em Matrix Laboratory}) es una herramienta de software matemático que ofrece un lenguaje de programación (lenguaje M) y un entorno de desarrollo integrado. Fue creado en 1984 por el informático y matemático Cleve Moler el cual buscaba una forma alternativa de ejecutar programas de álgebra en {\em Fortran}.
 
 Entre sus prestaciones básicas están la manipulación de matrices, la representación de datos y funciones o la implementación de algoritmos así como la creación de interfaces de usuario (GUI). Además, el paquete básico de \MATLAB\ puede ser expandido por medio de {\em toolboxes}, como es el caso de este trabajo, donde se utilizará la relativa  a procesamiento de imagen. Se puede disponer también del software {\em Simulink} para trabajar conjuntamente a \MATLAB.
@@ -40,7 +40,7 @@ Entre sus prestaciones básicas están la manipulación de matrices, la represen
 \subsection{Contraste}
 Como en el trabajo se hace uso de imágenes con alto y bajo contraste, disponer una pequeña explicación. Pillar de los libros del laboratorio. \REV{Revisar}.
 
-\subsection{Ruido en las imagenes}
+\subsection{Ruido en las imagenes}\label{sec:ruido}
 Se condidera que una imagen está degradada cuando tiene ruido, esto es, cuando tiene defectos con respecto a la imagen original (fig. \ref{fig:defruido}). La principal fuente de ruido en images digitales se da en la adquisición o transmisión de las imagenes. Esto se puede deber a las condiciones ambientales o a la calidad de los sensores durante la toma de la imagen. Por ejemplo, la luminosidad, el polvo en el ambiente, etc. pueden ser determinantes. Por otra parte, en el caso de la transmisión, las imágenes pueden ser corrompidas por interferencias en el medio de transmisión, principalmente. Esto es claro cuando se transmite una imagen de un satélite, ya que la atmósfera interferir y provocar que la imagen recibida en la base terráquea no sea exactamente igual.
 \begin{figure}
 \centering

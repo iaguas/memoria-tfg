@@ -340,13 +340,14 @@ Por último, debemos señalar que para que el bucle tenga una condición de para
 \STATE J = 0;
 \COMMENT {Coste}
 \REPEAT 
+    \STATE Jant = J;
     \FOR {$i=1$ hasta N}
         \FOR {$j=1$ hasta M}
-            \STATE Jaux(i,j) = $\min_{j=1,\dots,K} \abs{\abs{q(i,j)-\mu(j)}}^2;$
+            \STATE J = J + $\min_{k=1,\dots,K} \abs{\abs{q(x,y)-\mu(k)}}^2;$
         \ENDFOR
     \ENDFOR
-    \FOR {$j=1$ hasta K}
-        \STATE $\mu(j) = \frac{1}{\abs{cluster_j}}\sum_{i\in cluster_j}q_i$  \REV{esto debería ser de i, j la pertenencia al cluster}
+    \FOR {$k=1$ hasta K}
+        \STATE $\mu(j) = \frac{1}{\abs{cluster_k}}\sum_{i\in cluster_k}q(x,y)_i$
     \ENDFOR 
 \UNTIL {J $\neq$ Jant}
 
