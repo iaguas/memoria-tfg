@@ -7,6 +7,8 @@
 \usepackage{amsthm}
 \usepackage{multirow}
 
+\usepackage[none]{hyphenat}
+
 %\usepackage{style/pfclistings}
 % Paquete para la escritura de algoritmos.
 % http://www.rosapolis.net/2008/04/21/escribir-algoritmos-en-latex/
@@ -78,6 +80,11 @@
 \addbibresource{bibliografia.bib}
 
 \begin{document}
+
+\sloppy % Para justificar todo bien cuando quitas los guiones. Va unido con un paquete de arriba.
+\renewcommand{\listtablename}{Índice de tablas}
+\renewcommand{\tablename}{Tabla}
+
 %\frontmatter
 \includepdf{graficos/portadaTipografia.pdf}
 
@@ -113,6 +120,9 @@
 %\newpage
 \listoffigures
 \addcontentsline{toc}{chapter}{Índice de figuras}
+\cleardoublepage
+\listoftables
+\addcontentsline{toc}{chapter}{Índice de tablas}
 \cleardoublepage
 \listofalgorithms
 \addcontentsline{toc}{chapter}{Índice de algoritmos}
@@ -153,6 +163,7 @@
 %\renewcommand{\headrulewidth}{0.5pt}
 
 \input{contenidos/A-appendix}
+\input{contenidos/B-otrassegmentaciones}
 
 %\backmatter
 
