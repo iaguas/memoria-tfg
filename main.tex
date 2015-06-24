@@ -19,7 +19,7 @@
 %\usepackage[none]{hyphenat}
 
 \title{Segmentación de imágenes a través de lógica difusa y funciones REF, de Dombi y penalti}
-\author{Iñigo Aguas Ardaiz}
+\author{Iñigo Aguas Ardaiz\\[1cm]Humberto Bustince Sola\\Fco. Javier Fernández Fernández}
 \date{25 de junio de 2015}
 
 %\setlength{\parskip}{5mm}
@@ -71,6 +71,10 @@
 
 \hyphenation{}
 
+
+\addtokomafont{dedication}{\normalsize}
+\subfile{contenidos/0-agradecimientos}
+
 \newcommand{\REV}[1]{{\color{red}\Large#1}}
 \newcommand{\MATLAB}{\textsc{MatLab}}
 \newcommand{\bb}{\bfseries}
@@ -84,7 +88,7 @@
 \sloppy % Para justificar todo bien cuando quitas los guiones. Va unido con un paquete de arriba.
 \renewcommand{\listtablename}{Índice de tablas}
 \renewcommand{\tablename}{Tabla}
-
+\renewcommand\appendixname{Anexo}
 %\frontmatter
 \includepdf{graficos/portadaTipografia.pdf}
 
@@ -92,15 +96,19 @@
 % \input{template/cover}
 \cleardoublepage
 
+\pagenumbering{Roman}
+\setcounter{page}{1}
+
 %Frase celebre
 %Sólo podemos ver poco del futuro, pero lo suficiente para darnos cuenta de que hay mucho que hacer
 %\chapter*{}
 %\begin{flushright}\em\Large \\[5cm]``Las máquinas me sorprenden\\ con mucha frecuencia.''\\[1cm]\textsc{Alan M. Turing} \end{flushright}
-%\includepdf{graficos/frasecelebre.pdf}
+\includepdf{graficos/frasecelebre.pdf}
 \cleardoublepage
+%\dedication
+\maketitle
 
-\pagenumbering{Roman}
-\setcounter{page}{1}
+
 \addcontentsline{toc}{chapter}{Abstract}
 \subfile{contenidos/0-abstract-en}
 
@@ -126,6 +134,9 @@
 \cleardoublepage
 \listofalgorithms
 \addcontentsline{toc}{chapter}{Índice de algoritmos}
+\cleardoublepage
+\listoflistings
+\addcontentsline{toc}{chapter}{Índice de extractos de c\'odigo}
 \cleardoublepage
 %\newpage
 %\listoftables
