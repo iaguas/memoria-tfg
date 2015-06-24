@@ -117,7 +117,7 @@ En este algoritmo, se utilizan 3 pares de automorfismos para darle forma al áre
     \item Se toma $\varphi_1(x) = 1-\sqrt{1-x}, \xinunitinterval \text{ y } \varphi_2(x)=x,\xinunitinterval$
     $$\sum_{q=0}^{L-1} h(q) - \left(\sum_{q=0}^{L-1} h(q) \left(\frac{q}{L-1}-\frac{m_b(t)}{L-1}\right)^2 - \sum_{q=t+1}^{L-1} h(q) \left(\frac{q}{L-1}-\frac{m_o(t)}{L-1}\right)^2\right)$$
 \end{enumerate}
-En total, se dispondrá de 4 versiones diferentes si tenemos en cuenta que en la (2) dispondremos $d=0,5$ y $d=2$.
+En total, se dispondrá de 4 versiones diferentes. Se debe tener en cuenta que en la en el par (2) de automorfismos se dispondrá de $d=0,5$ y $d=2$.
 
 % ALGORITMO 3
 \subsection{Algoritmo de selección del umbral óptimo}\label{sec:algoritmo3}
@@ -136,7 +136,6 @@ En el algoritmo, necesitaremos, después, calcular la similitud que existe entre
 $$SM(Q_t, H(Q_t)) = M^{L-1}_{q=0}(h(q)REF(\mu_{Q_t}(q), \mu_{H(Q_t)}(q)))$$
 Tendremos en cuenta que $M$ seguirá siendo la media aritmética y $REF=1-\abs{x-y}^2 \xinunitinterval$. Si a través de la uniformidad simplificamos la expresión anterior, obtendremos:
 $$SM(Q_t, H(Q_t)) = \frac{1}{\sum_{q=0}^{L-1}h(q)} \sum_{q=0}^{L-1}\left(h(q)(1-(\mu_{Q_t}(q)-\mu_H{(Q_t)}(q))^2)\right)$$
-dfsdf
 
 \begin{algorithm}[!ht]
 \begin{algorithmic}[1]
@@ -164,15 +163,16 @@ Entre los algoritmos que se encargan de segmentar la imagen con un único umbral
 \begin{algorithmic}[1]
 \REQUIRE Una imagen $Q$ en escala de grises donde sus píxeles estén entre $0$ y $L-1$.
 \ENSURE El umbral óptimo $t$ a partir del cual se divide $Q$ en objeto y fondo.
-\STATE t0 = 128; 
+\STATE $t = 128$; 
 \COMMENT{Se selecciona un umbral inicial cualquiera, aquí se tomará el valor medio de los posibles}
 \REPEAT
+\STATE $tant = t$;
 \STATE $G1 = \{(x, y) | q(x, y) > t0\}$
 \STATE $G2 = \{(x, y) | q(x, y) \leq t0\}$
 \STATE $m1 = \frac{1}{\abs{G1}} \sum_{i\in G1} i$
 \STATE $m2 = \frac{1}{\abs{G2}} \sum_{i\in G2} i$
 \STATE $t = \frac{m1+m2}{2}$
-\UNTIL {$\abs{t0-t} < \varepsilon$}
+\UNTIL {$\abs{tant-t} < \varepsilon$}
 \COMMENT {El valor $\varepsilon$ es un cierto error dispuesto por el programador.}
 \RETURN $t$
 \end{algorithmic}
@@ -186,29 +186,29 @@ En este sentido, para el buen funcionamiento del algoritmo es necesario que la i
 \subsubsection{Algoritmo de Otsu}\label{sec:algoritmootsu}
 
 El algoritmo de Otsu \cite{art:otsu} basa su técnica de umbralización, también, en el histograma de la imagen que recibe. Para ello, trata las probabilidades que se le ortorgan a cada uno de los niveles de gris de los que dispone la imagen. Si tomamos una imagen $Q$ que tenga sus intensidades entre $[1, 2, \dots, L]$, podremos expresar la probablidad de cada intensidad como
-$$p_i = \frac{n_i}{N}, \quad p_i \geq 0\quad\text{ sabiendo que }\quad\sum_{i=1}^{L}p_i=1$$
+$$p_i = \frac{n_i}{N}, \quad p_i \geq 0\quad\text{ sabiendo que }\quad\sum_{i=0}^{L-1}p_i=1$$
 siendo $n_i$ el número de píxeles de intensidad $i$ y $N$ el número total de píxeles en la imagen $Q$.
 
-Ahora, supondremos que podemos clasificar los elementos de la imagen en dos clases, $C_0$ y $C_1$ que tendrán a los píxeles $[1,\dots,k]$ y $[k+1,\dots,L]$ respectivamente. Definirán su probabilidad como
-$$\omega_0 = \Pr(C_0) = \sum_{i=1}^{t}p_i=\omega_0(t)\qquad\text{y}\qquad
-\omega_1 = \Pr(C_1) = \sum_{i=t+1}^{L}p_i=\omega_1(t)$$
+Ahora, supondremos que podemos clasificar los elementos de la imagen en dos clases, $C_0$ y $C_1$ que tendrán a los píxeles $[0,\dots,k]$ y $[k+1,\dots,L-1]$ respectivamente. Definirán su probabilidad como
+$$\omega_0 = \Pr(C_0) = \sum_{i=0}^{t}p_i=\omega_0(t)\qquad\text{y}\qquad
+\omega_1 = \Pr(C_1) = \sum_{i=t+1}^{L-1}p_i=\omega_1(t)$$
 y su media como
-$$\mu_0=\sum_{i=1}^t i \Pr(i|C_0) = \sum_{i=1}^t \frac{ip_i}{\omega_0} = \frac{\mu(t)}{\omega(t)}\qquad\text{y}\qquad
-\mu_1=\sum_{i=t+1}^{L} i \Pr(i|C_1) = \sum_{i=t+1}^{L} \frac{ip_i}{\omega_1} = \frac{\mu_T-\mu(t)}{1-\omega(t)}$$
+$$\mu_0=\sum_{i=0}^t i \Pr(i|C_0) = \sum_{i=0}^t \frac{ip_i}{\omega_0} = \frac{\mu(t)}{\omega(t)}\qquad\text{y}\qquad
+\mu_1=\sum_{i=t+1}^{L-1} i \Pr(i|C_1) = \sum_{i=t+1}^{L-1} \frac{ip_i}{\omega_1} = \frac{\mu_T-\mu(t)}{1-\omega(t)}$$
 donde
-$$\omega(k)\sum_{i=1}^k ip_i   \qquad\text{y}\qquad   \mu(k)=\sum_{i=1}^k ip_i$$
+$$\omega(k)\sum_{i=0}^k ip_i   \qquad\text{y}\qquad   \mu(k)=\sum_{i=0}^k ip_i$$
 
 Por último, se puede definir
-$$\mu_T = \mu(L) = \sum_{i=1}^L ip_i$$
+$$\mu_T = \mu(L-1) = \sum_{i=0}^{L-1} ip_i$$
 y todas estas definiciones podemos asegurar que cumplirán que
 $$\omega_0\mu_0+\omega_1\mu_1 = \mu_T   \qquad\text{y}\qquad   \omega_0+\omega_1 = 1$$
 Con la intención de evaluar lo adecuado o no que es cada umbral $t$, podemos definir la varianza de cada uno como 
 $$\sigma_B^2(t) = \omega_0(\mu_0-\mu_T)^2 + \omega_1(\mu_1-\mu_T)^2 = \omega_0\omega_1(\mu_1-\mu_0)^2$$
 Con todo ello, para encontrar el umbral óptimo $t^*$ sólo deberemos encontrar aquella varianza que maximice a las demás. 
-$$\sigma_B^2(t*) = \max_{1\leq k <L}\left\{\sigma_B^2(t)\right\}$$
+$$\sigma_B^2(t^*) = \max_{1\leq k <L}\left\{\sigma_B^2(t)\right\}$$
 
 Al resumir todo lo anterior en lenguaje algorítmico se encuentra:
-\REV{El umbral de 1..L en vez de 0..L-1}
+%\REV{El umbral de 1..L en vez de 0..L-1} Solucionado, se queda igual que todos de 0..L
 
 \begin{algorithm}
 \begin{algorithmic}[1]
@@ -280,7 +280,7 @@ esta agregación consigue evitar los malos resultados que podrían darse si no s
 \ENSURE El umbral óptimo $t*$ a partir del cual se divide $Q$ en objeto y fondo.
 
 \STATE $\alpha = [0.3, 0.99999, 10]$
-\STATE \COMMENT{Para facilitar la implementación, tendremos en cuenta únicamente un alfa de cada uno de los casos, cuando se estabilizan cada uno de los casos}
+\STATE \COMMENT{Para facilitar la implementación, se tendrá en cuenta únicamente un alfa de cada uno de los casos, cuando se estabilizan cada uno de los casos}
 \FOR {$\alpha_i \in \alpha$}
     \STATE $H_T=0$
 \FOR {$t'=0$ hasta $L-1$}
@@ -315,7 +315,7 @@ esta agregación consigue evitar los malos resultados que podrían darse si no s
 Lo primero que se debe destacar del algoritmo de {\em K-means} es que, a diferencia de los algoritmos anteriores que segmentaban las imágenes con tecnicas de umbralización, este lo hace por medio de la agrupación de píxeles en regiones. Esto hace que este algoritmo sea muy difente del resto y que no base sus fundamentos teóricos en el manejo del histograma. Incluye, también, la posibilidad directa de hacer segmentación con más de un objeto ya que la $K$ indica el número de regiones en las que se dividirá la imagen.
 
 Para poder obtener cada una de las regiones, deberemos encontrar los píxeles $(x,y)$ que pertenecen a cada una. Este se consigue con la minimización de la función de coste que dados los centros $\mu_1, \dots,\mu_n$ se define como
-$$J=\sum_{i=1}^{N*M}\abs{\abs{q(x,y)_i-\mu_{c_i}}}^2.$$
+$$J=\sum_{i=1}^{N\cdot M}\abs{\abs{q(x,y)_i-\mu_{c_i}}}^2.$$
 En vista de lo anteior, se definirá la pertenencia de un pixel a un centro $c_k$ como 
 $$\min_{k=1,\dots,K} \abs{\abs{q(x,y)-\mu(k)}}^2.$$
 

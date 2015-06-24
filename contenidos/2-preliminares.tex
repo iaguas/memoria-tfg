@@ -9,7 +9,7 @@ Este capítulo pretende ser una introducción a todos los conceptos teóricos ne
 
 % LOGICA DIFUSA
 \section{Lógica difusa}\label{sec:logicadifusa}
-La lógica difusa fue introducida por el matemático L. A. Zadeh \cite{art:zadeh} en 1965 con la intención de poder extender la lógica clásica o {\em crips} de forma que permitiera manejar y procesar la información que se compone de términos inexactos, imprecisos o subjetivos. Es, al fin y al cabo, un intento de imitar la la forma de deducción del cerebro humano para trasladarlo a las máquinas. Se comenzará recordando la lógica clásica para después extender los conceptos a la difusa.
+La lógica difusa fue introducida por el matemático L. A. Zadeh \cite{art:zadeh} en 1965 con la intención de poder extender la lógica clásica o {\em crips} de forma que permitiera manejar y procesar la información que se compone de términos inexactos, imprecisos o subjetivos. Es, al fin y al cabo, un intento de imitar la forma de deducción del cerebro humano para trasladarlo a las máquinas. Se comenzará recordando la lógica clásica para después extender los conceptos a la difusa.
 
 En primer lugar, definiremos el universo finito, $U$,  con el que se  trabajará, de forma que contenga todos aquellos elementos con los que se desee trabajar, esto es, $U = \{u_{1}, u_{2}, \dots, u_{n}\}$. En la lógica clásica simplemente asignamos verdadero o falso a cada uno de los elementos del conjunto que se estudia. Por esta razón, al definir un conjunto $A$ podremos decir que este contiene o no a los elementos del universo $U$ con una certeza absoluta. De esta manera, daremos un valor de 1 cuando $u_{i}$ esté incluido en $A$ (verdadero) y un valor de 0 cuando no lo esté (falso). En esta última idea se refleja por medio de la función de pertenencia al conjunto  $A$, $\mu_{A}$ (ecuación \ref{eq:logicaclasica}).
 \begin{equation}\label{eq:logicaclasica}
@@ -39,20 +39,20 @@ Si continuamos con el ejemplo se verá que el conjunto alto ($A$) esta vez se de
 \begin{equation}\label{eq:ejemplodifusa}                
 	\mu_{A}(u) = \left\{ \begin{aligned}
 		1 \quad&\text{si}\quad u\geq 2\\
-		2u + 1,5 \quad&\text{si}\quad 1.5>u>2  \REV{ecuación errónea}\\
+		2u - 3 \quad&\text{si}\quad 1.5>u>2\\
 		0 \quad&\text{si}\quad u\leq 1.5
  	\end{aligned}\right.
  \end{equation}           
-Esta nueva función de pertenencia hace que podamos distinguir 3 zonas dentro de su representación (figura \ref{fig:altodifusa}). Se tendrá de nuevo la etiqueta `alto' y `no alto' que hacen que su pertenencia sea certera. Se dispondrá, también, una parte de la pertenencia a la que llamaremos 'difuso' donde el conjunto no afirma ser ni `alto' ni `no alto' sino que está en una situación intermedia. En este caso se habla de que el elemento $a_{i}$ que se encuentra ahí pertenece a $A$ con grado $\mu_{A}(a_{i})$.
+Esta nueva función de pertenencia hace que podamos distinguir 3 zonas dentro de su representación (figura \ref{fig:altodifusa}). Se tendrá de nuevo la etiqueta `alto' y `no alto' que hacen que su pertenencia sea certera. Se dispondrá, también, una parte de la pertenencia a la que llamaremos `difuso' donde el conjunto no afirma ser ni `alto' ni `no alto' sino que está en una situación intermedia. En este caso se habla de que el elemento $a_{i}$ que se encuentra ahí pertenece a $A$ con grado $\mu_{A}(a_{i})$.
                 
 \subfile{graficos/logicadifusagraf}
 
 Más formalmente, denotaremos al conjunto que incluye a todos los conjuntos difusos como $\FF(u)$ a todos aquellos que se encuentran definidos sobre un referencial finito ($|U| = n$) por lo que $U$ no será un conjunto vacío.
  
- \newpage
+
 
 % FUNCIONES REF
-\section{Funciones de equivalencia restringida}\label{sec:ref}
+\section{Funciones de equivalencia restringida (REF)}\label{sec:ref}
 El concepto de función de equivalencia restringida (REF por sus siglas en inglés) surge del concepto de equivalencia y el de similitud \cite{art:refbarrenechea}. Este concepto es muy utilizado para la comparación de imágenes y su intención es dar una medida de cómo de iguales o similares son dos elementos $x$ e $y$. Para poder definir el concepto de REF, necesitamos varios previamente. 
 
 \begin{definition}\label{def:negacionestricta}
@@ -60,7 +60,7 @@ Una negación estricta es aquella función $c : [0, 1] \rightarrow [0, 1]$ que c
 \end{definition}
 
 \begin{definition}\label{def:automorfismo}
-Llamaremos automorfismo ($\varphi$) a todas aquellas funciones del intervalo unidad tal que $\varphi : [0, 1] \rightarrow [0, 1]$ sea continua y estrictamente creciente propiciando que $\varphi(0)=0$ y $\varphi(1)=1$.
+Llamaremos automorfismo ($\varphi$) a todas aquellas funciones del intervalo unidad tal que $\varphi : [0, 1] \rightarrow [0, 1]$ sean continuas y estrictamente crecientes propiciando que $\varphi(0)=0$ y $\varphi(1)=1$.
 \end{definition}
 
 En 1979, E. Trillas \cite{art:thtrillas} enunció el siguiente teorema. 
@@ -92,7 +92,6 @@ $$REF(x,y)=\varphi^{-1}(1-\abs{(\varphi(x)-\varphi(y))})\quad\text{ y }\quad c(x
 
 %\REV{Teorema que hace que estos automorfismos puedan ser 1 solo?} No lo pongo pq no lo utilizo.
 
-\newpage
 
 % FUNCIONES DE AGREGACIÓN
 \section{Funciones de agregación}\label{sec:agregacion}
@@ -115,7 +114,7 @@ $$ \min(x_{1}, \dots, x_{n})  \leq M(x_{1}, \dots, x_{n}) \leq \max(x_{1}, \dots
 En este proyecto se utilizarán mayoritariamente las funciones de agregación idempotentes, esto es, que cumplen que $M(x,\dots ,x)=x, \forall x$. En particular, una función de agregación idempotente es una media. Entre las funciones que utilizaremos encontramos la media aritmética, el mínimo, el máximo o la media geométrica. Además, se definen a continuación otras que no son de uso tan común.
 % OWA
 \subsection{Funciones OWA}
-En esta sección se introduce el concepto de las funciones de media ponderada ordenada (OWA, {\em  ordered weighted averaging}) \cite{art:yagerowa, art:paternain, art:bustinceowa}. Se basan en la idea de generar una media, ordenando primero los elementos a agregar, para luego darles mayor relevancia a una parte de ellos. Este tipo de función generaliza la media aritmética, siendo esta aquella \REV{EI OWA} en la que todos los elementos del vector de pesos son iguales.
+En esta sección se introduce el concepto de las funciones de media ponderada ordenada (OWA, {\em  ordered weighted averaging}) \cite{art:yagerowa, art:paternain, art:bustinceowa}. Se basan en la idea de generar una media, ordenando primero los elementos a agregar, para luego darles mayor relevancia a una parte de ellos. Este tipo de función generaliza la media aritmética, siendo esta el OWA en el que todos los elementos del vector de pesos son iguales.
 
 \begin{definition}\label{def:owa}
 Una  función $F:\unitinterval^n\rightarrow\unitinterval$ será una función OWA de dimensión $n$ si existe un vector $w=(w_{1},w_{2},\dots,w_{n})\in \unitinterval^{n}$ tal que $\sum_{i}w_{i}=1$ de forma que
@@ -124,19 +123,22 @@ donde $x_{\sigma(j)}$ es el $j$-ésimo mayor elemento del vector $(x_{1},\dots,x
 \end{definition}
 
 Por tanto para poder obtener un resultado adecuado, deberá utilizarse un vector de pesos $w$ que se adecúe a las necesidades del problema. En este trabajo se emplea la versión `al menos la mitad' %\REV{nombre}. Solucionado.
- que tiene como vector de pesos a $w=(w_{1}\dots w_{i}, w_{i+1}\dots w_{n})$ sabiendo que $\abs{1, \dots, i}=\abs{i+1,\dots,n}$ de forma que $w_{j}=\frac{1}{2n}$ si $1\leq j\leq i$ y $w_{j}=0$ en el resto de los casos.\REV{buscar la versión buena, esto es sólo para los cardinales pares}.\REV{volver a redactar. Incluir construcción.}
-
-\REV{reescrito}
-Además, en la segunda parte del trabajo, se emplea el OWA `la mayoría de'. Este OWA pretende destacar aquellos elementos que son mayores en el vector $x$. Esto se hace realidad por medio de un vector de pesos donde son nulos los pesos relativos a aquellas $x_i$ más pequeñas. Para la construcción del vector de pesos, utilizaremos la ecuación \ref{eq:pesosowamayoria}
+ que tiene como vector de pesos aquel que se obtiene con la ecuación \ref{eq:pesosowamayoria}. Esto generará una agregación donde destaquen todos aquellos elementos que se encuentren por detras de la mediana.
+% a $w=(w_{1}\dots w_{i}, w_{i+1}\dots w_{n})$ sabiendo que $\abs{1, \dots, i}=\abs{i+1,\dots,n}$ de forma que $w_{j}=\frac{1}{2n}$ si $1\leq j\leq i$ y $w_{j}=0$ en el resto de los casos.\REV{buscar la versión buena, esto es sólo para los cardinales pares}.\REV{volver a redactar. Incluir construcción.}
 
 \begin{equation}\label{eq:pesosowamayoria}
-	 w_i = Q\left(\frac{i}{t+1}\right) - Q\left(\frac{i}{t+1}\right), \forall i\in \{1, \dots, n\}, \text{   sabiendo que}
+	 w_i = Q\left(\frac{i}{t+1}\right) - Q\left(\frac{i+1}{t+1}\right), \forall i\in \{1, \dots, n\}, \text{   sabiendo que}
 \end{equation}
 	 $$Q(r) = \left\{\begin{aligned}
 	 	0 					&\quad \text{si}\quad r<0,5\\
 	 	\frac{r-0,5}{0,5}	&\quad \text{si}\quad 0,5\leq r\leq 1\\
 	 	1 					&\quad \text{si}\quad r>1\\
 	\end{aligned}\right.$$
+\REV{forma ecuación}
+
+%\REV{reescrito}
+Además, en la segunda parte del estudio, se emplea el OWA `la mayoría de'. Este OWA pretende destacar aquellos elementos que son mayores en el vector $x$. Esto se hace realidad por medio de un vector de pesos donde son nulos los pesos relativos a aquellas $x_i$ más pequeñas. Para la construcción del vector de pesos, se utilizará, también, la ecuación \ref{eq:pesosowamayoria}
+
 
 
 % CHOQUET
@@ -150,7 +152,7 @@ Dado $U$ un universo finito; $\mathcal{P}(U)$ el conjunto de todos los subcojunt
 \end{enumerate}
 \end{definition}
 
-A continuación definimos la función Integral Choquet conociendo que tomaremos su versión discreta por el contexto en el que se está trabajando.
+A continuación definimos la función integral Choquet conociendo que tomaremos su versión discreta por el contexto en el que se está trabajando.
 
 \begin{definition}\label{def:choquet}
 Dado un vector $(x_1,\dots,x_n)$, sea $\sigma$ una permutación de $\{1,...,n\}$ tal que $x_{\sigma(j)}$ es el $j$-ésimo mayor elemento del vector $(x_{1},\dots,x_{n})$. La integral discreta de Choquet con respecto a la medida difusa $\mu$ es 
@@ -190,7 +192,7 @@ Durante el desarrollo de este trabajo se buscará la similitud entre conjuntos d
 Una función penalti  \cite{art:calvo} es una función de agregación, por lo que dispone de un vector de entradas del que devuelve un único resultado. Si todos los elementos del vector son iguales, entonces, claramente, la salida será eso mismo. Ahora bien, el problema surge cuando hay algún elemento diferente ya que en ese momento la idea será buscar una salida todo lo parecida posible a la entrada. En este sentido, es elemento o elementos diferentes tendrán una cierta discrepancia con los demás y justamente esto es lo que se pretende minimizar, la discrepancia, para dar una salida adecuada. 
 
 \begin{definition}\label{def:penalti}
-La función $P:[0,1]^{n+1}\REV{?}\rightarrow \RR^{+} = [+, \infty]$ es una función penalti si y sólo si satiface que:
+La función $P:[a,b]^{n+1}\rightarrow \RR^{+} = [0, \infty]$ es una función penalti si y sólo si satiface que:
 \begin{enumerate}
 	\item $P(x, y) \geq 0, \forall x, y$
 	\item $P(x, y) = 0$ si $x_{i}=y \forall i=1,\dots ,n$
@@ -207,7 +209,7 @@ Todas las funciones de agregación llamadas medias pueden ser escritas como una 
 % FUNCIONES DE DOMBI
 \section{Funciones de Dombi}\label{sec:dombi}
 Las funciones de Dombi \cite{art:dombi} son operadores de equivalencia con una definición diferente a las REF presentadas en la sección \ref{sec:ref}. Con esta relación lo que se pretende conocer es como de iguales son dos elementos de un conjunto difuso dado, pero aplicando nuevas ideas para la construcción del resultado. 
-\REV{Definición completa?}
+%\REV{Definición completa?} Pues así se va a quedar.
 \begin{definition}\label{def:dombi}
 Dados $x=(x_1, x_2, \dots,x_n)$ y $w=(w_1,w_2,\dots,w_n)$, denotaremos $D$ como una función de equivalencia de Dombi cuando tengamos que 
 $$D(w,x)=\frac{1}{2}\left(1+\prod(1-2x_{i})^{w_{i}}\right)$$

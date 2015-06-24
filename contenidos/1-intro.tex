@@ -11,12 +11,12 @@ El desarrollo de mecanismos que permiten a las máquinas el aprendizaje de técn
 
 Muchos autores \cite{lib:ross, lib:boden, art:searle, art:churchland} han propuesto ideas sobre esta cuestión pero debe destacarse a R. Penrose \cite{lib:penrose} que en su libro {\em La nueva mente del Emperador},  se proclama un claro detractor de la idea de que las máquinas puedan llegar a tener la opción de discernir de una forma similar al cerebro humano. Llega incluso a preguntarse ``?`cómo podríamos siquiera {\em empezar} a explicar la substancia de tales problemas a una entidad que no sea ella misma consciente\dots?''
 
-En definitiva, en este trabajo se motiva en la idea de hacer posible lo que muchos creen imposible, lo que muchos creen que no será posible en mucho tiempo, incluso que no será posible sin conocernos a nosotros mismos. En este sentido, se trata el problema de la segmentación a través de segmentación de imágenes para intentar mejorar los métodos actuales y llegar a un método que pudiera ser utilizado de forma general para cualquier entrada.
+En definitiva, en este trabajo se sustenta en la idea de hacer posible lo que muchos creen imposible, lo que muchos creen que no será posible en mucho tiempo, incluso que no será posible sin conocernos a nosotros mismos. En este sentido, se trata el problema de la segmentación a través de segmentación de imágenes para intentar mejorar los métodos actuales y llegar a un método que pudiera ser utilizado de forma general para cualquier entrada.
 
 
 % 1.2. DEFINICIÓN
 \section{Definición del problema}\label{sec:definicion}
-El problema de la segmentación consiste en poder conocer dentro de una imagen qué parte de ella pertenece al objeto u objetos y cual al fondo. Así, por ejemplo, en la figura \ref{img:ejemplomolino} el lector podrá diferenciar claramente un molino del pueblo que se ve en el fondo de la imagen. El hecho de diferenciar un objeto del fondo de una imagen es un proceso que no supone ninguna dificultad para la mente humana; es algo que realizamos inconscientemente cientos de veces durante el día, sin que nos cueste ningún esfuerzo. Sin embargo, la misma tarea puede resultar muy complicada o imposible de realizar a través de un programa informático. Podría ser como aquel hidalgo que veía gigantes en lugar molinos\footnote{En el IV centenario de la publicación de la segunda parte de ``El Quijote''.}.
+El problema de la segmentación consiste en poder conocer dentro de una imagen qué parte de ella pertenece al objeto u objetos y cual al fondo. Así, por ejemplo, en la figura \ref{img:ejemplomolino} el lector podrá diferenciar claramente el molino del pueblo que se ve en el fondo de la imagen. El hecho de diferenciar un objeto del fondo de una imagen es un proceso que no supone ninguna dificultad para la mente humana; es algo que realizamos inconscientemente cientos de veces durante el día, sin que nos cueste ningún esfuerzo. Sin embargo, la misma tarea puede resultar muy complicada o imposible de realizar a través de un programa informático. Podría ser como aquel hidalgo que veía gigantes en lugar molinos\footnote{En el IV centenario de la publicación de la segunda parte de ``El Quijote''.}.
 
 \begin{figure}
 	\centering
@@ -26,9 +26,9 @@ El problema de la segmentación consiste en poder conocer dentro de una imagen q
 \end{figure}
 
 %\REV{pq es importante el problema de la segmentación} 
-Este problema tiene una especial importante en la automatización de tareas, como el reconocimiento de direcciones postales, el ensalzamiento de textos o sistemas de calidad en grandes industrias, por ejemplo. También se utiliza en campos tan importantes como la medicina para poder ver en tiempo real la situación del tumor de un paciente. En definitiva, es importante ya que hace que un programa pueda tener como entrada una imagen en vez de valores discretos y obtener otra imagen que nos da muchísima información de la primera y que es facilmente interpretable por personas y más sencilla para las máquinas.
+Este problema tiene una especial importante en la automatización de tareas, como el reconocimiento de direcciones postales, el realzamiento de textos o sistemas de calidad en grandes industrias, por ejemplo. También se utiliza en campos tan importantes como la medicina para poder ver en tiempo real la situación del tumor de un paciente. En definitiva, es importante ya que hace que un programa pueda tener como entrada una imagen en vez de valores discretos y obtener otra imagen que nos da muchísima información de la primera y que es facilmente interpretable por personas y más sencilla para las máquinas.
 
-Autores como González y Woods en \cite{lib:gonzalez} enuncian el problema de ``segmentación de imágenes no triviales como una de las tareas más dificiles en el procesamiento de imágenes''. En este sentido, insisten en que ``la exactitud de la segmentación determina el éxito o error de los procesos de análisis computerizados''. Otros autores \cite{lib:sonka} hablan de la sementación como una ``técnica en al que se divide la imagen en partes que tienen una correlación con objetos o áreas del mundo real contenidas en la imagen''.
+Autores como González y Woods \cite{lib:gonzalez} enuncian el problema de ``segmentación de imágenes no triviales como una de las tareas más dificiles en el procesamiento de imágenes''. En este sentido, insisten en que ``la exactitud de la segmentación determina el éxito o error de los procesos de análisis computerizados''. Otros autores \cite{lib:sonka} hablan de la sementación como una ``técnica en al que se divide la imagen en partes que tienen una correlación con objetos o áreas del mundo real contenidas en la imagen''.
 
 \begin{definition}\label{def:definicionproblema}
 Dada una imagen $Q$ que se puede subdividir en $n$ regiones $R_{1}, \dots, R_{n}$, y conocida $P$ que es una cierta propiedad booleana que cumplen todos los píxeles de la región $R_{i}, \forall  i=1,\dots ,n$, se deberá cumplir siempre que:
@@ -50,9 +50,9 @@ En conclusión, en este proceso se lleva a cabo la división de la imagen en reg
 \section{Solución propuesta}\label{sec:solucion}
 %\REV{Nosotros vamos a utilizar técnicas difusas, para empezar. ¿Por qué? (Incertidumebre en torno a los píxeles, péridda de información captación imágenes,...)}
 
-Para llevar a cabo este estudio se ha utilizado la representación de las imágenes por medio de conjuntos difusos. Estas técnicas, en comparación las habituales de lógica clásica, consiguen evitar que haya perdida de información en las imágenes. Esto se debe a que en la obtención y discretización de las imágenes se llevan a cabo simplificaciones sobre la definición real con intención de poder ser representado digitalmente. 
+Para llevar a cabo este estudio se ha utilizado la representación de las imágenes por medio de conjuntos difusos. Estas técnicas, en comparación con las habituales de lógica clásica, consiguen evitar que haya perdida de información en las imágenes. Esto se debe a que en la obtención y discretización de las imágenes se llevan a cabo simplificaciones sobre la definición real con intención de poder ser representado digitalmente. 
 
-Asimismo, la incertidubre que puede haber entorno a los problemas relacionados con el procesamiento de imagen es alto. En particular, la segmentación busca separar de forma excluyente los objetos del fondo, algo que se hace imposible de definir de forma certera. Se conoce que en un cambio de intensidad suficientemente fuerte estará un borde pero, justamente, por el hecho de que el propio enunciado sea de por sí difuso (suficientemente fuerte), será necesario poder representar esta incertidumbre, algo que haremos por medio de los conjuntos de definió Zadeh.
+Asimismo, la incertidubre que puede haber en torno a los problemas relacionados con el procesamiento de imagen es alto. En particular, la segmentación busca separar de forma excluyente los objetos del fondo, algo que se hace imposible de definir de forma certera. Se conoce que en un cambio de intensidad suficientemente fuerte estará un borde pero, justamente, por el hecho de que el propio enunciado sea de por sí difuso (suficientemente fuerte), será necesario poder representar esta incertidumbre, algo que haremos por medio de los conjuntos que definió Zadeh.
 
 Además, existen tres técnicas para poder llevar a cabo la segmentación de una imagen \cite{lib:gonzalez}:
 %\REV{explicación y referencia}
@@ -62,7 +62,7 @@ Además, existen tres técnicas para poder llevar a cabo la segmentación de una
 	\item {\em Técnicas basadas en la detección de bordes}. Basan su técnica en la identificación de los píxeles en la frontera. Se detecta el objeto y el fondo, ya que de esta forma queda definido también su contorno.
 \end{enumerate}
 
-En este trabajo se va a centrar la segmentación por medio de las técnicas de umbralización. Para ello lo que tendremos que hacer será calcular los umbrales que separen las regiones que se hayan encontrado, de forma que situaremos las regiones entre un umbral $t_{i}$ y uno $t_{i+1}$. Para ejemplificar esto, tomaremos la umbralización binaria en la cual se dispondrá de un único umbral $t$. De esta forma, todos los elementos de la imagen que se encuentren por encima del umbral pertenecerán a una región  y los que estén por debajo a la segunda. Esta técnica se basa únicamente en detectar los diferentes tonos de gris de la imagen, así que mirando el histograma de la imagen (fig. \ref{img:rice}), podríamos ver cómo existe una frontera entre la intensidad $t=71$ y el resto creando diferencias en los niveles de gris. \cite{art:refbarrenechea}
+En este trabajo se va a centrar la segmentación por medio de las técnicas de umbralización. Para ello lo que tendremos que hacer será calcular los umbrales que separen las regiones que se hayan encontrado, de forma que situaremos las regiones entre un umbral $t_{i}$ y otro $t_{i+1}$. Para ejemplificar esto, tomaremos la umbralización binaria en la cual se dispondrá de un único umbral $t$. De esta forma, todos los elementos de la imagen que se encuentren por encima del umbral pertenecerán a una región  y los que estén por debajo a la segunda. Esta técnica se basa únicamente en detectar los diferentes tonos de gris de la imagen, así que mirando el histograma de la imagen (fig. \ref{img:rice}), podríamos ver cómo existe una frontera entre la intensidad $t=71$ y el resto creando diferencias en los niveles de gris. \cite{art:refbarrenechea}
 
 \begin{figure}
 \centering
@@ -70,7 +70,7 @@ En este trabajo se va a centrar la segmentación por medio de las técnicas de u
 	{\includegraphics[width=0.25\textwidth]{img/rice}}\quad
 	\subfigure[Imagen segmentada.]
 	{\includegraphics[width=0.25\textwidth]{img/umbra-rice}}\quad
-	\subfigure[Histograma original.]
+	\subfigure[Histograma.]
 	{\includegraphics[width=0.35\textwidth]{img/hist-rice}}
 	\caption{Proceso de segmentación. Se puede ver que en $t=71$ se produce un mínimo con respecto a los otros niveles de gris y que por eso se escoge como umbral.}
 	\label{img:rice}
@@ -78,7 +78,7 @@ En este trabajo se va a centrar la segmentación por medio de las técnicas de u
 
 
 %\REV{solución al pq...} Escrita
-Se debe tener en cuenta que la umbralización es un método rápido y de coste computacional bajo por lo que se puede realizar en tiempo real. Como sólo basa su algorítmica en el histograma de la imagen hace que sea una método sencillo e intuitivo aunque esto también hace que tenga problemas ante el ruido y objetos o fondos que no sean uniformes.
+Se debe tener en cuenta que la umbralización es un método rápido y de coste computacional bajo por lo que se puede realizar en tiempo real. Como sólo basa su algorítmica en el histograma de la imagen hace que sea un método sencillo e intuitivo, aunque esto también hace que tenga problemas ante el ruido y objetos o fondos que no sean uniformes.
 
 La solución que se presenta en este trabajo se obtiene por medio de lógica difusa. Se han utilizado funciones REF, de Dombi, de agregación y penalti. En el capítulo \ref{basicos} se hace mención a todos estos conceptos y se explican poníendose en práctica a partir del capítulo \ref{monoumbral}. En el capítulo \ref{cap:conclusiones} se presentan todas las conclusiones obtenidas así como las líneas de trabajo futuro.
 
@@ -89,9 +89,9 @@ La solución que se presenta en este trabajo se obtiene por medio de lógica dif
 %La obtención de un umbral se basará en el histograma de la imagen. No se considera la información espacial.
 
 % 1.4. REELEVANCIA
-\section{Reelevancia}\label{sec:reelevancia}
+\section{Relevancia}\label{sec:relevancia}
 
-En el campo de la medicina \cite{lib:suri, lib:sonka} se ha experimentado una mejora sustancial en la efectividad de las pruebas médicas gracias a diferentes opciones como los rayos X, la tomografía computerizada, la resonancia magnética, la tomografía por emisión de positrones (PET), imágenes de ultrasonidos y otras. La revolución digital y el gran poder de procesamiento que disponen los ordenadores ha conseguido que los profesionales comprendan la compleja anatomía humana, aunque esto no ha sido suficiente ya que se ha visto necesario poder obtener los bordes, las superficies y la segmentación de los órganos. Estos órganos segmentados y sus bordes son clave para poder conseguir que un especialista médico pueda hacer una cirugía adecuada para muchas ramas de la medicina, debido a la importancia de tener datos en tiempo real.\cite{url:noticiasegmentacion} %\REV{[Insertar figura que vaya con esto].}
+En el campo de la medicina \cite{lib:suri, lib:sonka} se ha experimentado una mejora sustancial en la efectividad de las pruebas médicas gracias a diferentes opciones como los rayos X, la tomografía computerizada, la resonancia magnética, la tomografía por emisión de positrones (PET), imágenes de ultrasonidos y otras. La revolución digital y el gran poder de procesamiento que disponen los ordenadores ha conseguido que los profesionales comprendan la compleja anatomía humana, aunque esto no ha sido suficiente ya que se ha visto necesario poder obtener los bordes, las superficies y la segmentación de los órganos. Estos órganos segmentados y sus bordes son clave para poder conseguir que un especialista médico pueda hacer una cirugía adecuada para muchas ramas de la medicina, debido a la importancia de tener datos en tiempo real \cite{url:noticiasegmentacion}. %\REV{[Insertar figura que vaya con esto].}
 \begin{figure}
 \centering
 	\includegraphics[width=0.5\textwidth]{img/imagenmedica.eps}
@@ -139,7 +139,3 @@ Además, para poder conseguir el propósito anterior se estipularon los siguient
 	\item Implementar diferentes algoritmos que incluyan la agregación OWA de las diferentes funciones estudiadas para la segmentación en los puntos anteriores comprobando si esto mejora los resultados anteriores.
 	\item Analizar todos los puntos anteriores a fin de concluir los resultados del trabajo así como dirimir si se ha podido conseguir cumplir el propósito inicial.
 \end{itemize}
-
-%1.6 ANÁLISIS BIBLIOGRÁFICO
-\section{Análisis bibliográfico}
-No tengo claro aun que poner aquí. \REV{Próximamente}.
