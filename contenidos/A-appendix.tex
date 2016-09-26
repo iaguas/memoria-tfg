@@ -1,6 +1,6 @@
 \chapter{Implementaciones de los algoritmos}
 
-Este apéndice pretende recoger todo el código que se ha utilizado para implementar los algoritmos que se han presentado para este trabajo. En particular, para cada algoritmo se detalla su función principal y las auxiliares, si existieran.
+Este apéndice pretende recoger todo el código que se ha utilizado para implementar los algoritmos que se han presentado en este trabajo. Concretamente, para cada algoritmo se detalla su función principal y las auxiliares, si existieren.
 
 
 \section{Algoritmo general maximizando la similitud}
@@ -11,7 +11,7 @@ En este primer algoritmo, se ha implementado una función principal {\ttfamily a
 \end{listing}
 \matlabfile{codigo/alg1.m}
 
-Para poder hacer uso del programa que se acaba de presentar, se necesitan varias funciones auxiliares que se enumeran en los extractos de código \ref{cod:alg1mb} \ref{cod:alg1mo}, \ref{cod:alg1ref1} y \ref{cod:alg1ref2}.
+Para poder hacer uso del programa que se acaba de presentar, se necesitan varias funciones auxiliares que se recogen en los extractos de código \ref{cod:alg1mb} \ref{cod:alg1mo}, \ref{cod:alg1ref1} y \ref{cod:alg1ref2}.
 \newpage
 \begin{listing}
     \caption{Función auxiliar para obtener la media del fondo.\label{cod:alg1mb}}
@@ -31,7 +31,7 @@ Para poder hacer uso del programa que se acaba de presentar, se necesitan varias
 \end{listing}
 \matlabfile{codigo/ref2.m}
 
-A continuación, se presenta el código que se ha utilizado para implementar el algoritmo que basa sue elección en las funciones penalti. No se mostarán aquellas partes del código comunes con el algoritmo original.
+A continuación, se presenta la variación del código que se ha utilizado para implementar el algoritmo que basa sue elección en las funciones penalti. No se mostarán aquellas partes del código comunes con el algoritmo original.
 \begin{listing}
     \caption{Función principal de la implementación del algoritmo 1 con funciones penalti.\label{cod:alg1agregate}}
 \end{listing}
@@ -100,7 +100,7 @@ Se debe tener en cuenta que cuando se lleva a cabo el cambio en las funciones de
 \matlabfile{codigo/cambiodombi.m}
 
 \section{Algoritmo de umbralización global}
-Se presenta la implementación del algoritmo de umbralización global. Se ha preparado la función {\ttfamily globalThresholding(I)} a la que se le intruduce una imagen en {\ttfamily uint8} y devuelve una tupla con el umbral obtenido y la imagen segmentada. (Extracto \ref{cod:global}).
+Se presenta la implementación del algoritmo de umbralización global. Se ha preparado la función {\ttfamily globalThresholding(I)} a la que se le intruduce una imagen en {\ttfamily uint8} y devuelve una tupla con el umbral obtenido y la imagen segmentada. (extracto \ref{cod:global}).
 \begin{listing}
     \caption{Función principal del algoritmo de umbralización global.\label{cod:global}}
 \end{listing}
