@@ -1,3 +1,7 @@
+\documentclass[main]{subfiles}
+
+\begin{document}
+
 % INTRODUCCIÓN
 \chapter{Introducción}
 
@@ -9,7 +13,7 @@ En este capítulo se da una visión general del problema que se ha estudiado as�
 
 El desarrollo de mecanismos que permiten a las máquinas el aprendizaje de técnicas que les capacitan para la resolución automática de problemas es un campo fundamental dentro del área de la Computación y la Inteligencia Artificial. Este tipo de procesos se utilizan en la vida diaria de muchos seres humanos y resultan innatos en ellos, en cambio, su implementación para que las máquinas los lleven a cabo se convierte en todo un reto debido a la dificultad de la imitación de los procesos cerebrales de las personas.
 
-Muchos autores \cite{lib:ross, lib:boden, art:searle, art:churchland} han propuesto ideas sobre esta cuestión pero debe destacarse a R. Penrose \cite{lib:penrose} que en su libro {\em La nueva mente del Emperador},  se proclama un claro detractor de la idea de que las máquinas puedan llegar a tener la opción de discernir de una forma similar al cerebro humano. Llega incluso a preguntarse ``?`cómo podríamos siquiera {\em empezar} a explicar la substancia de tales problemas a una entidad que no sea ella misma consciente\dots?''
+Muchos autores \cite{lib:ross, lib:boden, art:searle, art:churchland} han propuesto ideas sobre esta cuestión pero debe destacarse a R. Penrose \cite{lib:penrose} que en su libro {\em La nueva mente del Emperador},  se proclama un claro detractor de la idea de que las máquinas puedan llegar a tener la opción de discernir de una forma similar al cerebro humano. Llega incluso a preguntarse ``?cómo podríamos siquiera {\em empezar} a explicar la substancia de tales problemas a una entidad que no sea ella misma consciente\dots?''
 
 En definitiva, en este trabajo se sustenta en la idea de hacer posible lo que muchos creen imposible, lo que muchos creen que no será posible en mucho tiempo, incluso que no será posible sin conocernos a nosotros mismos. En este sentido, se trata el problema de la segmentación a través de segmentación de imágenes para intentar mejorar los métodos actuales y llegar a un método que pudiera ser utilizado de forma general para cualquier entrada.
 
@@ -25,7 +29,7 @@ El problema de la segmentación consiste en poder conocer dentro de una imagen q
 	\label{img:ejemplomolino}
 \end{figure}
 
-%\REV{pq es importante el problema de la segmentación} 
+%\REV{pq es importante el problema de la segmentación}
 Este problema tiene una especial importante en la automatización de tareas, como el reconocimiento de direcciones postales, el realzamiento de textos o sistemas de calidad en grandes industrias, por ejemplo. También se utiliza en campos tan importantes como la medicina para poder ver en tiempo real la situación del tumor de un paciente. En definitiva, es importante ya que hace que un programa pueda tener como entrada una imagen en vez de valores discretos y obtener otra imagen que nos da muchísima información de la primera y que es facilmente interpretable por personas y más sencilla para las máquinas.
 
 Autores como González y Woods \cite{lib:gonzalez} enuncian el problema de ``segmentación de imágenes no triviales como una de las tareas más dificiles en el procesamiento de imágenes''. En este sentido, insisten en que ``la exactitud de la segmentación determina el éxito o error de los procesos de análisis computerizados''. Otros autores \cite{lib:sonka} hablan de la sementación como una ``técnica en al que se divide la imagen en partes que tienen una correlación con objetos o áreas del mundo real contenidas en la imagen''.
@@ -50,14 +54,14 @@ En conclusión, en este proceso se lleva a cabo la división de la imagen en reg
 \section{Solución propuesta}\label{sec:solucion}
 %\REV{Nosotros vamos a utilizar técnicas difusas, para empezar. ¿Por qué? (Incertidumebre en torno a los píxeles, péridda de información captación imágenes,...)}
 
-Para llevar a cabo este estudio se ha utilizado la representación de las imágenes por medio de conjuntos difusos. Estas técnicas, en comparación con las habituales de lógica clásica, consiguen evitar que haya perdida de información en las imágenes. Esto se debe a que en la obtención y discretización de las imágenes se llevan a cabo simplificaciones sobre la definición real con intención de poder ser representado digitalmente. 
+Para llevar a cabo este estudio se ha utilizado la representación de las imágenes por medio de conjuntos difusos. Estas técnicas, en comparación con las habituales de lógica clásica, consiguen evitar que haya perdida de información en las imágenes. Esto se debe a que en la obtención y discretización de las imágenes se llevan a cabo simplificaciones sobre la definición real con intención de poder ser representado digitalmente.
 
 Asimismo, la incertidubre que puede haber en torno a los problemas relacionados con el procesamiento de imagen es alto. En particular, la segmentación busca separar de forma excluyente los objetos del fondo, algo que se hace imposible de definir de forma certera. Se conoce que en un cambio de intensidad suficientemente fuerte estará un borde pero, justamente, por el hecho de que el propio enunciado sea de por sí difuso (suficientemente fuerte), será necesario poder representar esta incertidumbre, algo que haremos por medio de los conjuntos que definió Zadeh.
 
 Además, existen tres técnicas para poder llevar a cabo la segmentación de una imagen \cite{lib:gonzalez}:
 %\REV{explicación y referencia}
 \begin{enumerate}[label=\alph*)]
-	\item {\em Segmentación basada en umbralización}. A través de uno o varios umbrales se obtiene una forma de clasificar todos los píxeles de la imagen en una única región buscando que las regiones tengan un cierto significado. 
+	\item {\em Segmentación basada en umbralización}. A través de uno o varios umbrales se obtiene una forma de clasificar todos los píxeles de la imagen en una única región buscando que las regiones tengan un cierto significado.
 	\item {\em Técnicas basada en agrupamiento de píxeles en regiones}. Se procede clasificando cada uno de los píxeles de la imagen dentro de las regiones buscando que estas se creen con los píxeles más similares. Se suele indicar el número de regiones que se desea obtener.
 	\item {\em Técnicas basadas en la detección de bordes}. Basan su técnica en la identificación de los píxeles en la frontera. Se detecta el objeto y el fondo, ya que de esta forma queda definido también su contorno.
 \end{enumerate}
@@ -128,7 +132,7 @@ En definitiva, el problema de la segmentación de la imagen se hace importante y
 % 1.5. OBJETIVOS
 \section{Propósito y objetivos}\label{sec:objetivos}
 
-Este proyecto se centra en estudiar técnicas de segmentación para un único umbral en imágenes en blanco y negro e intentar mejorar las técnicas de las que actualmente se disponen intentando generalizarlas de forma que los parámetros no dependan del problema. 
+Este proyecto se centra en estudiar técnicas de segmentación para un único umbral en imágenes en blanco y negro e intentar mejorar las técnicas de las que actualmente se disponen intentando generalizarlas de forma que los parámetros no dependan del problema.
 
 Además, para poder conseguir el propósito anterior se estipularon los siguiente objetivos:
 \begin{itemize}
@@ -139,3 +143,5 @@ Además, para poder conseguir el propósito anterior se estipularon los siguient
 	\item Implementar diferentes algoritmos que incluyan la agregación OWA de las diferentes funciones estudiadas para la segmentación en los puntos anteriores comprobando si esto mejora los resultados anteriores.
 	\item Analizar todos los puntos anteriores a fin de concluir los resultados del trabajo así como dirimir si se ha podido conseguir cumplir el propósito inicial.
 \end{itemize}
+
+\end{document}

@@ -1,0 +1,22 @@
+\documentclass[main]{subfiles}
+
+\begin{document}
+
+%NOTACIÓN
+\section{Notación}\label{sec:notacion}
+
+A lo largo del trabajo se asumirá la notación que sigue para estos conceptos.
+
+\begin{description}
+    \item[Imagen]: la denotaremos con $Q$.
+    \item[Coordenadas de un pixel]: $(x,y)$.
+    \item[Máximo nivel de gris]: $L$.
+    \item[Número de filas de $Q$]: $N$.
+    \item[Número de columnas de $Q$]: $M$.
+    \item[Intensidad de un pixel]: $q(x,y)$ de forma que $0\leq q(x,y)\leq L-1, \forall (x,y)\in Q$.
+    \item[Histograma]: $h(q)$. Función para conocer el número de pixeles con la intensidad $q$.
+    \item[Media de una imagen]:$$m_Q=\frac{\sum_{q=0}^{L-1}qh(q)}{\sum_{q=0}^{L-1}h(q)}$$
+    \item[Área de una imagen]: $$A(Q) = \sum_{q=0}^{L-1} q h(q)$$
+\end{description}
+
+\end{document}

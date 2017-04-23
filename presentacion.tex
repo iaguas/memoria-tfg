@@ -2,12 +2,13 @@
 %\usepackage[latin1]{inputenc}
 \usepackage[spanish]{babel}
 \usepackage[T1]{fontenc}
-\usepackage{graphicx,hyperref,ru1,url}
+\usepackage{style/slides}
+\usepackage{graphicx,hyperref,url}
 %\usefonttheme{serif}
 %\setmainfont{Linux Libertine O}
 
 \usepackage{subfiles}
-\usepackage{subfigure} 
+\usepackage{subfigure}
 \usepackage{pdfpages}
 \usepackage{amsthm}
 \usepackage{amsmath}
@@ -96,9 +97,9 @@ Universidad Pública de Navarra}
   \tableofcontents
 \end{frame}
 
-% Section titles are shown in at the top of the slides with the current section 
-% highlighted. Note that the number of sections determines the size of the top 
-% bar, and hence the university name and logo. If you do not add any sections 
+% Section titles are shown in at the top of the slides with the current section
+% highlighted. Note that the number of sections determines the size of the top
+% bar, and hence the university name and logo. If you do not add any sections
 % they will not be visible.
 \section{Introducción}
 \begin{frame}
@@ -196,7 +197,7 @@ Universidad Pública de Navarra}
     \subfigure[Niveles de gris]
     {\includegraphics[height=0.1\textwidth]{img/matriznivelesgris.jpg}}\quad
     \subfigure[Normalizada]
-    {\includegraphics[height=0.1\textwidth]{img/matriznormalizada.jpg}}\quad\ 
+    {\includegraphics[height=0.1\textwidth]{img/matriznormalizada.jpg}}\quad\
     \subfigure[Gráfica]
     {\includegraphics[width=0.1\textwidth]{img/imagendigital.jpg}}
     \caption{Imagen digital en diferentes representaciones.}
@@ -258,8 +259,8 @@ Universidad Pública de Navarra}
 
 \begin{frame}{Funciones de Equivalencia Restringida (REF)}
   \begin{defn}\label{prop:contruccionref}
-  Sean dos automorfismos $\varphi_{1}$ y $\varphi_{2}$, se llamará función $REF$ a la construcción que cumpla que: 
-  $$REF(x,y) = \varphi_1^{-1}(1-|\varphi_2(x)-\varphi_2(y)|) \quad\text{con}\quad c(x) = \varphi_2^{-1}(1-\varphi_2(x)).$$ 
+  Sean dos automorfismos $\varphi_{1}$ y $\varphi_{2}$, se llamará función $REF$ a la construcción que cumpla que:
+  $$REF(x,y) = \varphi_1^{-1}(1-|\varphi_2(x)-\varphi_2(y)|) \quad\text{con}\quad c(x) = \varphi_2^{-1}(1-\varphi_2(x)).$$
   Además, si tenemos una $REF$ y un automorfismo en $\unitinterval$, la aplicación de estos ($F=\varphi \circ REF$) es otra $REF$.
   \end{defn}
 \end{frame}
@@ -302,7 +303,7 @@ Universidad Pública de Navarra}
 \begin{frame}[squeeze]
   \frametitle{Funciones de similitud}
   \begin{defn}\label{def:similitud}
-  Dada una función $M$ de agregación (definición \ref{def:agregacion}) y una función $REF$ (definición \ref{def:ref}) llamaremos a $SM$ función de similitud si $SM : \FF(X) \times \FF(X) \rightarrow [0,1]$ está definida tal que 
+  Dada una función $M$ de agregación (definición \ref{def:agregacion}) y una función $REF$ (definición \ref{def:ref}) llamaremos a $SM$ función de similitud si $SM : \FF(X) \times \FF(X) \rightarrow [0,1]$ está definida tal que
   $$SM(A,B)=M^n_{i=1}REF(\mu_A(x_i), \mu_B(x_i))$$
   y satisface las siguientes condiciones:
     \begin{enumerate}
@@ -311,7 +312,7 @@ Universidad Pública de Navarra}
     \item $SM(A, B) = 1$ si y sólo si A = B;
     \item Si $A\leq B\leq C$, entonces $SM(A, B)\geq SM(A,C)$ y $SM(C, B)\geq SM(C,A)$;
     \item $SM(A_c, B_c) = SM(A,B)$
-    \end{enumerate} 
+    \end{enumerate}
   \end{defn}
 \end{frame}
 
@@ -336,7 +337,7 @@ Universidad Pública de Navarra}
 
 \begin{frame}[squeeze]{Funciones de Dombi}
   \begin{defn}\label{def:dombi}
-  Dados $x=(x_1, x_2, \dots,x_n)$ y $w=(w_1,w_2,\dots,w_n)$, denotaremos $D$ como una función de equivalencia de Dombi cuando tengamos que 
+  Dados $x=(x_1, x_2, \dots,x_n)$ y $w=(w_1,w_2,\dots,w_n)$, denotaremos $D$ como una función de equivalencia de Dombi cuando tengamos que
   $$D(w,x)=\frac{1}{2}\left(1+\prod(1-2x_{i})^{w_{i}}\right)$$
   \end{defn}
   \begin{block}{}\label{def:propiedadesdombi}
@@ -378,7 +379,7 @@ $$m_o(t)=\frac{\sum_{q=t+1}^{L-1}qh(q)}{\sum_{q=t+1}^{L-1}h(q)}.$$
 \begin{frame}{Algoritmo 1. Maximización de la similitud}
 \begin{defn}\label{def:conjuntodifusomonoumbral}
 Dada $Q$, una imagen en la escala de L niveles de gris, y $t$, un nivel de gris de forma que $0\leq t\leq L-1$. Teniendo en cuenta que $F$ es una función $REF$ ya que la $REF \circ \varphi$ lo es, se define el conjunto
-$$Q_t = \{(q, \mu_{Q_t}(q)|q\in \{0,1,\dots, L-1\}\}$$ 
+$$Q_t = \{(q, \mu_{Q_t}(q)|q\in \{0,1,\dots, L-1\}\}$$
 teniendo en cuenta que
 $$\mu_{Q_t}(q) = \left\{ \begin{aligned}
      \varphi\left(REF\left(\frac{q}{L-1}, \frac{m_b(t)}{L-1} \right)\right) & \quad\text{si}\ q\leq t,\\
@@ -431,7 +432,7 @@ $$\mu_{Q_t}(q) = \left\{ \begin{aligned}
 \begin{frame}{Algoritmo 3. Selección del umbral óptimo.}
   \begin{defn}\label{def:conjuntoHmonoumbral}
   Dada $Q$, una imagen en la escala de L niveles de gris, y $t$, un nivel de gris de forma que $0\leq t\leq L-1$, se calcula su conjunto $H(Q_t)$ como
-  $$H(Q_t) = \{(q, \mu_{H(Q_t)}(q)|q\in \{0,1,\dots, L-1\}\}$$ 
+  $$H(Q_t) = \{(q, \mu_{H(Q_t)}(q)|q\in \{0,1,\dots, L-1\}\}$$
   teniendo en cuenta que
   $$\mu_{Q_t}(q) = \left\{ \begin{aligned}
       \frac{m_b(t)}{L-1} & \quad\text{si}\ q\leq t,\\
@@ -493,7 +494,7 @@ $$\mu_{Q_t}(q) = \left\{ \begin{aligned}
 \begin{frame}{Resultados al sustituir la función REF en el Algoritmo 1}
   \begin{table}
   \centering
-  \begin{tabular}{c||c|c|c|c|c} 
+  \begin{tabular}{c||c|c|c|c|c}
   $\mathbf{w}$    &\bb Silla&\bb Bloques&\bb Engranaje&\bb Letras&\bb Sombra\\\hline\hline
   $\mathbf{0,1}$  &   218   &    255    &     250     &   142    &   200  \\\hline
   $\mathbf{0,5}$  &   226   &    255    &     250     &    39    &   230  \\\hline
@@ -511,7 +512,7 @@ $$\mu_{Q_t}(q) = \left\{ \begin{aligned}
 \begin{frame}{Resultados al sustituir la función REF en el Algoritmo 1}
   \begin{table}
   \centering
-  \begin{tabular}{c||c|c|c} 
+  \begin{tabular}{c||c|c|c}
   $\mathbf{REF_1=1-\abs{x-y}}$ & $\mathbf{w=0,75}$ &\bb $\mathbf{w=1}$ &\bb $\mathbf{w=1,25}$\\\hline\hline
   \includegraphics[width=0.2\textwidth]{img/res/e1a/alg1tipo1-chair.jpg} &
   \includegraphics[width=0.2\textwidth]{img/res/e1a/alg1tipo6-chair.jpg} &
@@ -529,7 +530,7 @@ $$\mu_{Q_t}(q) = \left\{ \begin{aligned}
 \begin{frame}{Resultados al sustituir la función REF en el Algoritmo 1}
   \begin{table}
   \centering
-  \begin{tabular}{c||c|c|c} 
+  \begin{tabular}{c||c|c|c}
              &\bb R. gausiano&\bb R. impulsivo 0.05&\bb R. impulsivo 0.2\\\hline\hline
   $\mathbf{0,1}$  &   219   &    226    &     226     \\\hline
   $\mathbf{0,5}$  &   234   &    226    &     242     \\\hline
@@ -547,7 +548,7 @@ $$\mu_{Q_t}(q) = \left\{ \begin{aligned}
 \begin{frame}{Resultados al sustituir la función REF en el Algoritmo 1}
   \begin{table}
   \centering
-  \begin{tabular}{c||c|c|c} 
+  \begin{tabular}{c||c|c|c}
   $\mathbf{REF_1=1-\abs{x-y}}$ & $\mathbf{w=0,75}$ &\bb $\mathbf{w=1}$ &\bb $\mathbf{w=1,25}$\\\hline\hline
   \includegraphics[width=0.2\textwidth]{img/res/e1a/alg1tipo1-chairga.jpg} &
   \includegraphics[width=0.2\textwidth]{img/res/e1a/alg1tipo6-chairga.jpg} &
@@ -586,7 +587,7 @@ $$\mu_{Q_t}(q) = \left\{ \begin{aligned}
 \begin{frame}{Algoritmo 3 con funciones de Dombi}
   \begin{table}
   \centering
-  \begin{tabular}{c||c|c|c|c|c} 
+  \begin{tabular}{c||c|c|c|c|c}
                &\bb Silla&\bb Bloques&\bb Engranaje&\bb Letras&\bb Sombra\\\hline\hline
   \bb Alg. 3A  &   115   &    80    &     88      &    199   &    121   \\\hline
   \bb Alg. 3B  &   127   &    123    &     84      &    200   &    125   \\\hline
@@ -657,7 +658,7 @@ $$m_o(t)=\frac{\sum_{q=t+1}^{L-1}qh(q)}{\sum_{q=t+1}^{L-1}h(q)}.$$
 
 \begin{frame}[squeeze]{Algoritmo 1 con funciones OWA}
   \begin{table}
-  \centering  
+  \centering
   \resizebox*{0.90\textwidth}{!}{
   \begin{tabular}{c||c|c|c}
   \bfseries Silla                                &\bb Media&\bb OWA (1)&\bb OWA (2)\\\hline\hline
@@ -681,7 +682,7 @@ $$m_o(t)=\frac{\sum_{q=t+1}^{L-1}qh(q)}{\sum_{q=t+1}^{L-1}h(q)}.$$
 \begin{frame}{Algoritmo 2 con funciones OWA}
   \begin{table}
 \centering\resizebox*{0.95\textwidth}{!}{
-\begin{tabular}{c||c|c|c} 
+\begin{tabular}{c||c|c|c}
 \bb Silla                                &\bb Media&\bb OWA (1)&\bb OWA (2)\\\hline\hline
 \bb Alg. 2 con $\mathbf{\varphi_1=\varphi_2=x}$     &   119 &   50  &   50  \\\hline
 \bb Alg. 2 con $\mathbf{\varphi_1=x^2 \text{ y }\varphi_2=x}$   &   119 &   58  &   50  \\\hline
@@ -722,11 +723,11 @@ $$m_o(t)=\frac{\sum_{q=t+1}^{L-1}qh(q)}{\sum_{q=t+1}^{L-1}h(q)}.$$
   \centering
   \begin{tabular}{c||c|c|c}
 Silla                                &\bb Media&\bb OWA (1)&\bb OWA (2)\\\hline\hline
-\bb Alg. 3 (a)  &  
+\bb Alg. 3 (a)  &
 \includegraphics[width=0.2\textwidth]{img/res/e7/alg3aowa1chair.jpg} &
 \includegraphics[width=0.2\textwidth]{img/res/e7/alg3aowa2chair.jpg} &
 \includegraphics[width=0.2\textwidth]{img/res/e7/alg3aowa3chair.jpg} \\
-\bb Alg. 3 (b)  &   
+\bb Alg. 3 (b)  &
 \includegraphics[width=0.2\textwidth]{img/res/e7/alg3bowa1chair.jpg} &
 \includegraphics[width=0.2\textwidth]{img/res/e7/alg3bowa2chair.jpg} &
 \includegraphics[width=0.2\textwidth]{img/res/e7/alg3bowa3chair.jpg} \\\hline
@@ -740,11 +741,11 @@ Silla                                &\bb Media&\bb OWA (1)&\bb OWA (2)\\\hline\
   \centering
   \begin{tabular}{c||c|c|c}
 Letras                               &\bb Media&\bb OWA (1)&\bb OWA (2)\\\hline\hline
-\bb Alg. 3 (a)  &  
+\bb Alg. 3 (a)  &
 \includegraphics[width=0.2\textwidth]{img/res/e7/alg3aowa109.jpg} &
 \includegraphics[width=0.2\textwidth]{img/res/e7/alg3aowa209.jpg} &
 \includegraphics[width=0.2\textwidth]{img/res/e7/alg3aowa309.jpg} \\
-\bb Alg. 3 (b)  &   
+\bb Alg. 3 (b)  &
 \includegraphics[width=0.2\textwidth]{img/res/e7/alg3bowa109.jpg} &
 \includegraphics[width=0.2\textwidth]{img/res/e7/alg3bowa209.jpg} &
 \includegraphics[width=0.2\textwidth]{img/res/e7/alg3bowa309.jpg} \\\hline

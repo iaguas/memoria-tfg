@@ -1,3 +1,9 @@
+\documentclass[main]{subfiles}
+
+\begin{document}
+
+\section{Procesamiento digital de imagen}\label{sec:procesamiento}
+
 Un imagen $Q$ puede ser entendida como una función de dos variables, $q(x,y)$, donde $x$ e $y$ son las coordenadas en el plano de cada elemento (píxel) y la función da como resultado el nivel de gris o intensidad asociada a ese píxel. En concreto, cuando $x$ e $y$ así como la intensidad $q(x,y)$ son finitas y discretas hablaremos de que tenemos una imagen digital. Por eso mismo, el procesamiento digital de imagen se puede definir como aquel que se hace con imágenes digitales a través de un ordenador. Tiene su origen con la introducción de las primeras imágenes digitales a principios de 1920, donde se enviaban imágenes entre Londres y Nueva York por medio de un cable submarino.
 
 Es claro que los seres humanos disponemos del sentido de la vista como el sentido más desarrollado para interactuar con el medio, pero está limitada a la banda visible dentro del espectro electromagnético. En cambio, el procesamiento digital de imagen puede cubrir el análisis de todo el espectro electromagnético, lo que incluye los ultrasonidos, el infrarrojos, rayos X, etc. En consecuencia, el procesamiento digital es aplicado en numerosos ámbitos de la sociedad y la vida diaria.
@@ -17,7 +23,7 @@ Como ya se ha explicado en el apartado anterior, se habla de imagen digital cuan
     \subfigure[Niveles de gris]
     {\includegraphics[height=0.1\textwidth]{img/matriznivelesgris.jpg}}\quad
     \subfigure[Normalizada]
-    {\includegraphics[height=0.1\textwidth]{img/matriznormalizada.jpg}}\quad\ 
+    {\includegraphics[height=0.1\textwidth]{img/matriznormalizada.jpg}}\quad\
     \subfigure[Gráfica]
     {\includegraphics[width=0.1\textwidth]{img/imagendigital.jpg}}
     \caption{Imagen digital en diferentes representaciones.}
@@ -34,7 +40,7 @@ Un ejemplo gráfico de la función de histograma para una imagen puede encontrar
 
 
 \subsection{Herramienta para el procesamiento digital: \MATLAB}\label{sec:matlab}
-\MATLAB\ (abreviatura de {\em Matrix Laboratory}) es una herramienta de software matemático que ofrece un lenguaje de programación (lenguaje M) y un entorno de desarrollo integrado. Fue creado en 1984 por el informático y matemático Cleve Moler el cual buscaba una forma alternativa de ejecutar programas de álgebra en {\em Fortran}.
+\MATLAB\ (abreviatura de {\em Matrix Laboratory}) es una herramienta de software matemático que ofrece un lenguaje de programación (lenguaje M) y un entorno de desarrollo integrado. Fue creado en 1984 por el informático y matemático Cleve Moler el cual buscaba una forma alternativa de ejecutar programas de álgebra en {\em Fortran}
 
 Entre sus prestaciones básicas están la manipulación de matrices, la representación de datos y funciones o la implementación de algoritmos así como la creación de interfaces de usuario (GUI). Además, el paquete básico de \MATLAB\ puede ser expandido por medio de {\em toolboxes}, como es el caso de este trabajo, donde se utilizará la relativa  a procesamiento de imagen. Se puede disponer también del software {\em Simulink} para trabajar conjuntamente a \MATLAB.
 
@@ -67,7 +73,7 @@ Se condidera que una imagen está degradada cuando tiene ruido, esto es, cuando 
     \label{fig:defruido}
 \end{figure}
 
-Las imágenes con ruido también se pueden crear artificialmente. Para ello utilizamos una cierta función $H$ de degradación, a la que añadimos un ruido al que llamaremos $\eta$ de forma que obtendremos una nueva imagen $g(x,y)$ que tendrá una serie de imperfecciones. Todo el ruido creado de esta forma se aplicará directamente sobre los píxeles de la imagen lo que provocará cambios en su histograma en una forma u otra. Aun así, debemos tener en cuenta que no hay relación directa entre la intensidad nueva que tienen los píxeles y la anterior. 
+Las imágenes con ruido también se pueden crear artificialmente. Para ello utilizamos una cierta función $H$ de degradación, a la que añadimos un ruido al que llamaremos $\eta$ de forma que obtendremos una nueva imagen $g(x,y)$ que tendrá una serie de imperfecciones. Todo el ruido creado de esta forma se aplicará directamente sobre los píxeles de la imagen lo que provocará cambios en su histograma en una forma u otra. Aun así, debemos tener en cuenta que no hay relación directa entre la intensidad nueva que tienen los píxeles y la anterior.
 
 Existen muchos tipos de ruido como el exponencial, el gamma, el uniforme, etc. pero en esta memoria se han utilizado, el gausiano y el de tipo impulsivo o de `sal y pimienta'.
 
@@ -77,6 +83,8 @@ $$p(z) = \frac{1}{\sqrt{1}{2\pi\sigma}} e^\frac{-(z-\mu)^2}{2\sigma^2}$$
 donde $z$ representa la intensidad, $\mu$ la media de $z$ y $\sigma$ la desviación estándar. Este tipo de ruido puede crearse en \MATLAB\ a través de la función \mintinline{matlab}{imnoise(img_var, `gaussian')} sabiendo que \mintinline{matlab}{img_var} es la variable donde está almacenada la imagen en tipo \mintinline{matlab}{uint8}.
 
 \subsubsection{Ruido de tipo `sal y pimienta'}
-Este tipo de ruido, formalmente llamado impulsivo, hace que se conviertan píxeles de forma aleatoria en píxeles con intensidad 0 y 255. Esta es la razón de su particular nombre. De nuevo, fijándonos en \MATLAB, podremos crear imágenes con este tipo de ruido por medio del comando \mintinline{matlab}{imnoise(img_var, salt & pepper', prob_val)}, de nuevo \mintinline{matlab}{img_var} es la variable donde se almacena la imagen y \mintinline{matlab}{prob_val} es un valor entre 0 y 1 que hace las veces de probabilidad de la aparición del ruido. 
+Este tipo de ruido, formalmente llamado impulsivo, hace que se conviertan píxeles de forma aleatoria en píxeles con intensidad 0 y 255. Esta es la razón de su particular nombre. De nuevo, fijándonos en \MATLAB, podremos crear imágenes con este tipo de ruido por medio del comando \mintinline{matlab}{imnoise(img_var, salt & pepper', prob_val)}, de nuevo \mintinline{matlab}{img_var} es la variable donde se almacena la imagen y \mintinline{matlab}{prob_val} es un valor entre 0 y 1 que hace las veces de probabilidad de la aparición del ruido.
 
 En este trabajo, se han utilizado imágenes con ruido para comprobar la adecuación o no de los algoritmos de segmentación al ruido. Ejemplos de ambos tipos de ruido se han presentado en la figura \ref{fig:defruido}.
+
+\end{document}

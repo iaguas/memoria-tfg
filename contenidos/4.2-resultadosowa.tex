@@ -1,3 +1,8 @@
+\documentclass[main]{subfiles}
+
+\begin{document}
+
+\section{Experimentos y resultados con funciones de agregación OWA}
 
 % EXPERIMENTO 4
 \subsection{Experimento 4: sustitución de la media aritmética por funciones OWA en la construcción de los conjuntos difusos en el algoritmo 1}
@@ -11,14 +16,14 @@ En este primer experimento se sustituirá la media aritmética en la creación d
 
 \subsubsection{Resultados}
 
-En las tablas \ref{tab:resultexp4dombi} y \ref{tab:resultexp4ruido} se muestran los resultados obtenidos para todas las imágenes que se toman como muestra. Se ha de destacar que este experimento, al igual que todos, se ha llevado a cabo con un conjunto de casi 30 imágenes de las que se presentan las de resultados más significativos. 
+En las tablas \ref{tab:resultexp4dombi} y \ref{tab:resultexp4ruido} se muestran los resultados obtenidos para todas las imágenes que se toman como muestra. Se ha de destacar que este experimento, al igual que todos, se ha llevado a cabo con un conjunto de casi 30 imágenes de las que se presentan las de resultados más significativos.
 
 Se puede observar claramente que los resultados obtenidos son extremadamente alejados de la realidad. Se crean únicamente umbrales que no permiten llevar a cabo ninguna segmentación de forma adecuada por lo que se omite la presentación de los resultados gráficos así como de los errores para este experimento.
 
 
 \begin{table}
 \centering
-\begin{tabular}{c||c|c|c} 
+\begin{tabular}{c||c|c|c}
 \multicolumn{4}{c}{}\\
 Silla                                &\bb Media&\bb OWA (1)&\bb OWA (2)\\\hline\hline
 \bb Alg. 1 con $\mathbf{REF_1=1-\abs{x-y}}$         &   127 &   50  &   50  \\\hline
@@ -63,7 +68,7 @@ Sombra                               &\bb Media&\bb OWA (1)&\bb OWA (2)\\\hline\
 
 \begin{table}
 \centering
-\begin{tabular}{c||c|c|c} 
+\begin{tabular}{c||c|c|c}
 \multicolumn{4}{c}{}\\
 R. gausiano                         &\bb Media&\bb OWA (1)&\bb OWA (2)\\\hline\hline
 \bb Alg. 1 con $\mathbf{REF_1=1-\abs{x-y}}$         &   131 &   50  &   0   \\\hline
@@ -104,7 +109,7 @@ Se puede observar que claramente los resultados obtenidos son extremadamente ale
 
 \begin{table}
 \centering
-\begin{tabular}{c||c|c|c} 
+\begin{tabular}{c||c|c|c}
 \multicolumn{4}{c}{}\\
 Silla                                &\bb Media&\bb OWA (1)&\bb OWA (2)\\\hline\hline
 \bb Alg. 2 con $\mathbf{\varphi_1=\varphi_2=x}$     &   119 &   50  &   50  \\\hline
@@ -142,7 +147,7 @@ Sombra                               &\bb Media&\bb OWA (1)&\bb OWA (2)\\\hline\
 
 \begin{table}
 \centering
-\begin{tabular}{c||c|c|c} 
+\begin{tabular}{c||c|c|c}
 \multicolumn{4}{c}{}\\
 R. gausiano                         &\bb Media&\bb OWA (1)&\bb OWA (2)\\\hline\hline
 \bb Alg. 2 con $\mathbf{\varphi_1=\varphi_2=x}$     &   132 &   56  &   0   \\\hline
@@ -170,7 +175,7 @@ R. impulsivo 0,2                     &\bb Media&\bb OWA (1)&\bb OWA (2)\\\hline\
 \subsection{Experimento 6: sustitución de la media aritmética por funciones OWA en la construcción de los conjuntos difusos para el algoritmo 1 con función penalti}
 
 \subsubsection{Explicación del experimento}
-En este caso, debido a que este algoritmo es una modificación del primero, se volverá a usar funciones OWA para la creación de los conjuntos difusos que representen las imágenes. 
+En este caso, debido a que este algoritmo es una modificación del primero, se volverá a usar funciones OWA para la creación de los conjuntos difusos que representen las imágenes.
 
 \subsubsection{Resultados}
 Es curioso observar como el resultado cambia de forma radical. En la tabla \ref{tab:resultexp6} se pueden observar los umbrales que se encuentran aplicados en las imágenes recogidas en la tabla \ref{tab:resultexp6imagenes}. En cualquier caso, este resultado tiene aún un problema, pues se gasta mucho tiempo de computación para, como mucho, igualar el resultado sino no empeorarlo como sucede con algún ejemplo.
@@ -178,7 +183,7 @@ Es curioso observar como el resultado cambia de forma radical. En la tabla \ref{
 
 \begin{table}
 \centering
-\begin{tabular}{c||c|c|c} 
+\begin{tabular}{c||c|c|c}
       &\bb Media&\bb OWA (1)&\bb OWA (2)\\\hline\hline
 \bb Silla     &   136   &   50  &   50  \\\hline
 \bb Bloques   &   82    &   12  &   10  \\\hline
@@ -219,7 +224,7 @@ Se presentan, también, los resultados de aplicar el experimento sobre imágenes
 
 \begin{table}
 \centering
-\begin{tabular}{c||c|c|c} 
+\begin{tabular}{c||c|c|c}
                          &\bb Media&\bb OWA (1)&\bb OWA (2)\\\hline\hline
 \bb R. gausiano         &   131 &   56  &   0   \\\hline
 \bb R. impulsivo 0,05   &   127 &   50  &   50  \\\hline
@@ -231,7 +236,7 @@ Se presentan, también, los resultados de aplicar el experimento sobre imágenes
 \begin{table}
 \centering
 %\resizebox*{3\textwidth}{!}{
-\begin{tabular}{c|c|c} 
+\begin{tabular}{c|c|c}
 \multicolumn{4}{c}{}\\
 \bb Media&\bb OWA (1)&\bb OWA (2)\\\hline\hline
 \includegraphics[width=0.15\textwidth]{img/res/e6/alg1agregadoowa1chairga.jpg} &
@@ -265,27 +270,27 @@ De nuevo se vuelve a observar que no se dan buenos resultados para aquellas opci
 \begin{tabular}{c||c|c|c}
 Silla                                &\bb Media&\bb OWA (1)&\bb OWA (2)\\\hline\hline
 \bb Alg. 3 (a)  &   119 &   50  &   50  \\\hline
-                            
+
 \bb Alg. 3 (b)  &   103 &   114 &   172 \\\hline
 \multicolumn{4}{c}{}\\
 Bloques                              &\bb Media&\bb OWA (1)&\bb OWA (2)\\\hline\hline
 \bb Alg. 3 (a)     &   47  &   13  &   4   \\\hline
-                            
+
 \bb Alg. 3 (b)     &   30  &   11  &   65  \\\hline
 \multicolumn{4}{c}{}\\
 Engranaje                            &\bb Media&\bb OWA (1)&\bb OWA (2)\\\hline\hline
 \bb Alg. 3 (a)  &   84  &   4   &   1   \\\hline
-                            
+
 \bb Alg. 3 (b)  &   147 &   89  &   193 \\\hline
 \multicolumn{4}{c}{}\\
 Letras                               &\bb Media&\bb OWA (1)&\bb OWA (2)\\\hline\hline
 \bb Alg. 3 (a)  &   200 &   255 &   236 \\\hline
-                            
+
 \bb Alg. 3 (b)  &   178 &   171 &   168 \\\hline
 \multicolumn{4}{c}{}\\
 Sombra                               &\bb Media&\bb OWA (1)&\bb OWA (2)\\\hline\hline
 \bb Alg. 3 (a)  &   121 &   255 &   85  \\\hline
-                            
+
 \bb Alg. 3 (b)  &   101 &   136 &   136 \\\hline
 \end{tabular}
 \caption{Umbrales para cada imagen con el algoritmo 3 a través la aplicación de OWA.\label{tab:resultexp7}}
@@ -294,54 +299,54 @@ Sombra                               &\bb Media&\bb OWA (1)&\bb OWA (2)\\\hline\
 \begin{table}
 \centering
 %\resizebox*{3\textwidth}{!}{
-\begin{tabular}{c||c|c|c} 
+\begin{tabular}{c||c|c|c}
 \multicolumn{4}{c}{}\\
 Silla                                &\bb Media&\bb OWA (1)&\bb OWA (2)\\\hline\hline
-\bb Alg. 3 (a)  &  
+\bb Alg. 3 (a)  &
 \includegraphics[width=0.12\textwidth]{img/res/e7/alg3aowa1chair.jpg} &
 \includegraphics[width=0.12\textwidth]{img/res/e7/alg3aowa2chair.jpg} &
 \includegraphics[width=0.12\textwidth]{img/res/e7/alg3aowa3chair.jpg} \\
-\bb Alg. 3 (b)  &   
+\bb Alg. 3 (b)  &
 \includegraphics[width=0.12\textwidth]{img/res/e7/alg3bowa1chair.jpg} &
 \includegraphics[width=0.12\textwidth]{img/res/e7/alg3bowa2chair.jpg} &
 \includegraphics[width=0.12\textwidth]{img/res/e7/alg3bowa3chair.jpg} \\\hline
 \multicolumn{4}{c}{}\\
 Bloques                              &\bb Media&\bb OWA (1)&\bb OWA (2)\\\hline\hline
-\bb Alg. 3 (a)  &  
+\bb Alg. 3 (a)  &
 \includegraphics[width=0.12\textwidth]{img/res/e7/alg3aowa1block.jpg} &
 \includegraphics[width=0.12\textwidth]{img/res/e7/alg3aowa2block.jpg} &
 \includegraphics[width=0.12\textwidth]{img/res/e7/alg3aowa3block.jpg} \\
-\bb Alg. 3 (b)  &   
+\bb Alg. 3 (b)  &
 \includegraphics[width=0.12\textwidth]{img/res/e7/alg3bowa1block.jpg} &
 \includegraphics[width=0.12\textwidth]{img/res/e7/alg3bowa2block.jpg} &
 \includegraphics[width=0.12\textwidth]{img/res/e7/alg3bowa3block.jpg} \\\hline
 \multicolumn{4}{c}{}\\
 Engranaje                            &\bb Media&\bb OWA (1)&\bb OWA (2)\\\hline\hline
-\bb Alg. 3 (a)  &  
+\bb Alg. 3 (a)  &
 \includegraphics[width=0.12\textwidth]{img/res/e7/alg3aowa102.jpg} &
 \includegraphics[width=0.12\textwidth]{img/res/e7/alg3aowa202.jpg} &
 \includegraphics[width=0.12\textwidth]{img/res/e7/alg3aowa302.jpg} \\
-\bb Alg. 3 (b)  &   
+\bb Alg. 3 (b)  &
 \includegraphics[width=0.12\textwidth]{img/res/e7/alg3bowa102.jpg} &
 \includegraphics[width=0.12\textwidth]{img/res/e7/alg3bowa202.jpg} &
 \includegraphics[width=0.12\textwidth]{img/res/e7/alg3bowa302.jpg} \\\hline
 \multicolumn{4}{c}{}\\
 Letras                               &\bb Media&\bb OWA (1)&\bb OWA (2)\\\hline\hline
-\bb Alg. 3 (a)  &  
+\bb Alg. 3 (a)  &
 \includegraphics[width=0.12\textwidth]{img/res/e7/alg3aowa109.jpg} &
 \includegraphics[width=0.12\textwidth]{img/res/e7/alg3aowa209.jpg} &
 \includegraphics[width=0.12\textwidth]{img/res/e7/alg3aowa309.jpg} \\
-\bb Alg. 3 (b)  &   
+\bb Alg. 3 (b)  &
 \includegraphics[width=0.12\textwidth]{img/res/e7/alg3bowa109.jpg} &
 \includegraphics[width=0.12\textwidth]{img/res/e7/alg3bowa209.jpg} &
 \includegraphics[width=0.12\textwidth]{img/res/e7/alg3bowa309.jpg} \\\hline
 \multicolumn{4}{c}{}\\
 Sombra                               &\bb Media&\bb OWA (1)&\bb OWA (2)\\\hline\hline
-\bb Alg. 3 (a)  &  
+\bb Alg. 3 (a)  &
 \includegraphics[width=0.12\textwidth]{img/res/e7/alg3aowa107.jpg} &
 \includegraphics[width=0.12\textwidth]{img/res/e7/alg3aowa207.jpg} &
 \includegraphics[width=0.12\textwidth]{img/res/e7/alg3aowa307.jpg} \\
-\bb Alg. 3 (b)  &   
+\bb Alg. 3 (b)  &
 \includegraphics[width=0.12\textwidth]{img/res/e7/alg3bowa107.jpg} &
 \includegraphics[width=0.12\textwidth]{img/res/e7/alg3bowa207.jpg} &
 \includegraphics[width=0.12\textwidth]{img/res/e7/alg3bowa307.jpg} \\\hline
@@ -356,17 +361,17 @@ En el caso de las imágenes con ruido, la tendencia es exactamente la misma. Com
 \begin{tabular}{c||c|c|c}
 R. gausiano                         &\bb Media&\bb OWA (1)&\bb OWA (2)\\\hline\hline
 \bb Alg. 3 (a)  &   132 &   56  &   0   \\\hline
-                            
+
 \bb Alg. 3 (b)  &   99  &   154 &   159 \\\hline
 \multicolumn{4}{c}{}\\
 R. impulsivo 0,05                    &\bb Media&\bb OWA (1)&\bb OWA (2)\\\hline\hline
 \bb Alg. 3 (a)  &   144 &   50  &   50  \\\hline
-                            
+
 \bb Alg. 3 (b)  &   111 &   122 &   172 \\\hline
 \multicolumn{4}{c}{}\\
 R. impulsivo 0,2                     &\bb Media&\bb OWA (1)&\bb OWA (2)\\\hline\hline
 \bb Alg. 3 (a)     &   152 &   50  &   0   \\\hline
-                            
+
 \bb Alg. 3 (b)     &   127 &   131 &   172 \\\hline
 \end{tabular}
 \caption{Umbrales para cada imagen con el algoritmo 3 a través la aplicación de OWA en imágenes con ruido.\label{tab:resultexp7ruido}}
@@ -374,34 +379,34 @@ R. impulsivo 0,2                     &\bb Media&\bb OWA (1)&\bb OWA (2)\\\hline\
 
 \begin{table}
 \centering
-\begin{tabular}{c||c|c|c} 
+\begin{tabular}{c||c|c|c}
 \multicolumn{4}{c}{}\\
 R. gausiano                                 &\bb Media&\bb OWA (1)&\bb OWA (2)\\\hline\hline
-\bb Alg. 3 (a)  &  
+\bb Alg. 3 (a)  &
 \includegraphics[width=0.12\textwidth]{img/res/e7/alg3aowa1chairga.jpg} &
 \includegraphics[width=0.12\textwidth]{img/res/e7/alg3aowa2chairga.jpg} &
 \includegraphics[width=0.12\textwidth]{img/res/e7/alg3aowa3chairga.jpg} \\
-\bb Alg. 3 (b)  &   
+\bb Alg. 3 (b)  &
 \includegraphics[width=0.12\textwidth]{img/res/e7/alg3bowa1chairga.jpg} &
 \includegraphics[width=0.12\textwidth]{img/res/e7/alg3bowa2chairga.jpg} &
 \includegraphics[width=0.12\textwidth]{img/res/e7/alg3bowa3chairga.jpg} \\\hline
 \multicolumn{4}{c}{}\\
-R. impulsivo 0,05                             &\bb Media&\bb OWA (1)&\bb OWA (2)\\\hline\hline 
-\bb Alg. 3 (a)  &  
+R. impulsivo 0,05                             &\bb Media&\bb OWA (1)&\bb OWA (2)\\\hline\hline
+\bb Alg. 3 (a)  &
 \includegraphics[width=0.12\textwidth]{img/res/e7/alg3aowa1chairsp005.jpg} &
 \includegraphics[width=0.12\textwidth]{img/res/e7/alg3aowa2chairsp005.jpg} &
 \includegraphics[width=0.12\textwidth]{img/res/e7/alg3aowa3chairsp005.jpg} \\
-\bb Alg. 3 (b)  &   
+\bb Alg. 3 (b)  &
 \includegraphics[width=0.12\textwidth]{img/res/e7/alg3bowa1chairsp005.jpg} &
 \includegraphics[width=0.12\textwidth]{img/res/e7/alg3bowa2chairsp005.jpg} &
 \includegraphics[width=0.12\textwidth]{img/res/e7/alg3bowa3chairsp005.jpg} \\\hline
 \multicolumn{4}{c}{}\\
 R. impulsivo 0,2                        &\bb Media&\bb OWA (1)&\bb OWA (2)\\\hline\hline
-\bb Alg. 3 (a)  &  
+\bb Alg. 3 (a)  &
 \includegraphics[width=0.12\textwidth]{img/res/e7/alg3aowa1chairsp020.jpg} &
 \includegraphics[width=0.12\textwidth]{img/res/e7/alg3aowa2chairsp020.jpg} &
 \includegraphics[width=0.12\textwidth]{img/res/e7/alg3aowa3chairsp020.jpg} \\
-\bb Alg. 3 (b)  &   
+\bb Alg. 3 (b)  &
 \includegraphics[width=0.12\textwidth]{img/res/e7/alg3bowa1chairsp020.jpg} &
 \includegraphics[width=0.12\textwidth]{img/res/e7/alg3bowa2chairsp020.jpg} &
 \includegraphics[width=0.12\textwidth]{img/res/e7/alg3bowa3chairsp020.jpg} \\\hline
@@ -409,3 +414,4 @@ R. impulsivo 0,2                        &\bb Media&\bb OWA (1)&\bb OWA (2)\\\hli
 \caption{Resultados gráficos para el algoritmo 3 con la aplicación de OWA en imágenes con ruido.\label{tab:resultexp7imagenesruido}}
 \end{table}
 
+\end{document}

@@ -1,8 +1,11 @@
+\documentclass[main]{subfiles}
+
+\begin{document}
 
 % ALGORITMO 1 GENERAL
 \subsection{Algoritmo general maximizando la similitud}
 
-Este algoritmo, que se presenta en \cite{art:barrenechea}, pretende conseguir obtener un único umbral a partir de la maximización de la similitud. 
+Este algoritmo, que se presenta en \cite{art:barrenechea}, pretende conseguir obtener un único umbral a partir de la maximización de la similitud.
 
 \begin{algorithm}
 \begin{algorithmic}[1]
@@ -29,7 +32,7 @@ $$m_o(t)=\frac{\sum_{q=t+1}^{L-1}qh(q)}{\sum_{q=t+1}^{L-1}h(q)}.$$
 
 \begin{definition}\label{def:conjuntodifusomonoumbral}
 Dada $Q$, una imagen en la escala de L niveles de gris, y $t$, un nivel de gris de forma que $0\leq t\leq L-1$. Teniendo en cuenta que $F$ es una función $REF$ ya que la $REF \circ \varphi$ lo es, se define el conjunto
-$$Q_t = \{(q, \mu_{Q_t}(q)|q\in \{0,1,\dots, L-1\}\}$$ 
+$$Q_t = \{(q, \mu_{Q_t}(q)|q\in \{0,1,\dots, L-1\}\}$$
 teniendo en cuenta que
 $$\mu_{Q_t}(q) = \left\{ \begin{aligned}
     F \left(\frac{q}{L-1}, \frac{m_b(t)}{L-1} \right) = \varphi\left(REF\left(\frac{q}{L-1}, \frac{m_b(t)}{L-1} \right)\right) & \quad\text{si}\ q\leq t,\\
@@ -88,17 +91,17 @@ $$SM(\tilda1, Q_{t_1})\leq SM(\tilda1, Q_{t_1})\quad \text{si y sólo si}\quad A
 \end{proposition}
 \begin{proof}
 Sabiendo que $REF(1,x)=x, \xinunitinterval$, entonces:
-$$SM(\tilda1, Q_{t_1}) 
-= \frac{1}{\sum_{q=0}^{L-1}h(q)}\sum_{q=0}^{L-1}\left( h(q)REF_2(1, \mu_{Q_{t_1}}(q))\right) 
+$$SM(\tilda1, Q_{t_1})
+= \frac{1}{\sum_{q=0}^{L-1}h(q)}\sum_{q=0}^{L-1}\left( h(q)REF_2(1, \mu_{Q_{t_1}}(q))\right)
 = \frac{1}{\sum_{q=0}^{L-1}h(q)}\sum_{q=0}^{L-1}\left( h(q)\mu_{Q_{t_1}}(q)\right)
 = \frac{A(Q_{t_1})}{\sum_{q=0}^{L-1}h(q)}.$$
 Por esta razón, también se podrá decir que $SM(\tilda1, Q_{t_2}) = \frac{A(Q_{t_2})}{\sum_{q=0}^{L-1}h(q)}$ lo que prueba la proposición anterior.
 \end{proof}
 
-En este algoritmo, se utilizan 3 pares de automorfismos para darle forma al área. 
+En este algoritmo, se utilizan 3 pares de automorfismos para darle forma al área.
 
 %\begin{table}[h!]\begin{center}
-%\resizebox*{14cm}{!}{\begin{tabular}{c||c|c||c} 
+%\resizebox*{14cm}{!}{\begin{tabular}{c||c|c||c}
 %&$\varphi_1$ & $\varphi_2$ & $A(Q_t)$\\\hline\hline
 %(1)&$x$ & $x$ & $\sum_{q=0}^{L-1} h(q) - \left(\sum_{q=0}^{t} \left(1-\abs{\frac{q}{L-1}-\frac{m_b(t)}{L-1}}\right) - \sum_{q=t+1}^{L-1} \left(1-\abs{\frac{q}{L-1}-\frac{m_o(t)}{L-1}}\right)\right)$ \\\hline
 %(2)&$x^d$ & $x$ & $\sum_{q=0}^{t} h(q) \left(1-\abs{\frac{q}{L-1}-\frac{m_b(t)}{L-1}}\right) - \sum_{q=t+1}^{L-1} h(q) \left(1-\abs{(\frac{q}{L-1}-\frac{m_o(t)}{L-1}}\right)$ \\\hline
@@ -124,7 +127,7 @@ En total, se dispondrá de 4 versiones diferentes. Se debe tener en cuenta que e
 
 \begin{definition}\label{def:conjuntoHmonoumbral}
 Dada $Q$, una imagen en la escala de L niveles de gris, y $t$, un nivel de gris de forma que $0\leq t\leq L-1$, se calcula su conjunto $H(Q_t)$ como
-$$H(Q_t) = \{(q, \mu_{H(Q_t)}(q)|q\in \{0,1,\dots, L-1\}\}$$ 
+$$H(Q_t) = \{(q, \mu_{H(Q_t)}(q)|q\in \{0,1,\dots, L-1\}\}$$
 teniendo en cuenta que
 $$\mu_{Q_t}(q) = \left\{ \begin{aligned}
     \frac{m_b(t)}{L-1} & \quad\text{si}\ q\leq t,\\
@@ -163,7 +166,7 @@ Entre los algoritmos que se encargan de segmentar la imagen con un único umbral
 \begin{algorithmic}[1]
 \REQUIRE Una imagen $Q$ en escala de grises donde sus píxeles estén entre $0$ y $L-1$.
 \ENSURE El umbral óptimo $t$ a partir del cual se divide $Q$ en objeto y fondo.
-\STATE $t = 128$; 
+\STATE $t = 128$;
 \COMMENT{Se selecciona un umbral inicial cualquiera, aquí se tomará el valor medio de los posibles}
 \REPEAT
 \STATE $tant = t$;
@@ -202,9 +205,9 @@ Por último, se puede definir
 $$\mu_T = \mu(L-1) = \sum_{i=0}^{L-1} ip_i$$
 y todas estas definiciones podemos asegurar que cumplirán que
 $$\omega_0\mu_0+\omega_1\mu_1 = \mu_T   \qquad\text{y}\qquad   \omega_0+\omega_1 = 1$$
-Con la intención de evaluar lo adecuado o no que es cada umbral $t$, podemos definir la varianza de cada uno como 
+Con la intención de evaluar lo adecuado o no que es cada umbral $t$, podemos definir la varianza de cada uno como
 $$\sigma_B^2(t) = \omega_0(\mu_0-\mu_T)^2 + \omega_1(\mu_1-\mu_T)^2 = \omega_0\omega_1(\mu_1-\mu_0)^2$$
-Con todo ello, para encontrar el umbral óptimo $t^*$ sólo deberemos encontrar aquella varianza que maximice a las demás. 
+Con todo ello, para encontrar el umbral óptimo $t^*$ sólo deberemos encontrar aquella varianza que maximice a las demás.
 $$\sigma_B^2(t^*) = \max_{1\leq k <L}\left\{\sigma_B^2(t)\right\}$$
 
 Al resumir todo lo anterior en lenguaje algorítmico se encuentra:
@@ -245,7 +248,7 @@ donde con ambas probabilidades se cumple que $p(C_0)+p(C_1)=1$.
 %$$C_1:\frac{p_0}{p(C_1)},\frac{p_1}{p(C_1)},\dots,\frac{p_t}{p(C_1)}$$
 %$$H_{T}^{\alpha}(t) = \frac{1}{1-\alpha}\ln \sum_{i=0}^{L-1}\left(p_i\right)^\alpha \quad\text{con }\alpha\neq 1$$
 A continuación se define la entropía para ambas clases sabiendo que $\alpha\neq 1$.
-$$H_{C_0}^{\alpha}(t) = \frac{1}{1-\alpha}\ln \sum_{i=0}^{t}\left(\frac{p_i}{p(C_0)}\right)^\alpha \qquad\text{y}\qquad 
+$$H_{C_0}^{\alpha}(t) = \frac{1}{1-\alpha}\ln \sum_{i=0}^{t}\left(\frac{p_i}{p(C_0)}\right)^\alpha \qquad\text{y}\qquad
 H_{C_1}^{\alpha}(t) = \frac{1}{1-\alpha}\ln \sum_{i=t}^{L-1}\left(\frac{p_i}{p(C_1)}\right)^\alpha$$
 
 Llegado este punto, se puede encontrar el umbral óptimo $t^*(\alpha)$ aquel que maximice la suma de las entropías de las clases:
@@ -258,7 +261,7 @@ $$t^*(\alpha)=\left\{\begin{aligned}
     t^*_3 & \text{  si  }1<\alpha<\infty.
 \end{aligned}\right.$$
 
-Por esta razón, se hace necesario emcontrar un umbral $t$ que no sea dependiente de $\alpha$. Para ello se deben calcular un umbral para cada una de las 3 situaciones enumeradas y ordenarlos de mayor a menor, algo que simbolizaremos como $\tonee\leq\ttwo\leq\tthree$. De estas forma, definiremos el umbral óptimo de la imagen como 
+Por esta razón, se hace necesario emcontrar un umbral $t$ que no sea dependiente de $\alpha$. Para ello se deben calcular un umbral para cada una de las 3 situaciones enumeradas y ordenarlos de mayor a menor, algo que simbolizaremos como $\tonee\leq\ttwo\leq\tthree$. De estas forma, definiremos el umbral óptimo de la imagen como
 $$t^*_c = t_{(1)} \left(p(t_{(1)})+\frac{1}{4}\omega\beta_1\right)
         + \frac{1}{4}t_{(2)}\omega\beta_2
         + t_{(3)} \left(1-p(t_{(3)})+\frac{1}{4}\omega\beta_3\right)$$
@@ -267,10 +270,10 @@ $$(\beta_1, \beta_2, \beta_3) =  \left\{\begin{aligned}
     (1, 2, 1) & \quad\text{si} &\abs{\tonee-\ttwo}\leq 5 \text{ y } \abs{\ttwo-\tthree}\leq 5,\\
     (1, 2, 1) & \quad\text{si} &\abs{\tonee-\ttwo}  >  5 \text{ y } \abs{\ttwo-\tthree}  >  5,\\
     (0, 1, 3) & \quad\text{si} &\abs{\tonee-\ttwo}\leq 5 \text{ y } \abs{\ttwo-\tthree}  >  5,\\
-    (3, 1, 0) & \quad\text{si} &\abs{\tonee-\ttwo}  >  5 \text{ y } \abs{\ttwo-\tthree}\leq 5,   
+    (3, 1, 0) & \quad\text{si} &\abs{\tonee-\ttwo}  >  5 \text{ y } \abs{\ttwo-\tthree}\leq 5,
 \end{aligned}\right.$$
 
-En definitiva, el umbral $t^*_c$ puede verse como una media ponderada de los valores de $t_1^*, t^*_2, t^*_3$ por lo que se puede afirmar 
+En definitiva, el umbral $t^*_c$ puede verse como una media ponderada de los valores de $t_1^*, t^*_2, t^*_3$ por lo que se puede afirmar
 $$\min\{t_1^*, t^*_2, t^*_3 \}\leq t_c^* \leq\max\{t_1^*, t^*_2, t^*_3\} = \tonee \leq t_c^* \leq \tthree$$
 esta agregación consigue evitar los malos resultados que podrían darse si no se utilizara un parámetro $\alpha$ correcto al igual que integra todas las características de la imagen.
 
@@ -316,15 +319,15 @@ Lo primero que se debe destacar del algoritmo de {\em K-means} es que, a diferen
 
 Para poder obtener cada una de las regiones, deberemos encontrar los píxeles $(x,y)$ que pertenecen a cada una. Este se consigue con la minimización de la función de coste que dados los centros $\mu_1, \dots,\mu_n$ se define como
 $$J=\sum_{i=1}^{N\cdot M}\abs{\abs{q(x,y)_i-\mu_{c_i}}}^2.$$
-En vista de lo anteior, se definirá la pertenencia de un pixel a un centro $c_k$ como 
+En vista de lo anteior, se definirá la pertenencia de un pixel a un centro $c_k$ como
 $$\min_{k=1,\dots,K} \abs{\abs{q(x,y)-\mu(k)}}^2.$$
 
-Para poder actualizar los centros deberemos hacer la minimización de la función de coste que, evidentemente, se obtendrá en aquel lugar donde la derivada se haga 0. 
+Para poder actualizar los centros deberemos hacer la minimización de la función de coste que, evidentemente, se obtendrá en aquel lugar donde la derivada se haga 0.
 $$\frac{d}{d \mu_k} = \sum_{i\in cluster_k} \abs{\abs{q(x,y)_i-\mu_k}}^2 = -2\sum_{i\in cluster_k}(q(x,y)-\mu_k=0$$
-por lo que, cada uno de los centros se encontrará como 
+por lo que, cada uno de los centros se encontrará como
 $$\mu_k = \frac{1}{\abs{cluster_k}}\sum_{i\in cluster_k}q(x,y)_i$$
 
-Se debe tener en cuenta que al obtener una región tenemos que buscar un método para poder representarla y operar con ella. Debido a la gran cantidad de datos que dispondríamos de cada una se estima que la mejor forma de identificarla es con su centro $\mu_R$. 
+Se debe tener en cuenta que al obtener una región tenemos que buscar un método para poder representarla y operar con ella. Debido a la gran cantidad de datos que dispondríamos de cada una se estima que la mejor forma de identificarla es con su centro $\mu_R$.
 
 Como se podrá observar, para el cálculo de los centros se necesita conocer la pertenencia de cada uno de los píxeles y para obtener la pertenencia es necesario disponer de los centros. Esta paradoja hace que nos sea imposible comenzar el proceso si no es asignando unos primeros datos al azar y esperando a que el algoritmo converja conforme el número de iteraciones crezca.
 
@@ -339,7 +342,7 @@ Por último, debemos señalar que para que el bucle tenga una condición de para
 \STATE $\mu$ = aleatorios(K);
 \STATE J = 0;
 \COMMENT {Coste}
-\REPEAT 
+\REPEAT
     \STATE Jant = J;
     \FOR {$i=1$ hasta N}
         \FOR {$j=1$ hasta M}
@@ -348,7 +351,7 @@ Por último, debemos señalar que para que el bucle tenga una condición de para
     \ENDFOR
     \FOR {$k=1$ hasta K}
         \STATE $\mu(j) = \frac{1}{\abs{cluster_k}}\sum_{i\in cluster_k}q(x,y)_i$
-    \ENDFOR 
+    \ENDFOR
 \UNTIL {J $\neq$ Jant}
 
 \FOR {$j:=1$ hasta $K$}
@@ -364,7 +367,7 @@ Por último, debemos señalar que para que el bucle tenga una condición de para
 %$$J = \sum_{i=0}^N \sum_{j=0^M} \abs{\abs{q(i,j) - \mu_{c_i}}}^2$$
 %
 %$$c_{i,j} =\min_{j=1,\dots,K} \abs{\abs{q(i,j)-\mu(j)}}^2$$
-% 
+%
 %$$\frac{d}{d \mu_j} = \sum_{i\in cluster_j} \abs{\abs{q(i,j)-\mu(j)}}^2 = -2\sum_{i\in cluster_j}(q(i,j)-\mu(j))=0$$
 %$$\mu(j) = \frac{1}{\abs{cluster_j}} \sum_{i\in cluster_j}q_i$$
 
@@ -385,3 +388,4 @@ Por último, debemos señalar que para que el bucle tenga una condición de para
 %$$w_i=Q\left(\frac{i}{t+1}\right) - Q\left(\frac{i-1}{t+1}\right)
 %\text{ donde }\sum w_i=1$$
 
+\end{document}

@@ -1,15 +1,10 @@
-% main file
-\documentclass[spanish]{style/pfc}
-\errorcontextlines 10000
+\documentclass{style/pfc}
+
+%\errorcontextlines 10000
+
 \usepackage{subfiles}
-\usepackage{subfig} 
-\usepackage{pdfpages}
-\usepackage{amsthm}
-\usepackage{multirow}
-
-\usepackage[none]{hyphenat}
-
 %\usepackage{style/pfclistings}
+
 % Paquete para la escritura de algoritmos.
 % http://www.rosapolis.net/2008/04/21/escribir-algoritmos-en-latex/
 \usepackage{algorithm}
@@ -36,10 +31,6 @@
 \theoremstyle{remark}
 \newtheorem{remark}[theorem]{Observación}
 
-%\input{template/my-packages}
-
-%\newcommand{\espezialitatea}{Ingeniería de Computadores}
-
 % Cosas para la parte matemática
 \def\unmedio{\frac{1}{2}}
 \def\tonee{t_{(1)}}
@@ -56,20 +47,13 @@
 \def\tilda1{\tilde{1}}
 
 \newcommand{\abs}[1]{\left\vert#1\right\vert}
-%\newcommand{\unitspace}[1][1]{
-\newcommand{\unitspace}{
-%	\ifnum#1==1
-		\unitinterval \rightarrow \unitinterval
-%	\else
-%		\unitinterval^#1 \rightarrow \unitinterval
-%	\fi}
-}
+\newcommand{\unitspace}{\unitinterval \rightarrow \unitinterval}
 %\DeclareMathOperator{\Pr}{Pr}
 %\DeclareMathOperator{\ln}{ln}
 %\DeclareMathOperator{\max}{max}
 %\DeclareMathOperator{\min}{min}
 
-\hyphenation{}
+%\hyphenation{}
 
 
 \addtokomafont{dedication}{\normalsize}
@@ -82,19 +66,20 @@
 \renewcommand{\labelenumi}{(\arabic{enumi})}
 
 \addbibresource{bibliografia.bib}
+\DeclareBibliographyAlias{url}{online}
 
 \begin{document}
 
-\sloppy % Para justificar todo bien cuando quitas los guiones. Va unido con un paquete de arriba.
+%\sloppy % Para justificar todo bien cuando quitas los guiones. Va unido con un paquete de arriba.
 \renewcommand{\listtablename}{Índice de tablas}
 \renewcommand{\tablename}{Tabla}
 \renewcommand\appendixname{Anexo}
+
 %\frontmatter
-\includepdf{graficos/portadaTipografia.pdf}
+	\includepdf{graficos/portadaTipografia.pdf}
 
 % \maketitle
-% \input{template/cover}
-\cleardoublepage
+	%\cleardoublepage
 
 \pagenumbering{Roman}
 \setcounter{page}{1}
@@ -103,29 +88,24 @@
 %Sólo podemos ver poco del futuro, pero lo suficiente para darnos cuenta de que hay mucho que hacer
 %\chapter*{}
 %\begin{flushright}\em\Large \\[5cm]``Las máquinas me sorprenden\\ con mucha frecuencia.''\\[1cm]\textsc{Alan M. Turing} \end{flushright}
-\includepdf{graficos/frasecelebre.pdf}
-\cleardoublepage
+%\includepdf{graficos/frasecelebre.pdf}
+%\cleardoublepage
 %\dedication
 \maketitle
 
 
 \addcontentsline{toc}{chapter}{Abstract}
 \subfile{contenidos/0-abstract-en}
-
 \cleardoublepage
+
 \addcontentsline{toc}{chapter}{Resumen}
 \subfile{contenidos/0-abstract-es}
-
 \cleardoublepage
 
-% Remove parskip for toc
-% \setlength{\parskip}{0ex plus 0.5ex minus 0.2ex}
 \setcounter{tocdepth}{2}	% Titles level degree at table of contents
-\addcontentsline{toc}{chapter}{Índice general}
 \tableofcontents			% Show a table of contents
+\addcontentsline{toc}{chapter}{Índice general}
 \cleardoublepage
-
-%\newpage
 \listoffigures
 \addcontentsline{toc}{chapter}{Índice de figuras}
 \cleardoublepage
@@ -138,56 +118,44 @@
 \listoflistings
 \addcontentsline{toc}{chapter}{Índice de extractos de c\'odigo}
 \cleardoublepage
-%\newpage
-%\listoftables
-
-% Change to a more spaced text-style
-%\setlength{\parskip}{1.3ex plus 0.2ex minus 0.2ex}
-%\renewcommand{\baselinestretch}{1.3}
-
-	%\fancyhf{}
-	%\fancyhf[OLH]{\rightmark}
-	%\fancyhf[ERH]{\leftmark}
-	%\fancyhf[ORH,ELH]{\thepage}
 
 %\mainmatter
 \pagenumbering{arabic}
 \setcounter{page}{1}
-\input{contenidos/1-intro}
-\input{contenidos/2-preliminares}
-\input{contenidos/3-segmentaciondombi}
-\input{contenidos/4-multiumbral}
-\input{contenidos/5-conclusiones}
+\input{contenidos/1-intro} % sin problemas
+%\input{contenidos/2-preliminares}
+
+\chapter{basura0}\label{basicos}
+fsfsdfsdfsdf
+%\chapter{basura1}\label{cap:conclusiones}
+fsfsdfsdfsdf
+%\chapter{basura2}\label{monoumbral}
+fsdfswefsdfsd
+
+
+	\input{contenidos/3-segmentaciondombi} % sin problemas
+	%\input{contenidos/4-multiumbral}
+	\input{contenidos/5-conclusiones} % sin problemas
 
 %\noappendicestocpagenum
 %\appendixpage
 %\addappheadtotoc
-\appendix
+	%\appendix
 % Adjustments headers
 %\pagestyle{fancy}
 %\fancyhead[LO]{\leftmark}
-%\ifdefined\euskaraz
-%	\fancyhead[RE]{\emph{\thechapter eranskina}}
-%\else
-%	\fancyhead[RE]{\emph{Anexo \thechapter}}
-%\fi
+
 %\renewcommand{\headrulewidth}{0.5pt}
 
-\input{contenidos/A-appendix}
-\input{contenidos/B-otrassegmentaciones}
+	%\input{contenidos/A-appendix}
+	%\input{contenidos/B-otrassegmentaciones}
 
 %\backmatter
 
 %\bibliographystyle{ieeetr} % Use the "unsrtnat" BibTeX style for formatting the Bibliography
 %\bibliographystyle{babamspl}
 %\bibliography{bibliografia}
-\nocite{*}
-\printbibliography[heading=bibintoc]
-%\bibliography{bibliografia}{} % The references (bibliography) information are stored in the file named "Bibliography.bib"
-
-% In case we are using a glossary
-% \glstoctrue
-% \glsaddall
-% \printglossaries
+	\nocite{*}
+	\printbibliography[heading=bibintoc]
 
 \end{document}

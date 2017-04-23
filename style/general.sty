@@ -14,12 +14,12 @@
 \ProcessOptions\relax
 
 % Basic LaTeX packages
-\RequirePackage{fixltx2e}
+                %\RequirePackage{fixltx2e}
 
 % Basic packages for XeTeX
+\RequirePackage{fontspec}
 \RequirePackage{xltxtra}
-%\RequirePackage{fontspec}
-%\RequirePackage{xunicode}
+\RequirePackage{xunicode}
 
 \defaultfontfeatures{Ligatures=TeX}
 
@@ -33,12 +33,13 @@
 \RequirePackage{polyglossia}
 \setdefaultlanguage{spanish}
 \setotherlanguage[variant=uk]{english}
-\setotherlanguage{basque}
 
 % Bibliography
-\RequirePackage[backend=biber,hyperref=true,backref=true,style=numeric-comp]{biblatex}
 \RequirePackage{xpatch}
+\RequirePackage{fvextra}
 \RequirePackage[autostyle=true,spanish=spanish]{csquotes}
+\RequirePackage[backend=biber,hyperref=true,backref=true,style=numeric-comp,sorting=none]{biblatex}
+%\RequirePackage[backend=biber,hyperref=true,backref=true,style=numeric-comp,sorting=none]{biblatex}
 
 % KOMA Script hacks
 %\AtBeginDocument{\RequirePackage{scrhack}}
@@ -55,16 +56,23 @@
 %\RequirePackage{subfig}
 \RequirePackage{url}
 \RequirePackage{subfigure}
+\RequirePackage{pdfpages}
 
 % Math
-\RequirePackage{unicode-math}
 \RequirePackage{amsmath}
+\RequirePackage{amsthm}
+\RequirePackage{unicode-math}
 \setmathfont[Scale=MatchLowercase]{Asana Math}
 %\RequirePackage[all,warning]{onlyamsmath}
 
 % Graphics
 \RequirePackage{graphicx}
 \DeclareGraphicsExtensions{.pdf,.png,.jpg,.mps,.bmp}
+
+% Paquete para la escritura de algoritmos.
+% http://www.rosapolis.net/2008/04/21/escribir-algoritmos-en-latex/
+%\RequierePackage{algorithm}
+%\RequierePackage{algorithmic}
 
 % Other stuff
 %\RequirePackage[gen,right]{eurosym}
@@ -112,7 +120,7 @@
 \RequirePackage[hypcap]{caption}
 
 % Glossaries
-\RequirePackage[xindy,toc,translate=babel]{glossaries}
+%\RequirePackage[xindy,toc,translate=babel]{glossaries}
 %\RequirePackage[xindy]{imakeidx}
 
 \RequirePackage{appendix}

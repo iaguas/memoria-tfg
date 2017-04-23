@@ -1,14 +1,18 @@
+\documentclass[main]{subfiles}
+
+\begin{document}
+
 % EXPERIMENTO 1
 \subsection{Experimento 1: sustitución de la función REF por la función de Dombi en el algoritmo de maximización de la similitud}
 \subsubsection{Explicación del experimento}
-En este primer experimento pretendemos conocer cómo se pueden adaptar las funciones de Dombi que hemos descrito en \ref{def:dombi} para la sustitución de las funciones REF en la creación de los conjuntos difusos. Se han llevado a cabo experimentos con casi 30 imágenes. Entre todos estos experimentos, a continuación se presentan los más reelevantes. Para ello, se tomarán las imágenes que se muestran en la figura \ref{fig:imagenes}. Se muestran junto con sus histogramas así como las imágenes ya umbralizadas por parte de un experto (si existen). 
+En este primer experimento pretendemos conocer cómo se pueden adaptar las funciones de Dombi que hemos descrito en \ref{def:dombi} para la sustitución de las funciones REF en la creación de los conjuntos difusos. Se han llevado a cabo experimentos con casi 30 imágenes. Entre todos estos experimentos, a continuación se presentan los más reelevantes. Para ello, se tomarán las imágenes que se muestran en la figura \ref{fig:imagenes}. Se muestran junto con sus histogramas así como las imágenes ya umbralizadas por parte de un experto (si existen).
 
-En primer lugar, se procesarán las imágenes tomando el parámetro $w=1$ tanto para $x$ como para $y$. Después, y a la vista de unos resultados variables, se toma la determinación de ampliar el rango de pesos por lo que se prepara una prueba para los valores 0,1; 0,5; 0,75; 1; 1,25; 1,5; 2 y 5. Por último, para poder conocer la efectividad de todos estos resultados, son comparados contra el algoritmo de maximización de la similitud original tomando como equivalencia restringida todas las funciones que se han enumerado anteriormente en \ref{obs:funcionesref}, dándole especial importancia a la \mbox{$REF(x,y)=1-\abs{x-y}$} así como con todos los demás algoritmos explicados en el apartado \ref{sec:otrosalgoritmos} de la sección anterior. 
+En primer lugar, se procesarán las imágenes tomando el parámetro $w=1$ tanto para $x$ como para $y$. Después, y a la vista de unos resultados variables, se toma la determinación de ampliar el rango de pesos por lo que se prepara una prueba para los valores 0,1; 0,5; 0,75; 1; 1,25; 1,5; 2 y 5. Por último, para poder conocer la efectividad de todos estos resultados, son comparados contra el algoritmo de maximización de la similitud original tomando como equivalencia restringida todas las funciones que se han enumerado anteriormente en \ref{obs:funcionesref}, dándole especial importancia a la \mbox{$REF(x,y)=1-\abs{x-y}$} así como con todos los demás algoritmos explicados en el apartado \ref{sec:otrosalgoritmos} de la sección anterior.
 
 Para poder conocer de forma empírica la diferencia entre dos imagenes segmentadas, se calcula para todas ellas el error cuadrático medio. Se puede expresar el error como
 $$ECM(Q, Q') = \frac{\sum_{x=1}^N\sum_{y=1}^M \left(q(x,y)-q'(x,y)\right)^2}{N\cdot M}.$$
 
-Para poder conocer cómo actua el algoritmo frente al ruido, se han preparado imágenes con ruido gausiano con media $\mu=0$ y varianza $\sigma^2 = 0,01$. También, se han preparado con ruido impulsivo, de `de sal y pimienta' con densidad de probabilidad del ruido $d=0,05$ y $d=0,2$. Se presentan las imágenes ya tratadas en la figura \ref{fig:imagenesruido}. Por otra parte, se prueba a ver cómo resiste el algoritmo con imágenes de bajo y alto contraste. 
+Para poder conocer cómo actua el algoritmo frente al ruido, se han preparado imágenes con ruido gausiano con media $\mu=0$ y varianza $\sigma^2 = 0,01$. También, se han preparado con ruido impulsivo, de `de sal y pimienta' con densidad de probabilidad del ruido $d=0,05$ y $d=0,2$. Se presentan las imágenes ya tratadas en la figura \ref{fig:imagenesruido}. Por otra parte, se prueba a ver cómo resiste el algoritmo con imágenes de bajo y alto contraste.
 
 \begin{figure}
 \centering
@@ -16,7 +20,7 @@ Para poder conocer cómo actua el algoritmo frente al ruido, se han preparado im
     {\includegraphics[width=0.22\textwidth]{img/orig/chair.jpg}}\quad
     \subfigure[Histograma]
     {\includegraphics[width=0.28\textwidth]{img/hist/hist-chair.jpg}}\\
-    \subfigure[`Bloques']    
+    \subfigure[`Bloques']
     {\includegraphics[width=0.22\textwidth]{img/orig/block.jpg}}\quad
     \subfigure[Umbralización del experto.]
     {\includegraphics[width=0.22\textwidth]{img/orig/blockbin.jpg}}\quad
@@ -60,7 +64,7 @@ Para poder conocer cómo actua el algoritmo frente al ruido, se han preparado im
 %    {\includegraphics[width=0.22\textwidth]{img/orig/chairacon.jpg}}\quad
 %    \subfigure[Bajo contraste]
 %    {\includegraphics[width=0.22\textwidth]{img/orig/chairbcon.jpg}}\quad
-%    \subfigure[Muy bajo contraste]    
+%    \subfigure[Muy bajo contraste]
 %    {\includegraphics[width=0.22\textwidth]{img/orig/chairmuybcon.jpg}}
 %    \caption{Imágenes con ruido utilizadas en el experimento 1 y siguientes.}
 %    \label{fig:sillaconcontraste}
@@ -71,7 +75,7 @@ En la tabla \ref{tab:resultexp1dombi} se pueden apreciar los resultados para la 
 
 \begin{table}
 \centering
-\begin{tabular}{c||c|c|c|c|c} 
+\begin{tabular}{c||c|c|c|c|c}
 $\mathbf{w}$    &\bb Silla&\bb Bloques&\bb Engranaje&\bb Letras&\bb Sombra\\\hline\hline
 $\mathbf{0,1}$  &   218   &    255    &     250     &   142    &   200  \\\hline
 $\mathbf{0,5}$  &   226   &    255    &     250     &    39    &   230  \\\hline
@@ -87,7 +91,7 @@ $\mathbf{5}$    &   218   &     31    &      59     &   216    &   219  \\\hline
 
 \begin{table}
 \centering
-\begin{tabular}{c||c|c|c|c|c} 
+\begin{tabular}{c||c|c|c|c|c}
                                                   &\bb Silla&\bb Bloques&\bb Engranaje&\bb Letras&\bb Sombra\\\hline\hline
 \bb Alg. 1 con $\mathbf{REF_1=1-\abs{x-y}}$         &   127   &     79    &     104     &   187    &   123  \\\hline
 \bb Alg. 1 con $\mathbf{REF_1=1-\abs{x-y}^2}$       &   127   &     97    &     140     &   179    &   126  \\\hline
@@ -105,7 +109,7 @@ Por otra parte, cabe destacar que este resultado se ha obtenido en un tiempo de 
 
 \begin{table}
 \centering
-\begin{tabular}{c||c|c|c} 
+\begin{tabular}{c||c|c|c}
 $\mathbf{REF_1=1-\abs{x-y}}$ & $\mathbf{w=0,75}$ &\bb $\mathbf{w=1}$ &\bb $\mathbf{w=1,25}$\\\hline\hline
 \includegraphics[width=0.2\textwidth]{img/res/e1a/alg1tipo1-chair.jpg} &
 \includegraphics[width=0.2\textwidth]{img/res/e1a/alg1tipo6-chair.jpg} &
@@ -135,7 +139,7 @@ Para poder comprobar y comparar formalmente todos los resultados, se calcula el 
 
 \begin{table}
 \centering
-\begin{tabular}{c||c|c|c|c} 
+\begin{tabular}{c||c|c|c|c}
 $\mathbf{w}$                    &\bb Bloques&\bb Engranaje&\bb Letras&\bb Sombra\\\hline\hline
 \bb Alg. 1 con $\mathbf{0,75}$  &   43,3750  &   33,0080   &   33,3617   &   59,2420  \\\hline
 \bb Alg. 1 con $\mathbf{1}$     &   49,8760  &   36,3914   &   29,6418   &   52,0672  \\\hline
@@ -146,7 +150,7 @@ $\mathbf{w}$                    &\bb Bloques&\bb Engranaje&\bb Letras&\bb Sombra
 
 
 %Con ruido
-Con la intención de poder llevar a cabo experimentos sobre imágenes con ruido, se crean estas de forma sintética, tal y como se ha presentando en la sección \ref{sec:ruido}. Se pueden ver los resultados sobre la imagen `silla', y sus histogramas, en la figura \ref{fig:imagenesruido}. 
+Con la intención de poder llevar a cabo experimentos sobre imágenes con ruido, se crean estas de forma sintética, tal y como se ha presentando en la sección \ref{sec:ruido}. Se pueden ver los resultados sobre la imagen `silla', y sus histogramas, en la figura \ref{fig:imagenesruido}.
 
 \begin{figure}
 \centering
@@ -154,23 +158,23 @@ Con la intención de poder llevar a cabo experimentos sobre imágenes con ruido,
     {\includegraphics[width=0.25\textwidth]{img/orig/chairga.jpg}}\quad
     \subfigure[Ruido `sal y pimienta' con $p=0,05$]
     {\includegraphics[width=0.25\textwidth]{img/orig/chairs&p005.jpg}}\quad
-    \subfigure[Ruido `sal y pimienta' con $p=0,2$]    
+    \subfigure[Ruido `sal y pimienta' con $p=0,2$]
     {\includegraphics[width=0.25\textwidth]{img/orig/chairs&p020.jpg}}
     \subfigure[Histograma de ruido gausiano]
     {\includegraphics[width=0.3\textwidth]{img/hist/hist-chairga.jpg}}\quad
     \subfigure[Histograma de ruido `sal y pimienta' con $p=0,05$]
     {\includegraphics[width=0.3\textwidth]{img/hist/hist-chairsp005.jpg}}\quad
-    \subfigure[Histograma de ruido `sal y pimienta' con $p=0,2$]    
+    \subfigure[Histograma de ruido `sal y pimienta' con $p=0,2$]
     {\includegraphics[width=0.3\textwidth]{img/hist/hist-chairsp020.jpg}}
     \caption{Imágenes con ruido utilizadas en el experimento 1 y siguientes.}
     \label{fig:imagenesruido}
 \end{figure}
 
-Los umbrales que se han obtenido se expresan en la tabla \ref{tab:resultexp1ruido}. Comparándola de nuevo con otros algoritmos (tablas \ref{tab:resultexp1ruidootros}), se puede apreciar que se pueden obtener resultados similiares también e, igualmente, que el parámetro $w$ es decisivo para diferentes imágenes. Es curioso comprobar el hecho de que con la misma $w$ se obtienen resultados similares en comparación con los umbrales de la versión original con REF. 
+Los umbrales que se han obtenido se expresan en la tabla \ref{tab:resultexp1ruido}. Comparándola de nuevo con otros algoritmos (tablas \ref{tab:resultexp1ruidootros}), se puede apreciar que se pueden obtener resultados similiares también e, igualmente, que el parámetro $w$ es decisivo para diferentes imágenes. Es curioso comprobar el hecho de que con la misma $w$ se obtienen resultados similares en comparación con los umbrales de la versión original con REF.
 
 \begin{table}
 \centering
-\begin{tabular}{c||c|c|c} 
+\begin{tabular}{c||c|c|c}
            &\bb R. gausiano&\bb R. impulsivo 0.05&\bb R. impulsivo 0.2\\\hline\hline
 $\mathbf{0,1}$  &   219   &    226    &     226     \\\hline
 $\mathbf{0,5}$  &   234   &    226    &     242     \\\hline
@@ -187,7 +191,7 @@ $\mathbf{5}$    &   226   &    218    &     226     \\\hline
 
 \begin{table}
 \centering
-\begin{tabular}{c||c|c|c} 
+\begin{tabular}{c||c|c|c}
                           &\bb R. gausiano&\bb R. impulsivo 0.05&\bb R. impulsivo 0.2\\\hline\hline
 \bb Alg. 1 con $\mathbf{REF_1=1-\abs{x-y}}$             &   132   &    127    &     127     \\\hline
 \bb Alg. 1 con $\mathbf{REF_1=1-\abs{x-y}^2}$           &   131   &    127    &     127     \\\hline
@@ -205,7 +209,7 @@ En cuanto al tiempo de cómputo, de nuevo vuelven a estar todos los valores ento
 
 \begin{table}
 \centering
-\begin{tabular}{c||c|c|c} 
+\begin{tabular}{c||c|c|c}
 $\mathbf{REF_1=1-\abs{x-y}}$ & $\mathbf{w=0,75}$ &\bb $\mathbf{w=1}$ &\bb $\mathbf{w=1,25}$\\\hline\hline
 \includegraphics[width=0.2\textwidth]{img/res/e1a/alg1tipo1-chairga.jpg} &
 \includegraphics[width=0.2\textwidth]{img/res/e1a/alg1tipo6-chairga.jpg} &
@@ -242,9 +246,9 @@ En vista del experimento anteior donde había momentos en los que la función de
             \item Mínimo.
             \item Integral Choquet.
             \item OWA de `al menos la mitad'. %\REV{nombre}
-        \end{enumerate}    
+        \end{enumerate}
     \item Con todos estos resultados se actua con la función penalti para cada uno de los elementos $a_1,\dots a_n$ agregados y las pertenencias obtenidas en (1) $r=(r_1,\dots, r_m)$, obtendremos $p(a_i, r)=\sum_{j=1}^m \abs{a_i-r_j}$.
-    \item Cogeremos como pertenencia aquel resultado de la agregación, $a_i$, que haga que el resultado de la función penalti sea máximo.  
+    \item Cogeremos como pertenencia aquel resultado de la agregación, $a_i$, que haga que el resultado de la función penalti sea máximo.
 \end{enumerate}
 
 En vista de que los resultados de la idea presentada anteriormente no presentaba a penas diferencia con el experimento 1. Por esta razón, en una segunda versión, se añadirá también la función de agregación siguiente con la intención de crear más {\em outlayers} que creen más posibles umbrales.
@@ -257,7 +261,7 @@ En la tabla \ref{tab:resultexp2agregado} se recogen los umbrales $t$ creados a t
 
 \begin{table}
 \centering
-\begin{tabular}{c|c|c|c|c} 
+\begin{tabular}{c|c|c|c|c}
 \bb Silla&\bb Bloques&\bb Engranaje&\bb Letras&\bb Sombra\\\hline\hline
    127   &     68    &      92     &   196    &   123  \\\hline
 \end{tabular}
@@ -280,7 +284,7 @@ En la tabla \ref{tab:resultexp2agregado} se recogen los umbrales $t$ creados a t
 
 \begin{table}
 \centering
-\begin{tabular}{c|c|c|c|c} 
+\begin{tabular}{c|c|c|c|c}
 \bb Bloques&\bb Engranaje&\bb Letras&\bb Sombra\\\hline\hline
      90,3727    &      124,9112     &     140,5241    &     194,3489  \\\hline
 \end{tabular}
@@ -292,7 +296,7 @@ Además, en la tabla \ref{tab:resultexp2agregadoruido} se pueden observar los um
 
 \begin{table}
 \centering
-\begin{tabular}{c|c|c} 
+\begin{tabular}{c|c|c}
 \bb R. gausiano&\bb R. impulsivo 0.05&\bb R. impulsivo 0.2\\\hline\hline
    132   &     127    &      152    \\\hline
 \end{tabular}
@@ -325,7 +329,7 @@ Hecho todo el cómputo, en la tabla \ref{tab:resultexp3dombi} se muestran los um
 \begin{table}
 \centering
 %\resizebox*{3\textwidth}{!}{
-\begin{tabular}{c||c|c|c|c|c} 
+\begin{tabular}{c||c|c|c|c|c}
              &\bb Silla&\bb Bloques&\bb Engranaje&\bb Letras&\bb Sombra\\\hline\hline
 \bb Alg. 3A  &   115   &    80    &     88      &    199   &    121   \\\hline
 \bb Alg. 3B  &   127   &    123    &     84      &    200   &    125   \\\hline
@@ -344,7 +348,7 @@ Alg. 3B\quad
 \includegraphics[width=0.15\textwidth]{img/res/e3a/alg3btipo-02.jpg} &
 \includegraphics[width=0.15\textwidth]{img/res/e3a/alg3btipo-09.jpg} &
 \includegraphics[width=0.15\textwidth]{img/res/e3a/alg3btipo-07.jpg}\\\hline
-Alg. 3C\quad     
+Alg. 3C\quad
 \includegraphics[width=0.15\textwidth]{img/res/e3a/alg3ctipo-chair.jpg} &
 \includegraphics[width=0.15\textwidth]{img/res/e3a/alg3ctipo-block.jpg} &
 \includegraphics[width=0.15\textwidth]{img/res/e3a/alg3btipo-02.jpg} &
@@ -408,7 +412,7 @@ Alg. 3B\quad
 \includegraphics[width=0.18\textwidth]{img/res/e3a/alg3btipo-chairga.jpg} &
 \includegraphics[width=0.18\textwidth]{img/res/e3a/alg3btipo-chairsp005.jpg} &
 \includegraphics[width=0.18\textwidth]{img/res/e3a/alg3btipo-chairsp020.jpg}\\\hline
-Alg. 3C\quad     
+Alg. 3C\quad
 \includegraphics[width=0.18\textwidth]{img/res/e3a/alg3ctipo-chairga.jpg} &
 \includegraphics[width=0.18\textwidth]{img/res/e3a/alg3ctipo-chairsp005.jpg} &
 \includegraphics[width=0.18\textwidth]{img/res/e3a/alg3ctipo-chairsp020.jpg}\\\hline
@@ -435,7 +439,7 @@ Alg. 3C\quad
 \subsection{Repetición de los experimentos con la corrección oportuna.}\label{sec:cambiodombi}
 Vistos los resultados de los experimentos anteriores, y en especial el que se refiere al experimento 3, se plantea el porqué se obtiene un resultado tan malo. Este hecho es extraño sobre todo por el hecho de que a través de los diferentes valores de $w$, el algoritmo 1 con las funciones de dombi siempre tiene buenos resultados. Se comprueba el vector de similitudes que se obtiene para dilucidar qué umbral escoger en el algoritmo 3, lo que muestra que la similitud mayor no se encuentra en el mejor umbral. %\REV{¿ejemplo?}
 
-Reestudiando la situación, se encuentra que en las propiedades de las funciones que propone Dombi (Lema \ref{def:propiedadesdombi}) se ha omitido que una función de equivalencia $e$ cumple $e(x,x)=1$. En particular, las funciones REF son un ejemplo de esta situación. La razón por la que no se puede cumplir esta propiedad es porque existe otra que dice $e(x,n(x))=0$. Como es evidente, el intentar mantener ambas a la vez es una contradicción. Por esta razón, el autor dice que sus funciones cumplirán en parte ambas en función de un parámetro. Esto hace que para dos elementos iguales no tengamos como resultado 1. 
+Reestudiando la situación, se encuentra que en las propiedades de las funciones que propone Dombi (Lema \ref{def:propiedadesdombi}) se ha omitido que una función de equivalencia $e$ cumple $e(x,x)=1$. En particular, las funciones REF son un ejemplo de esta situación. La razón por la que no se puede cumplir esta propiedad es porque existe otra que dice $e(x,n(x))=0$. Como es evidente, el intentar mantener ambas a la vez es una contradicción. Por esta razón, el autor dice que sus funciones cumplirán en parte ambas en función de un parámetro. Esto hace que para dos elementos iguales no tengamos como resultado 1.
 
 Vista la situación y sabiendo que la construcción que se utiliza para los conjuntos difusos hace necesario que la condición anterior se cumpla de forma plena, se intenta reescribir la función de pertenencia a los conjuntos difusos. De esta forma, se aplica a todos los experimentos que se han mostrado anteriormente esta nueva función (ecuación \ref{eq:intentodesolucionardombi})
 
@@ -460,7 +464,7 @@ La opción que se ha propuesto anteriormente ha tenido resultados muy malos, de 
 
 \begin{table}\begin{center}
 %\resizebox*{3\textwidth}{!}{
-\begin{tabular}{cc||c|c|c|c|c} 
+\begin{tabular}{cc||c|c|c|c|c}
                                     &                   &\bb Silla&\bb Bloques&\bb Engranaje&\bb Letras&\bb Sombra\\\hline\hline
 \bb{\multirow{2}{1.75cm}{$w=0,1$}}  &  \bb Umbral ($t$) &   234   &     8     &      0      &   157    &   250  \\
                                     &  \bb Tiempo (s)   &  0,002  &   0,675   &    0,686    &  0,689   &  0,688 \\\hline
@@ -483,7 +487,7 @@ La opción que se ha propuesto anteriormente ha tenido resultados muy malos, de 
 \end{table}
 
 \begin{table}\begin{center}
-\begin{tabular}{c||c|c|c} 
+\begin{tabular}{c||c|c|c}
     &\bb Ruido gausiano&\bb Ruido impulsivo 0.05&\bb Ruido impulsivo 0.2\\\hline\hline
 \bb Alg. 3A &   131   &    136    &     144     \\\hline
 \bb Alg. 3B &   131   &    234    &     152     \\\hline
@@ -491,3 +495,5 @@ La opción que se ha propuesto anteriormente ha tenido resultados muy malos, de 
 \end{tabular}\end{center}
 \caption{Umbrales para versión del algoritmo 3 reescrito con imágenes ruidosas.\label{tab:resultexp3bdombi}}
 \end{table}
+
+\end{document}

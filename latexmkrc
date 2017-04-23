@@ -14,8 +14,8 @@ push @generated_exts, 'glo', 'gls', 'glg';
 push @generated_exts, 'acn', 'acr', 'alg';
 $clean_ext .= ' %R.ist %R.xdy';
 
-$pdflatex = 'xelatex -interaction=nonstopmode -synctex=1 -shell-escape %O %S';
+$pdflatex = 'xelatex -f -interaction=nonstopmode -synctex=1 -shell-escape %O %S';
 $bibtex_use = 1;
 $biber = 'biber --debug %O %S';
 $pdf_previewer = 'open %O %S';
-$clean_ext = '%R.run.xml %R.syntex.gz';
+$clean_ext = '%R.run.xml %R.syntex.gz %R.synctex.gz %R.auxlock %R.bbl %R.loa %R.lol %R.maf %R.mtc %R.mtc0 %R.snm %R.nav %R.dvi';
