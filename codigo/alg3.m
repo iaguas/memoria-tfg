@@ -1,8 +1,8 @@
- % Segmentación utilizando REF y maximizando SM
- % Proyecto Beca 2014 - ALGORITMO 3, del umbral óptimo.
- % Iñigo Aguas Ardaiz
+ % SegmentaciÃ³n utilizando REF y maximizando SM
+ % Proyecto Beca 2014 - ALGORITMO 3, del umbral Ã³ptimo.
+ % IÃ±igo Aguas Ardaiz
  % 19/07/2014
- 
+
 function [tseg, segImg, similitud] = alg3(I)
     % Cardinal total de intensidades de gris.
     L = 256;
@@ -16,16 +16,16 @@ function [tseg, segImg, similitud] = alg3(I)
     allt = zeros(1,4);
     similitud = zeros(1, 6);
     HQt = zeros(1, L);
-    for i=1:4   
+    for i=1:4
         [t, ~] = alg2(I, i);
         allt(i) = t;
         Qt = fuzzySets(hq, i, t, L);
 
         % 1. Seleccionamos un operador M y una REF3.
-          % M = Media aritmética.
+          % M = Media aritmÃ©tica.
           % REF3 = 1-|x-y|^2.
 
-        % 2. Para cada uno de los mejores umbrales t 
+        % 2. Para cada uno de los mejores umbrales t
             % 2.1. Construir el conjunto Ht
             for q=0:L-1
                 if q <= t
@@ -37,13 +37,13 @@ function [tseg, segImg, similitud] = alg3(I)
             HQt(isnan(HQt))=0;
 
             % 2.2. Calcular la similitud
-            similitud(i) = SM(hq, Qt, HQt);    
-    end 
+            similitud(i) = SM(hq, Qt, HQt);
+    end
 
-    % 3. Elegir aquel con máxima similitud.      
-    invt = find(similitud == max(similitud)); % Funciona siempre que exista un sólo máximo local. TODO mirar.
+    % 3. Elegir aquel con mÃ¡xima similitud.
+    invt = find(similitud == max(similitud)); % Funciona siempre que exista un sÃ³lo mÃ¡ximo local.
     tseg = allt(invt(1));
-    
+
     % Muestra de la imagen y el resultado.
     figure;
     segImg=I;
@@ -53,7 +53,7 @@ function [tseg, segImg, similitud] = alg3(I)
 %     subplot(1,2,2); imshow(segImg)
 end
 
-% Función de similitud
+% FunciÃ³n de similitud
 function s = SM(h,Qt,HQt)
     sumHist = sum(h(:,2));
     mult1 = 1 / sumHist;
@@ -89,7 +89,7 @@ function eql = REF1(x,y,tipo)
     end
 end
 
-% Media de los píxeles del fondo (background).
+% Media de los pÃ­xeles del fondo (background).
 function m = mb(Q, t)
     m = sum(Q(1:t+1,2).*Q(1:t+1,1))/sum(Q(1:t+1,2));
     if isnan(m)
@@ -97,7 +97,7 @@ function m = mb(Q, t)
     end
 end
 
-% Media de los píxeles del objeto.
+% Media de los pÃ­xeles del objeto.
 function m = mo(Q, t, L)
     m = sum(Q(t+2:L,2).*Q(t+2:L,1))/sum(Q(t+2:L,2));
     if isnan(m)

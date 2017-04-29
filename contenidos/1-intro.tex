@@ -35,7 +35,7 @@ Este problema tiene una especial importante en la automatización de tareas, com
 Autores como González y Woods \cite{lib:gonzalez} enuncian el problema de ``segmentación de imágenes no triviales como una de las tareas más dificiles en el procesamiento de imágenes''. En este sentido, insisten en que ``la exactitud de la segmentación determina el éxito o error de los procesos de análisis computerizados''. Otros autores \cite{lib:sonka} hablan de la sementación como una ``técnica en al que se divide la imagen en partes que tienen una correlación con objetos o áreas del mundo real contenidas en la imagen''.
 
 \begin{definition}\label{def:definicionproblema}
-Dada una imagen $Q$ que se puede subdividir en $n$ regiones $R_{1}, \dots, R_{n}$, y conocida $P$ que es una cierta propiedad booleana que cumplen todos los píxeles de la región $R_{i}, \forall  i=1,\dots ,n$, se deberá cumplir siempre que:
+Dada una imagen $Q$ que se puede subdividir en $n$ regiones ${R_{1}, \dots, R_{n}}$, y conocida $P$ que es una cierta propiedad booleana que cumplen todos los píxeles de la región ${R_{i}, \forall  i=1,\dots ,n}$, se deberá cumplir siempre que:
 \begin{enumerate}
 	\item $\bigcup_{i=1}^{n}R_{i}=Q$;
 	\item En una región $R_{i}, \forall i=1,\dots ,n$ todos sus píxeles están conectados;
@@ -45,7 +45,7 @@ Dada una imagen $Q$ que se puede subdividir en $n$ regiones $R_{1}, \dots, R_{n}
 \end{enumerate}
 \end{definition}
 
-Se hablará de segmentación monoumbral cuando se obtenga únicamente un objeto y el fondo con un único umbral $t$. Para más de un objeto se dirá que el problema es multiumbral, con un vector de umbrales $(t_1, \dots, t_{n-1})$.
+Se hablará de segmentación monoumbral cuando se obtenga únicamente un objeto y el fondo con un único umbral $t$. Para más de un objeto se dirá que el problema es multiumbral, con un vector de umbrales ${(t_1, \dots, t_{n-1})}$.
 
 En conclusión, en este proceso se lleva a cabo la división de la imagen en regiones donde cada una (desde 2 hasta $n$, este número dependerá del problema que estemos resolviendo) harán mención al fondo y a cada objeto. Además, todas las regiones serán independientes entre sí, esto es, un pixel pertenecerá solamente a la región $i$ cuando hablemos de segmentación completa. Centrando el problema únicamente en aquellas imágenes en escala de grises, nuestra pretensión será obtener aquellas regiones que contienen a un objeto a través de su histograma (frecuencia de los tonos de gris), esto es, por medio de técnicas de umbralización. %\REV{seguro?}. Hablado del tema del gris con histograma
 
@@ -66,7 +66,7 @@ Además, existen tres técnicas para poder llevar a cabo la segmentación de una
 	\item {\em Técnicas basadas en la detección de bordes}. Basan su técnica en la identificación de los píxeles en la frontera. Se detecta el objeto y el fondo, ya que de esta forma queda definido también su contorno.
 \end{enumerate}
 
-En este trabajo se va a centrar la segmentación por medio de las técnicas de umbralización. Para ello lo que tendremos que hacer será calcular los umbrales que separen las regiones que se hayan encontrado, de forma que situaremos las regiones entre un umbral $t_{i}$ y otro $t_{i+1}$. Para ejemplificar esto, tomaremos la umbralización binaria en la cual se dispondrá de un único umbral $t$. De esta forma, todos los elementos de la imagen que se encuentren por encima del umbral pertenecerán a una región  y los que estén por debajo a la segunda. Esta técnica se basa únicamente en detectar los diferentes tonos de gris de la imagen, así que mirando el histograma de la imagen (fig. \ref{img:rice}), podríamos ver cómo existe una frontera entre la intensidad $t=71$ y el resto creando diferencias en los niveles de gris. \cite{art:refbarrenechea}
+En este trabajo se va a centrar la segmentación por medio de las técnicas de umbralización. Para ello lo que tendremos que hacer será calcular los umbrales que separen las regiones que se hayan encontrado, de forma que situaremos las regiones entre un umbral $t_{i}$ y otro $t_{i+1}$. Para ejemplificar esto, tomaremos la umbralización binaria en la cual se dispondrá de un único umbral $t$. De esta forma, todos los elementos de la imagen que se encuentren por encima del umbral pertenecerán a una región  y los que estén por debajo a la segunda. Esta técnica se basa únicamente en detectar los diferentes tonos de gris de la imagen, así que mirando el histograma de la imagen (fig. \ref{img:rice}), podríamos ver cómo existe una frontera entre la intensidad ${t=71}$ y el resto creando diferencias en los niveles de gris. \cite{art:refbarrenechea}
 
 \begin{figure}
 \centering
@@ -76,7 +76,7 @@ En este trabajo se va a centrar la segmentación por medio de las técnicas de u
 	{\includegraphics[width=0.25\textwidth]{img/umbra-rice}}\quad
 	\subfigure[Histograma.]
 	{\includegraphics[width=0.35\textwidth]{img/hist-rice}}
-	\caption{Proceso de segmentación. Se puede ver que en $t=71$ se produce un mínimo con respecto a los otros niveles de gris y que por eso se escoge como umbral.}
+	\caption{Proceso de segmentación. Se puede ver que en ${t=71}$ se produce un mínimo con respecto a los otros niveles de gris y que por eso se escoge como umbral.}
 	\label{img:rice}
 \end{figure}
 

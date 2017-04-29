@@ -4,9 +4,7 @@
 \RequirePackage{iftex}
 \RequireXeTeX
 
-
 \RequirePackage{ifdraft}
-
 \ifdraft{%
   \PassOptionsToPackage{draft}{bookmark}%
 }{}
@@ -46,6 +44,7 @@
 \RequirePackage{scrhack}
 
 % Common useful stuff
+\RequirePackage{subfiles}
 \RequirePackage{underscore}
 \RequirePackage{ellipsis}
 \RequirePackage{enumitem}
@@ -68,11 +67,6 @@
 % Graphics
 \RequirePackage{graphicx}
 \DeclareGraphicsExtensions{.pdf,.png,.jpg,.mps,.bmp}
-
-% Paquete para la escritura de algoritmos.
-% http://www.rosapolis.net/2008/04/21/escribir-algoritmos-en-latex/
-%\RequierePackage{algorithm}
-%\RequierePackage{algorithmic}
 
 % Other stuff
 %\RequirePackage[gen,right]{eurosym}
@@ -118,6 +112,8 @@
 % Packages that go after hyperref
 \RequirePackage{cleveref}
 \RequirePackage[hypcap]{caption}
+\RequirePackage[all]{hypcap}
+
 
 % Glossaries
 %\RequirePackage[xindy,toc,translate=babel]{glossaries}

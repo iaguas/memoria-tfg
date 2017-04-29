@@ -4,7 +4,7 @@
 
 \section{Procesamiento digital de imagen}\label{sec:procesamiento}
 
-Un imagen $Q$ puede ser entendida como una función de dos variables, $q(x,y)$, donde $x$ e $y$ son las coordenadas en el plano de cada elemento (píxel) y la función da como resultado el nivel de gris o intensidad asociada a ese píxel. En concreto, cuando $x$ e $y$ así como la intensidad $q(x,y)$ son finitas y discretas hablaremos de que tenemos una imagen digital. Por eso mismo, el procesamiento digital de imagen se puede definir como aquel que se hace con imágenes digitales a través de un ordenador. Tiene su origen con la introducción de las primeras imágenes digitales a principios de 1920, donde se enviaban imágenes entre Londres y Nueva York por medio de un cable submarino.
+Un imagen $Q$ puede ser entendida como una función de dos variables, ${q(x,y)}$, donde $x$ e $y$ son las coordenadas en el plano de cada elemento (píxel) y la función da como resultado el nivel de gris o intensidad asociada a ese píxel. En concreto, cuando $x$ e $y$ así como la intensidad ${q(x,y)}$ son finitas y discretas hablaremos de que tenemos una imagen digital. Por eso mismo, el procesamiento digital de imagen se puede definir como aquel que se hace con imágenes digitales a través de un ordenador. Tiene su origen con la introducción de las primeras imágenes digitales a principios de 1920, donde se enviaban imágenes entre Londres y Nueva York por medio de un cable submarino.
 
 Es claro que los seres humanos disponemos del sentido de la vista como el sentido más desarrollado para interactuar con el medio, pero está limitada a la banda visible dentro del espectro electromagnético. En cambio, el procesamiento digital de imagen puede cubrir el análisis de todo el espectro electromagnético, lo que incluye los ultrasonidos, el infrarrojos, rayos X, etc. En consecuencia, el procesamiento digital es aplicado en numerosos ámbitos de la sociedad y la vida diaria.
 %\REV{quitar ultima frase?} Redactarla mejor.
@@ -15,8 +15,7 @@ No hay una clara frontera entre el procesamiento de imagen y la visión artifici
 
 
 \subsection{Imágenes digitales}\label{sec:imagenesdigitales}
-Como ya se ha explicado en el apartado anterior, se habla de imagen digital cuando se puede ser capaz de determinar todos sus elementos (píxeles), es decir, estos son de forma finita y discreta. A partir de esta idea, se dispone de dos formas de representación para las imágenes en niveles de gris, en los rangos $[0,1]\in\RR$ y $[0,255]\in\NN$. En el primer caso diremos que la imagen está normalizada. Además, las imágenes digitales serán representadas por una matriz que contendrá cada uno de sus píxeles de manera ordenada.
-
+Como ya se ha explicado en el apartado anterior, se habla de imagen digital cuando se puede ser capaz de determinar todos sus elementos (píxeles), es decir, estos son de forma finita y discreta. A partir de esta idea, se dispone de dos formas de representación para las imágenes en niveles de gris, en los rangos ${[0,1]\in\RR}$ y ${[0,255]\in\NN}$. En el primer caso diremos que la imagen está normalizada. Además, las imágenes digitales serán representadas por una matriz que contendrá cada uno de sus píxeles de manera ordenada.
 
 \begin{figure}
 \centering
@@ -33,7 +32,7 @@ Como ya se ha explicado en el apartado anterior, se habla de imagen digital cuan
 Como se puede apreciar en la figura \ref{fig:defimagen} cuanto más cercano a 0 sea el número, más negro será el nivel de gris, y cuanto más cercano a 1 ó 255, más blanco. En el caso de imágenes en color, se utiliza el formato RGB ({\em Red}, {\em Green} y {\em Blue}) donde existe una matriz como las anteriores por cada uno de los colores y al superponerlas se obtiene la imagen que vemos habitualmente.
 
 \begin{definition}\label{def:histograma}
-Se define el histograma de una imagen $Q$ con niveles de gris en el intervalo [0, 255] como la función $h(q) = n_q$ donde $n_q$ es el número de píxeles en la imagen con la intensidad $q$.
+Se define el histograma de una imagen $Q$ con niveles de gris en el intervalo [0, 255] como la función ${h(q) = n_q}$ donde ${n_q}$ es el número de píxeles en la imagen con la intensidad $q$.
 \end{definition}
 
 Un ejemplo gráfico de la función de histograma para una imagen puede encontrarse en la figura \ref{img:rice}.
@@ -57,7 +56,9 @@ El contraste es aquel concepto que nace de la diferencia de la intensidad más a
     \caption{Imagen del fotógrafo con diferentes contrastes\label{fig:contraste}}
 \end{figure}
 
-Para llevar a cabo este ajuste en \MATLAB, se utiliza la función \mintinline{matlab}{imadjust(img_var, extremos_entrada, extremos_salida)} donde mintinline{matlab}{img_var} es la variable donde está almacenada la imagen en tipo \mintinline{matlab}{uint8}, mintinline{matlab}{extremos_entrada} es un vector que indica entre cuales están los valores que se deben modificar (en nuestro caso será vacío para que coja todo el histograma) y de manera simétrica mintinline{matlab}{extremos_salida} es el rango donde debe encontrarse el histograma de la imagen de salida.
+%TODO: Primera función
+Para llevar a cabo este ajuste en \MATLAB, se utiliza la función \mintinline{matlab}{imadjust(img_var, extremos_entrada, extremos_salida)} %\todo[A]{Hacer algo con esto}
+donde \mintinline{matlab}{img_var} es la variable donde está almacenada la imagen en tipo \mintinline{matlab}{uint8}, \mintinline{matlab}{extremos_entrada} es un vector que indica entre cuales están los valores que se deben modificar (en nuestro caso será vacío para que coja todo el histograma) y de manera simétrica \mintinline{matlab}{extremos_salida} es el rango donde debe encontrarse el histograma de la imagen de salida.
 
 \subsection{Ruido en las imagenes}\label{sec:ruido}
 Se condidera que una imagen está degradada cuando tiene ruido, esto es, cuando tiene defectos con respecto a la imagen original (fig. \ref{fig:defruido}). La principal fuente de ruido en images digitales se da en la adquisición o transmisión de las imagenes. Esto se puede deber a las condiciones ambientales o a la calidad de los sensores durante la toma de la imagen. Por ejemplo, la luminosidad, el polvo en el ambiente, etc. pueden ser determinantes. Por otra parte, en el caso de la transmisión, las imágenes pueden ser corrompidas por interferencias en el medio de transmisión, principalmente. Esto es claro cuando se transmite una imagen de un satélite, ya que la atmósfera puede interferir y provocar que la imagen recibida en la Tierra no sea exactamente igual.
@@ -73,7 +74,7 @@ Se condidera que una imagen está degradada cuando tiene ruido, esto es, cuando 
     \label{fig:defruido}
 \end{figure}
 
-Las imágenes con ruido también se pueden crear artificialmente. Para ello utilizamos una cierta función $H$ de degradación, a la que añadimos un ruido al que llamaremos $\eta$ de forma que obtendremos una nueva imagen $g(x,y)$ que tendrá una serie de imperfecciones. Todo el ruido creado de esta forma se aplicará directamente sobre los píxeles de la imagen lo que provocará cambios en su histograma en una forma u otra. Aun así, debemos tener en cuenta que no hay relación directa entre la intensidad nueva que tienen los píxeles y la anterior.
+Las imágenes con ruido también se pueden crear artificialmente. Para ello utilizamos una cierta función $H$ de degradación, a la que añadimos un ruido al que llamaremos $\eta$ de forma que obtendremos una nueva imagen ${g(x,y)}$ que tendrá una serie de imperfecciones. Todo el ruido creado de esta forma se aplicará directamente sobre los píxeles de la imagen lo que provocará cambios en su histograma en una forma u otra. Aun así, debemos tener en cuenta que no hay relación directa entre la intensidad nueva que tienen los píxeles y la anterior.
 
 Existen muchos tipos de ruido como el exponencial, el gamma, el uniforme, etc. pero en esta memoria se han utilizado, el gausiano y el de tipo impulsivo o de `sal y pimienta'.
 

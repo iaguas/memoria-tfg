@@ -1,24 +1,24 @@
-% TRABAJO FINAL DE GRADO - ALGORITMO 2, DEL AREA
-% Inigo Aguas
+% TRABAJO FINAL DE GRADO - ALGORITMO 2, DEL ÁREA
+% Inigo Aguas Ardaiz
 % UPNA, 25 de junio de 2015.
 
-% Algoritmo 2 para segmentar la imagen utilizando funciones OWA 
-% para la creacion de los conjuntos difusos.
+% Algoritmo 2 para segmentar la imagen utilizando funciones OWA
+% para la creación de los conjuntos difusos.
 function [tseg, segImg] = alg2owa(I, tipoREF, tipoOWA)
 
     % Cardinal total de intensidades de gris.
     L = 256;
     Lminus1 = L-1;
-    
+
     % Se muestrea la pertenencia de cada elemento a la imagen.
     hq = [(0:Lminus1)' imhist(I)]; % Vectores columna, [t-1, hist(t-1)].
-    sumHist = sum(hq(:,2)); % Constante para acelerar el c�mputo.
-    
+    sumHist = sum(hq(:,2)); % Constante para acelerar el cómputo.
+
     % 1. Seleccionamos los automorfismos 1 y 2. (Se indican en cada tipo).
 
     % 2. Bucle sobre los umbrales t
     A = zeros(0,L);
-    % 2.1. Calculamos el area
+    % 2.1. Calculamos el área
     if(tipoREF==1)
         % (i) aut1=x y aut2=x
         for t=0:Lminus1
@@ -46,9 +46,9 @@ function [tseg, segImg] = alg2owa(I, tipoREF, tipoOWA)
                 sum(hq(t+2:L,2)'.*((t+1:Lminus1)/Lminus1 - owao(hq,t,L,tipoOWA)).^2));
         end
     end
-    
-    % 3. Tomar como umbral el valor con mayor area en 2.1.
-        invt = find(A == max(A))-1; 
+
+    % 3. Tomar como umbral el valor con mayor área en 2.1.
+        invt = find(A == max(A))-1;
         tseg = round(mean(invt));
 
         segImg=I;

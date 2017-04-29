@@ -6,45 +6,47 @@
 \section{Lógica difusa}\label{sec:logicadifusa}
 La lógica difusa fue introducida por el matemático L. A. Zadeh \cite{art:zadeh} en 1965 con la intención de poder extender la lógica clásica o {\em crips} de forma que permitiera manejar y procesar la información que se compone de términos inexactos, imprecisos o subjetivos. Es, al fin y al cabo, un intento de imitar la forma de deducción del cerebro humano para trasladarlo a las máquinas. Se comenzará recordando la lógica clásica para después extender los conceptos a la difusa.
 
-En primer lugar, definiremos el universo finito, $U$,  con el que se  trabajará, de forma que contenga todos aquellos elementos con los que se desee trabajar, esto es, $U = \{u_{1}, u_{2}, \dots, u_{n}\}$. En la lógica clásica simplemente asignamos verdadero o falso a cada uno de los elementos del conjunto que se estudia. Por esta razón, al definir un conjunto $A$ podremos decir que este contiene o no a los elementos del universo $U$ con una certeza absoluta. De esta manera, daremos un valor de 1 cuando $u_{i}$ esté incluido en $A$ (verdadero) y un valor de 0 cuando no lo esté (falso). En esta última idea se refleja por medio de la función de pertenencia al conjunto  $A$, $\mu_{A}$ (ecuación \ref{eq:logicaclasica}).
-\begin{equation}\label{eq:logicaclasica}
-\begin{aligned}
-	A = \{(u_{i}, \mu_{A}(u_{i})) | u_{i}\in U\}
+En primer lugar, definiremos el universo finito, $U$,  con el que se  trabajará, de forma que contenga todos aquellos elementos con los que se desee trabajar, esto es, ${U = \{u_{1}, u_{2}, \dots, u_{n}\}}$. En la lógica clásica simplemente asignamos verdadero o falso a cada uno de los elementos del conjunto que se estudia. Por esta razón, al definir un conjunto $A$ podremos decir que este contiene o no a los elementos del universo $U$ con una certeza absoluta. De esta manera, daremos un valor de 1 cuando ${u_{i}}$ esté incluido en $A$ (verdadero) y un valor de 0 cuando no lo esté (falso). En esta última idea se refleja por medio de la función de pertenencia al conjunto  $A$, $\mu_{A}$ (ecuación \ref{eq:logicaclasica}).
 
-	\mu_{A}:U\rightarrow \{0,1\} \text{ tal que}\\
-	\mu_{A}(u) = \left\{ \begin{aligned}
-		1 \quad\text{si}\quad u\in A\\
-		0 \quad\text{si}\quad u\notin A
- 	\end{aligned}\right.
-\end{aligned}
-\end{equation}
-\REV{revisar ecuación con respecto al ejemplo} Se da más adelante la concreta.
+\begin{gather}\label{eq:logicaclasica} % TODO: El entorno este es una mierda.
+	A = \{(u_{i}, \mu_{A}(u_{i})) | u_{i}\in U\}\\
+	\mu_{A}:U\rightarrow \{0,1\} \text{ tal que }
+	\mu_{A}(u) = \left\{
+		\begin{aligned}
+			1 \quad\text{si}\quad u\in A\\
+			0 \quad\text{si}\quad u\notin A
+		\end{aligned}
+	\right.
+\end{gather}
+% \REV{revisar ecuación con respecto al ejemplo} Se da más adelante la concreta.
 
- Podemos considerar el problema de determinar si una persona es alta o no. Para la lógica clásica, este razonamiento se simplificará en buscar un valor a partir del cual podamos definir que cierta persona es alta. Para el siguiente ejemplo, tomaremos 1,75 metros como referencia, donde $A$ es el conjunto de las personas altas. De este modo, $\mu_{A}=1 \text{ si } u>1,75$ y en otro caso $\mu_{A}=0$. En la figura \ref{fig:altoclasica} se puede ver la representación del concepto `alto' para las posibles alturas que se pueden presentar.
+Podemos considerar el problema de determinar si una persona es alta o no. Para la lógica clásica, este razonamiento se simplificará en buscar un valor a partir del cual podamos definir que cierta persona es alta. Para el siguiente ejemplo, tomaremos 1,75 metros como referencia, donde $A$ es el conjunto de las personas altas. De este modo, ${\mu_{A}=1 \text{ si } u>1,75}$ y en otro caso ${\mu_{A}=0}$. En la figura \ref{fig:altoclasica} se puede ver la representación del concepto `alto' para las posibles alturas que se pueden presentar.
 
-\subfile{graficos/logicaclasicagraf}
+%\subfile{graficos/logicaclasicagraf}
 
-Por otra parte, la lógica difusa dispone de la función de pertenencia más compleja, lo que nos hace poder decir que alguien es `poco alto' o `bastante alto' ya que no daremos un par de valores ($\{0,1\}$) sino cualquiera de los contenidos en el intervalo que definen. Así $\mu_{A}$ será una función que asigna un valor entre 0 y 1 a cada elemento de $A$.
+Por otra parte, la lógica difusa dispone de la función de pertenencia más compleja, lo que nos hace poder decir que alguien es `poco alto' o `bastante alto' ya que no daremos un par de valores (${\{0,1\}}$) sino cualquiera de los contenidos en el intervalo que definen. Así ${\mu_{A}}$ será una función que asigna un valor entre 0 y 1 a cada elemento de $A$.
 
-\begin{equation}\label{eq:logicadifusa}
-\begin{aligned}
+\begin{gather}\label{eq:logicadifusa} %TODO: El entorno es una mierda, también.
 	A = \{(u_{i}, \mu_{A}(u_{i})) | u_{i}\in U\}\\
 	\mu_{A}:U\rightarrow [0,1]
-\end{aligned}
-\end{equation}
+\end{gather}
+
 Si continuamos con el ejemplo se verá que el conjunto alto ($A$) esta vez se define como explica la ecuación \ref{eq:ejemplodifusa}.
 
 \begin{equation}\label{eq:ejemplodifusa}
-	\mu_{A}(u) = \left\{ \begin{aligned}
-		1 \quad&\text{si}\quad u\geq 2\\
-		2u - 3 \quad&\text{si}\quad 1.5>u>2\\
-		0 \quad&\text{si}\quad u\leq 1.5
- 	\end{aligned}\right.
+	\mu_{A}(u) = \left\{
+		\begin{aligned}
+			1 \quad&\text{si}\quad u\geq 2\\
+			2u - 3 \quad&\text{si}\quad 1.5>u>2\\
+			0 \quad&\text{si}\quad u\leq 1.5
+		\end{aligned}
+	\right.
  \end{equation}
-Esta nueva función de pertenencia hace que podamos distinguir 3 zonas dentro de su representación (figura \ref{fig:altodifusa}). Se tendrá de nuevo la etiqueta `alto' y `no alto' que hacen que su pertenencia sea certera. Se dispondrá, también, una parte de la pertenencia a la que llamaremos `difuso' donde el conjunto no afirma ser ni `alto' ni `no alto' sino que está en una situación intermedia. En este caso se habla de que el elemento $a_{i}$ que se encuentra ahí pertenece a $A$ con grado $\mu_{A}(a_{i})$.
 
-\subfile{graficos/logicadifusagraf}
+Esta nueva función de pertenencia hace que podamos distinguir 3 zonas dentro de su representación (figura \ref{fig:altodifusa}). Se tendrá de nuevo la etiqueta `alto' y `no alto' que hacen que su pertenencia sea certera. Se dispondrá, también, una parte de la pertenencia a la que llamaremos `difuso' donde el conjunto no afirma ser ni `alto' ni `no alto' sino que está en una situación intermedia. En este caso se habla de que el elemento $a_{i}$ que se encuentra ahí pertenece a $A$ con grado ${\mu_{A}(a_{i})}$.
 
-Más formalmente, denotaremos al conjunto que incluye a todos los conjuntos difusos como $\FF(u)$ a todos aquellos que se encuentran definidos sobre un referencial finito ($|U| = n$) por lo que $U$ no será un conjunto vacío.
+%\subfile{graficos/logicadifusagraf}
+
+Más formalmente, denotaremos al conjunto que incluye a todos los conjuntos difusos como $\FF(u)$ a todos aquellos que se encuentran definidos sobre un referencial finito (${|U| = n}$) por lo que $U$ no será un conjunto vacío.
 
 \end{document}

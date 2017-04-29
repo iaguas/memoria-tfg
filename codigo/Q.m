@@ -1,4 +1,4 @@
-% Función auxiliar para calcular los pesos de la funcion owa.
+% Función auxiliar para calcular los pesos de la función OWA.
 function Q = funcPesos(r)
         if r < 0.5
             Q = 0;

@@ -2,6 +2,8 @@
 
 \begin{document}
 
+\section{Métodos algorítmicos de segmentación de un único umbral}\label{sec:algoritmosmono}
+
 % ALGORITMO 1 GENERAL
 \subsection{Algoritmo general maximizando la similitud}
 
@@ -59,7 +61,7 @@ Debido a la formulación de este tarbajo, se sustituirá la aplicación anterior
      \end{aligned}\right.
 \end{equation}
 %\REV{Está bien definido cómo he metido el parámetro d??}
-Además, el último paso del bucle, en la línea \ref{lin:alg1:similitud} (Algoritmo \ref{alg:algoritmo1}=, se lleva a cabo la busqueda de la similitud frente al conjunto $\tilda1$. Para poder llevar a cabo este cálculo, tal y como se especifica en la definición \ref{def:similitud}, necesitamos utilizar una función $REF$, que será $REF_2=1-\abs{x-y}^2$, y la agregación $M$, la media aritmética ($M=\frac{i=1}{n}\sum_1^n x_i$). De esta forma, quedará como sigue:
+Además, en el último paso del bucle, en la línea \ref{lin:alg1:similitud} (Algoritmo \ref{alg:algoritmo1}), se lleva a cabo la busqueda de la similitud frente al conjunto $\tilda1$. Para poder llevar a cabo este cálculo, tal y como se especifica en la definición \ref{def:similitud}, necesitamos utilizar una función $REF$, que será ${REF_2=1-\abs{x-y}^2}$, y la agregación $M$, la media aritmética (${M = \frac{a}{b} \sum_1^n x_i}$). De esta forma, quedará como sigue:
 \begin{equation}\label{eq:similitud}
     SM(\tilda1, Q_{t}) = M^{L-1}_{q=0}(h(q)\cdot REF_2(1,\mu_{Q_t}(q)))
 \end{equation}

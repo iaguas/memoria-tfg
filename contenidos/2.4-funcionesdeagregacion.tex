@@ -8,7 +8,7 @@
 Las funciones de agregación tienen como propósito reducir las dimensiones de la información a partir de la combinación de los datos de entrada obteniendo una salida que los represente \cite{art:montero, art:calvoagregacion}. Su aplicación se extiende en muchos casos prácticos y teóricos como la lógica multievaluada, control difuso, la toma de decisión, etc \cite{art:paternain}.  Se definirá una función de agregación como sigue:
 
 \begin{definition}\label{def:agregacion}
-Se dice que $M : \unitinterval^n \rightarrow \unitinterval$ es una función de agregación de dimensión $n$ siempre que satisfaga:
+Se dice que ${M : \unitinterval^n \rightarrow \unitinterval}$ es una función de agregación de dimensión $n$ siempre que satisfaga:
 	\begin{enumerate}
 	\item $M(x_1, \dots, x_n) = 0$ si y sólo si $x_1=\dots=x_n=0$;
 	\item $M(x_1, \dots, x_n) = 1$ si y sólo si $x_1=\dots=x_n=1$;
@@ -26,9 +26,9 @@ En este proyecto se utilizarán mayoritariamente las funciones de agregación id
 En esta sección se introduce el concepto de las funciones de media ponderada ordenada (OWA, {\em  ordered weighted averaging}) \cite{art:yagerowa, art:paternain, art:bustinceowa}. Se basan en la idea de generar una media, ordenando primero los elementos a agregar, para luego darles mayor relevancia a una parte de ellos. Este tipo de función generaliza la media aritmética, siendo esta el OWA en el que todos los elementos del vector de pesos son iguales.
 
 \begin{definition}\label{def:owa}
-Una  función $F:\unitinterval^n\rightarrow\unitinterval$ será una función OWA de dimensión $n$ si existe un vector $w=(w_{1},w_{2},\dots,w_{n})\in \unitinterval^{n}$ tal que $\sum_{i}w_{i}=1$ de forma que
+Una  función $F:\unitinterval^n\rightarrow\unitinterval$ será una función OWA de dimensión $n$ si existe un vector ${w=(w_{1},w_{2},\dots,w_{n})\in \unitinterval^{n}}$ tal que ${\sum_{i}w_{i}=1}$ de forma que
 $$F(x_{1},\dots,x_{n})=\sum^{n}_{j=1}w_{j}x_{\sigma(j)}$$
-donde $x_{\sigma(j)}$ es el $j$-ésimo mayor elemento del vector $(x_{1},\dots,x_{n})$.
+donde ${x_{\sigma(j)}}$ es el $j$-ésimo mayor elemento del vector ${(x_{1},\dots,x_{n})}$.
 \end{definition}
 
 Por tanto para poder obtener un resultado adecuado, deberá utilizarse un vector de pesos $w$ que se adecúe a las necesidades del problema. En este trabajo se emplea la versión `al menos la mitad' %\REV{nombre}. Solucionado.
@@ -54,7 +54,7 @@ Además, en la segunda parte del estudio, se emplea el OWA `la mayoría de'. Est
 \subsection{Integral Choquet}
 Para este otro tipo de función \cite{art:choquet, art:sugenochoquet} de agregación se pretende dar una nueva de forma de representar un conjunto de datos en una única salida. De esta forma, se define primeramente una medida a través de la cual se calculará la forma en la que cada elemento del conjunto de datos tendrá reelevancia en la agregación final. Para ello definimos el concepto de medida difusa.
 \begin{definition}\label{def:medidadifusa}
-Dado $U$ un universo finito; $\mathcal{P}(U)$ el conjunto de todos los subcojuntos de $U$. Una medida difusa es una función $\mu:\mathcal{P}(U)\rightarrow\unitinterval$ que satisface que:
+Dado $U$ un universo finito; ${\mathcal{P}(U)}$ el conjunto de todos los subcojuntos de $U$. Una medida difusa es una función ${\mu:\mathcal{P}(U)\rightarrow\unitinterval}$ que satisface que:
 \begin{enumerate}
 	\item $\mu(\emptyset)=0$ y $\mu(U)=1$.
 	\item $A\subseteq B \Rightarrow \mu(A)\leq\mu (B), \forall A, B \subseteq U$.
@@ -64,13 +64,13 @@ Dado $U$ un universo finito; $\mathcal{P}(U)$ el conjunto de todos los subcojunt
 A continuación definimos la función integral Choquet conociendo que tomaremos su versión discreta por el contexto en el que se está trabajando.
 
 \begin{definition}\label{def:choquet}
-Dado un vector $(x_1,\dots,x_n)$, sea $\sigma$ una permutación de $\{1,...,n\}$ tal que $x_{\sigma(j)}$ es el $j$-ésimo mayor elemento del vector $(x_{1},\dots,x_{n})$. La integral discreta de Choquet con respecto a la medida difusa $\mu$ es
+Dado un vector ${(x_1,\dots,x_n)}$, sea $\sigma$ una permutación de ${\{1,...,n\}}$ tal que $x_{\sigma(j)}$ es el $j$-ésimo mayor elemento del vector ${(x_{1},\dots,x_{n})}$. La integral discreta de Choquet con respecto a la medida difusa $\mu$ es
 $$Ch_{\mu}(x)=\sum_{i=1}^{n}x_{\sigma(i)}(\mu(\{\sigma(i),\dots,\sigma(n)\})-\mu(\{\sigma(i+1),\dots,\sigma(n)\}))$$
-tomando la convención de que $\{\sigma(n+1),\sigma(n)\}=\emptyset$.
+tomando la convención de que ${\{\sigma(n+1),\sigma(n)\}=\emptyset}$.
 \end{definition}
 
 \begin{proposition}\label{prop:choque2owa}
-Si denotamos a $w_{\sigma, i}^{\mu} = \mu(\{\sigma(i),\dots,\sigma(n)\})-\mu(\{\sigma(i+1),\dots,\sigma(n)\})$ se obtiene la siguiente definición de la integral Choquet en función de los operadores OWA definidos en \ref{def:owa}:
+Si denotamos a ${w_{\sigma, i}^{\mu} = \mu(\{\sigma(i),\dots,\sigma(n)\})-\mu(\{\sigma(i+1),\dots,\sigma(n)\})}$ se obtiene la siguiente definición de la integral Choquet en función de los operadores OWA definidos en \ref{def:owa}:
 $$\sum_{i=1}^{n} w_{\sigma, i}^{\mu} \cdot x_{\sigma(i)}.$$
 \end{proposition}
 

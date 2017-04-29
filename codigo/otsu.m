@@ -1,24 +1,23 @@
 % TRABAJO FINAL DE GRADO - UMBRALIZACION UTILIZANDO EL METODO DE OTSU
-% Inigo Aguas
+% Inigo Aguas Ardaiz
 % UPNA, 25 de junio de 2015.
 
 % Para calcular este metodo utilizamos la prueba de toda la combinatoria
 % diferente de todas las divisiones diferentes que se pueden dar. Es decir,
 % hacemos los grupos de 0 y L-1... De eso calculamos la varianza y de aquel
 % grupo que sea maxima es del que podemos decir que se aplica la t.
-
-
 function [tseg, Iseg] = otsu(I)
-    % Se asegura que la imagen esta en formato uint8 para tener la escala 
-    % de grises adecuada. 
+
+    % Se asegura que la imagen esta en formato uint8 para tener la escala
+    % de grises adecuada.
     I=im2uint8(I);
-    
+
     % Se obtiene el histograma de la imagen y las probabilidades.
     [conteo, intensidad] = imhist(I);
     N = sum(conteo);
     probi = conteo / N;
     probixint = probi.*intensidad;
-    
+
     % Hay dos bucles, desde 1 hasta t y desde t+1 hasta L
     L = 256;
     vars = zeros(1, L);
@@ -36,7 +35,7 @@ function [tseg, Iseg] = otsu(I)
     % (En caso de haber varios, cogeremos el umbral mas bajo)
     [~, tseg] = max(vars);
     tseg = tseg - 1;
-   
+
     % Se obtiene la imagen que diferencia objeto y fondo.
     Iseg=I;
     Iseg(I>tseg)=255;

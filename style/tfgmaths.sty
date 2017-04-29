@@ -1,0 +1,33 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{style/tfgmaths} [2017/04/25 Todos los temas matemáticos necesarios para el TFG]
+
+\newtheorem{theorem}{Teorema}[section]
+\newtheorem{corolary}[theorem]{Corolario}
+\newtheorem{lemma}[theorem]{Lema}
+\newtheorem{proposition}[theorem]{Proposición}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definición}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Observación}
+
+% Cosas para la parte matemática
+\def\unmedio{\frac{1}{2}}
+\def\tonee{t_{(1)}}
+\def\ttwo{t_{(2)}}
+\def\tthree{t_{(3)}}
+\def\RR{\mathbb{R}}
+\def\ZZ{\mathbb{Z}}
+\def\NN{\mathbb{N}}
+\def\FF{\mathcal{F}}
+\def\unitinterval{[0,1]}
+\def\xinunitinterval{{\forall x\in\unitinterval}}
+\def\xyinunitinterval{{\forall x, y\in\unitinterval}}
+\def\tsucesion{t_i, t_j, \dots, t_l}
+\def\tilda1{\tilde{1}}
+
+\newcommand{\abs}[1]{\left\vert#1\right\vert}
+\newcommand{\unitspace}{\unitinterval \rightarrow \unitinterval}
+%\DeclareMathOperator{\Pr}{Pr}
+%\DeclareMathOperator{\ln}{ln}
+%\DeclareMathOperator{\max}{max}
+%\DeclareMathOperator{\min}{min}

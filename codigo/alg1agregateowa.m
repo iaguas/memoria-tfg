@@ -1,5 +1,5 @@
-% TRABAJO FINAL DE GRADO - ALGORITMO 1 AGREGADO Y OWA
-% Inigo Aguas
+% TRABAJO FINAL DE GRADO - ALGORITMO 1 AGREGADO CON PENALTI Y OWA
+% Inigo Aguas Ardaiz
 % UPNA, 25 de junio de 2015.
 
 % Algoritmo 1 para segmentar la imagen agregado con funciones penalti
@@ -15,7 +15,7 @@ function [tseg, segImg] = alg1agregateowa(I, tipoOWA)
     % 1. Creamos los L conjuntos difusos para una t dada.
     for t=0:Lminus1
         % 1.1. Dividimos la imagen en dos clases, Cb y Co y calculamos su media.
-        % 1.2. Calculamos la función de pertenencia a través de las medias de 1.1.
+        % 1.2. Calculamos la funciÃ³n de pertenencia a travÃ©s de las medias de 1.1.
         for q=0:t
             Qt(q+1, t+1) = agregateREF1(q/Lminus1, owab(hq, t, tipoOWA)); % TODO OPTIMIZAR!!
         end
@@ -26,19 +26,17 @@ function [tseg, segImg] = alg1agregateowa(I, tipoOWA)
     % Para retirar el NaN que se produce
     Qt(isnan(Qt))=0;
 
-    % 2. Seleccionamos la REF2 como x y M como la media aritmética. TODO!
+    % 2. Seleccionamos la REF2 como x y M como la media aritmÃ©tica. TODO!
     % En realidad ya esta seleccionada. REF2(x,y)=1-|x-y|^2.
-        
+
     % 3. Calcular la similitud entre el conjunto Qt y el conjunto 1.
     sumHist = sum(hq(:,2));
     for t = 0:L-1
         similitud(t+1) = sum(hq(:,2).*REF2(1,Qt(:,t+1))) / sumHist;
     end
-    % 4. Tomar como umbral el mejor valor de similud para el apartado
-    % anterior.
+    % 4. Tomar como umbral el mejor valor de similud para el apartado anterior.
     invt = find(similitud == max(similitud))-1; % Funciona siempre que exista un solo maximo local.
     tseg = round(mean(invt));
-    
 
     % Muestra de la imagen y el resultado.
     segImg=I;

@@ -6,7 +6,7 @@
 \section{Funciones de similitud}\label{sec:similitud}
 El concepto de similitud \cite{art:fan1, art:fan2} surge cuando queremos medir cómo de parecidos son dos conjuntos difusos. Este concepto es muy parecido al de REF, pero en este caso se consideran conjuntos y no elementos. Por esta razón, utilizamos las REF como base para definir las funciones de similitud.
 \begin{definition}\label{def:similitud}
-Dada una función $M$ de agregación (definición \ref{def:agregacion}) y una función $REF$ (definión \ref{def:ref}) llamaremos a $SM$ función de similitud si $SM : \FF(X) \times \FF(X) \rightarrow [0,1]$ está definida tal que
+Dada una función $M$ de agregación (definición \ref{def:agregacion}) y una función $REF$ (definión \ref{def:ref}) llamaremos a $SM$ función de similitud si ${SM : \FF(X) \times \FF(X) \rightarrow [0,1]}$ está definida tal que
 $$SM(A,B)=M^n_{i=1}REF(\mu_A(x_i), \mu_B(x_i))$$
 y satisface las siguientes condiciones:
 	\begin{enumerate}
@@ -19,7 +19,7 @@ y satisface las siguientes condiciones:
 \end{definition}
 
 \begin{remark}\label{obs:funcionesref}
-Durante el desarrollo de este trabajo se buscará la similitud entre conjuntos difusos y el conjunto $\tilda1$. Se define el conjunto $\tilda1 =\{(u_{i}, \mu_{\tilda1}(x)=1)|u_{i}\in U \}$, esto es, aquel en el que todos sus elementos tienen pertenencia absoluta.
+Durante el desarrollo de este trabajo se buscará la similitud entre conjuntos difusos y el conjunto $\tilda1$. Se define el conjunto ${\tilda1 =\{(u_{i}, \mu_{\tilda1}(x)=1)|u_{i}\in U \}}$, esto es, aquel en el que todos sus elementos tienen pertenencia absoluta.
 \end{remark}
 
 
@@ -28,14 +28,14 @@ Durante el desarrollo de este trabajo se buscará la similitud entre conjuntos d
 Una función penalti  \cite{art:calvo} es una función de agregación, por lo que dispone de un vector de entradas del que devuelve un único resultado. Si todos los elementos del vector son iguales, entonces, claramente, la salida será eso mismo. Ahora bien, el problema surge cuando hay algún elemento diferente ya que en ese momento la idea será buscar una salida todo lo parecida posible a la entrada. En este sentido, es elemento o elementos diferentes tendrán una cierta discrepancia con los demás y justamente esto es lo que se pretende minimizar, la discrepancia, para dar una salida adecuada.
 
 \begin{definition}\label{def:penalti}
-La función $P:[a,b]^{n+1}\rightarrow \RR^{+} = [0, \infty]$ es una función penalti si y sólo si satiface que:
+La función ${P:[a,b]^{n+1}\rightarrow \RR^{+} = [0, \infty]}$ es una función penalti si y sólo si satiface que:
 \begin{enumerate}
 	\item $P(x, y) \geq 0, \forall x, y$
 	\item $P(x, y) = 0$ si $x_{i}=y \forall i=1,\dots ,n$
 	\item $P(x,y)$ es cuasiconvexa en $y$ para cualquier $x$, esto es, $P(x, \lambda\cdot y_{1} +(1-\lambda)\cdot y_{2})\leq \max(P(x, y_{1}), P(x, y_{2}))$.
 \end{enumerate}
 \end{definition}
-La función en la que se basan las penalti es $$f(x)=\arg\min_{y} P(x,y)$$ si $y$ es el único mínimo e $y=\frac{a+b}{2}$ si el conjunto de minimizadores es el intervalo $(a, b)$.
+La función en la que se basan las penalti es $$f(x)=\arg\min_{y} P(x,y)$$ si $y$ es el único mínimo e ${y=\frac{a+b}{2}}$ si el conjunto de minimizadores es el intervalo ${(a, b)}$.
 
 \begin{theorem}
 Todas las funciones de agregación llamadas medias pueden ser escritas como una función basada en una función penalti expresada en la definición \ref{def:penalti}.

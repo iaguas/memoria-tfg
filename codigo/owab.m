@@ -1,14 +1,14 @@
-% Función para obtener los owa relativos al objeto.
+% Función para obtener los OWA relativos al objeto.
 function m = owab(Q, t, tipo)
-    
+
     if tipo == 1 % Media de la imagen habitual
-        
+
          m = sum(Q(1:t+1,2).*Q(1:t+1,1))/sum(Q(1:t+1,2));
          m = m/255;
-         
+
     elseif tipo == 2 % OWA sin frecuencia.
-                    
-        % t tiene que estar normalizado.    
+
+        % t tiene que estar normalizado.
         intervalo = Q(1:t+1,2);
         tplus1norm = (t+1)/255;
         norm1 = 1/255;
@@ -24,10 +24,10 @@ function m = owab(Q, t, tipo)
         end
 
         m = w*ordenNorm;
-        
+
     else % OWA con frecuencia.
-        
-        % t tiene que estar normalizado.    
+
+        % t tiene que estar normalizado.
         intervalo = Q(1:t+1,2);
         tplus1norm = (t+1)/255;
         norm1 = 1/255;
@@ -46,7 +46,7 @@ function m = owab(Q, t, tipo)
 
         m = w*(ordenNorm.*normFrec);
     end
-    
+
     if isnan(m) %Retiramos todos los problemas.
         m=0;
     end

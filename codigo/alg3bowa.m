@@ -1,5 +1,5 @@
-% TRABAJO FINAL DE GRADO - ALGORITMO 3, DEL UMBRAL OPTIMO
-% Inigo Aguas
+% TRABAJO FINAL DE GRADO - ALGORITMO 3, DEL UMBRAL OPTIMO CON OWA
+% Inigo Aguas Ardaiz
 % UPNA, 25 de junio de 2015.
 
 % Algoritmo 3 para segmentar la imagen utilizando el algoritmo 1 como base.
@@ -16,16 +16,16 @@ function [tseg, segImg, similitud] = alg3bowa(I, tipoOWA)
     allt = zeros(1, 6);
     similitud = zeros(1, 6);
     HQt = zeros(1, L);
-    for i=1:5   
+    for i=1:5
         [t, ~] = alg1owa(I, i, tipoOWA);
         allt(i) = t;
         Qt = fuzzySets(hq, i, t, L, tipoOWA);
 
         % 1. Seleccionamos un operador M y una REF3.
-          % M = Media aritm�tica.
+          % M = Media aritmética.
           % REF3 = 1-|x-y|^2.
 
-        % 2. Para cada uno de los mejores umbrales t 
+        % 2. Para cada uno de los mejores umbrales t
             % 2.1. Construir el conjunto HQt
             for q=0:L-1
                 if q <= t
@@ -38,13 +38,12 @@ function [tseg, segImg, similitud] = alg3bowa(I, tipoOWA)
 
             % 2.2. Calcular la similitud
             similitud(i) = SM(hq, Qt, HQt);
-            %disp('.');
-    end 
+    end
 
-    % 3. Elegir aquel con maxima similitud. 
-    invt = find(similitud == max(similitud)); 
+    % 3. Elegir aquel con máxima similitud.
+    invt = find(similitud == max(similitud));
     tseg = allt(invt(1));
-    
+
     % Crea la imagen final.
     segImg=I;
     segImg(I>tseg(1))=255;

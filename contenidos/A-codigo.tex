@@ -3,143 +3,167 @@
 \begin{document}
 
 \chapter{Implementaciones de los algoritmos}
-
+% El tema del código multipagina se arregla con: https://tex.stackexchange.com/questions/271195/multipage-listings-with-minted-and-captions
 Este apéndice pretende recoger todo el código que se ha utilizado para implementar los algoritmos que se han presentado en este trabajo. Concretamente, para cada algoritmo se detalla su función principal y las auxiliares, si existieren.
 
 
 \section{Algoritmo general maximizando la similitud}
 En este primer algoritmo, se ha implementado una función principal {\ttfamily alg1(I, tipoREF1, d)} (extracto \ref{cod:alg1}) en la cual se introduce como entrada la imagen en formato {\ttfamily uint8} junto con un número del 1 al 6 que significará el tipo de función que se utiliza para crear los conjuntos difusos.
 %\noident
-\begin{listing}
-    \caption{Función principal de la implementación del algoritmo 1.\label{cod:alg1}}
-\end{listing}
+\bgroup
+\captionof{listing}{Función principal de la implementación del algoritmo 1.\label{cod:alg1}}
 \matlabfile{codigo/alg1.m}
+\egroup
+
+\newpage
 
 Para poder hacer uso del programa que se acaba de presentar, se necesitan varias funciones auxiliares que se recogen en los extractos de código \ref{cod:alg1mb} \ref{cod:alg1mo}, \ref{cod:alg1ref1} y \ref{cod:alg1ref2}.
-\newpage
-\begin{listing}
-    \caption{Función auxiliar para obtener la media del fondo.\label{cod:alg1mb}}
-\end{listing}
+\bgroup
+\captionof{listing}{Función auxiliar para obtener la media del fondo.\label{cod:alg1mb}}
 \matlabfile{codigo/mb.m}
-\begin{listing}
-    \caption{Función auxiliar para obtener la media del objeto.\label{cod:alg1mo}}
-\end{listing}
+\egroup
+
+\bgroup
+\captionof{listing}{Función auxiliar para obtener la media del objeto.\label{cod:alg1mo}}
 \matlabfile{codigo/mo.m}
-\begin{listing}
-    \caption{Función auxiliar para poder utilizar la REF1.\label{cod:alg1ref1}}
-\end{listing}
+\egroup
+
+\bgroup
+\captionof{listing}{Función auxiliar para poder utilizar la REF1.\label{cod:alg1ref1}}
 \matlabfile{codigo/ref1.m}
+\egroup
+
 \newpage
-\begin{listing}
-    \caption{Función auxiliar para poder utilizar la REF2.\label{cod:alg1ref2}}
-\end{listing}
+\bgroup
+\captionof{listing}{Función auxiliar para poder utilizar la REF2.\label{cod:alg1ref2}}
 \matlabfile{codigo/ref2.m}
+\egroup
 
 A continuación, se presenta la variación del código que se ha utilizado para implementar el algoritmo que basa sue elección en las funciones penalti. No se mostarán aquellas partes del código comunes con el algoritmo original.
-\begin{listing}
-    \caption{Función principal de la implementación del algoritmo 1 con funciones penalti.\label{cod:alg1agregate}}
-\end{listing}
+\bgroup
+\captionof{listing}{Función principal de la implementación del algoritmo 1 con funciones penalti.\label{cod:alg1agregate}}
 \matlabfile{codigo/alg1agregate.m}
-\begin{listing}
-    \caption{Función auxiliar para utilizar la REF1 con las funciones penalti implementadas.\label{cod:alg1agregateref1}}
-\end{listing}
+\egroup
+
+\bgroup
+\captionof{listing}{Función auxiliar para utilizar la REF1 con las funciones penalti implementadas.\label{cod:alg1agregateref1}}
 \matlabfile{codigo/agregateREF1.m}
-\begin{listing}
-    \caption{Función auxiliar para poder llevar a cabo todas las agregaciones que se necesitan para calcular una funcion penalti.\label{cod:alg1agregatefunc}}
-\end{listing}
+\egroup
+
+\newpage
+
+\bgroup
+\captionof{listing}{Función auxiliar para poder llevar a cabo todas las agregaciones que se necesitan para calcular una función penalti.\label{cod:alg1agregatefunc}}
 \matlabfile{codigo/agregate.m}
+\egroup
 
 Seguidamente, se muestra la versión que implementa la posibilidad de incorporar funciones OWA en los conjuntos difusos.
 
-\begin{listing}
-    \caption{Función principal que implementa el algoritmo 1 creando los conjuntos difusos con funciones OWA.\label{cod:alg1owa}}
-\end{listing}
+
+\bgroup
+\captionof{listing}{Función principal que implementa el algoritmo 1 creando los conjuntos difusos con funciones OWA.\label{cod:alg1owa}}
 \matlabfile{codigo/alg1owa.m}
-\begin{listing}
-    \caption{Función auxiliar para obtener la media u OWA del fondo.\label{cod:alg1owab}}
-\end{listing}
+\egroup
+
+\newpage
+
+\bgroup
+\captionof{listing}{Función auxiliar para obtener la media u OWA del fondo.\label{cod:alg1owab}}
 \matlabfile{codigo/owab.m}
-\begin{listing}
-    \caption{Función auxiliar para obtener la media u OWA del objeto.\label{cod:alg1owao}}
-\end{listing}
+\egroup
+
+\bgroup
+\captionof{listing}{Función auxiliar para obtener la media u OWA del objeto.\label{cod:alg1owao}}
 \matlabfile{codigo/owao.m}
-\begin{listing}
-    \caption{Función auxiliar para calcular los pesos de la función owa.\label{cod:alg1pesosowa}}
-\end{listing}
+\egroup
+
+\bgroup
+\captionof{listing}{Función auxiliar para calcular los pesos de la función owa.\label{cod:alg1pesosowa}}
 \matlabfile{codigo/Q.m}
+\egroup
 
 Por último, se muestra la versión agregada y que dispone de funciones OWA para crear los conjuntos difusos.
-\begin{listing}
-    \caption{Función principal que implementa el algoritmo 1 que utiliza funciones penalti y crea los conjuntos difusos con funciones OWA.\label{cod:alg1agregateowa}}
-\end{listing}
-\matlabfile{codigo/alg1agregateowa.m}
 
+\bgroup
+\captionof{listing}{Función principal que implementa el algoritmo 1 que utiliza funciones penalti y crea los conjuntos difusos con funciones OWA.\label{cod:alg1agregateowa}}
+\matlabfile{codigo/alg1agregateowa.m}
+\egroup
 
 \section{Algoritmo del área}
 Para la implementación del algoritmo 2, se muestra directamente la que se lleva a cabo con funciones OWA ya que si en la entrada de este parámetro se coloca un 1, entonces se tendrá el algoritmo original.
-\begin{listing}
-    \caption{Función auxiliar para obtener la media u OWA del objeto.\label{cod:alg2}}
-\end{listing}
+
+\bgroup
+\captionof{listing}{Función auxiliar para obtener la media u OWA del objeto.\label{cod:alg2}}
 \matlabfile{codigo/alg2owa.m}
+\egroup
 
 \section{Algoritmo de selección del umbral óptimo}
-\begin{listing}
-    \caption{Algoritmo 3 implementado con la función original (alg. 2) y que dispone de funciones OWA.\label{cod:alg3a}}
-\end{listing}
-\matlabfile{codigo/alg3owa.m}
-\begin{listing}
-    \caption{Algoritmo 3 implementado con el algorimo 1 y que dispone de funciones OWA.\label{cod:alg3b}}
-\end{listing}
-\matlabfile{codigo/alg3bowa.m}
-\begin{listing}
-    \caption{Algoritmo 3 implementado con el algoritmo 1 que dispone de la opción para probar con diferentes valores $w$ para la función de Dombi.\label{cod:alg3c}}
-\end{listing}
-\matlabfile{codigo/alg3c.m}
 
+\bgroup
+\captionof{listing}{Algoritmo 3 implementado con la función original (alg. 2) y que dispone de funciones OWA.\label{cod:alg3a}}
+\matlabfile{codigo/alg3owa.m}
+\egroup
+
+\bgroup
+\captionof{listing}{Algoritmo 3 implementado con el algorimo 1 y que dispone de funciones OWA.\label{cod:alg3b}}
+\matlabfile{codigo/alg3bowa.m}
+\egroup
+
+\newpage
+
+\bgroup
+\captionof{listing}{Algoritmo 3 implementado con el algoritmo 1 que dispone de la opción para probar con diferentes valores $w$ para la función de Dombi.\label{cod:alg3c}}
+\matlabfile{codigo/alg3c.m}
+\egroup
 
 Se debe tener en cuenta que cuando se lleva a cabo el cambio en las funciones de Dombi que se ha explicado en la sección \ref{sec:cambiodombi}, se cambiarán la línea que codifica la función de Dombi en las funciones \ref{cod:alg1ref1} y \ref{cod:alg1agregateref1} por las líneas del extracto \ref{cod:cambiodombi}
-\begin{listing}
-    \caption{Cambio que se debe llevar a cabo para intentar solucionar el problema que presentan las funciones de Dombi.\label{cod:cambiodombi}}
-\end{listing}
+
+\bgroup
+\captionof{listing}{Cambio que se debe llevar a cabo para intentar solucionar el problema que presentan las funciones de Dombi.\label{cod:cambiodombi}}
 \matlabfile{codigo/cambiodombi.m}
+\egroup
 
 \section{Algoritmo de umbralización global}
 Se presenta la implementación del algoritmo de umbralización global. Se ha preparado la función {\ttfamily globalThresholding(I)} a la que se le intruduce una imagen en {\ttfamily uint8} y devuelve una tupla con el umbral obtenido y la imagen segmentada. (extracto \ref{cod:global}).
-\begin{listing}
-    \caption{Función principal del algoritmo de umbralización global.\label{cod:global}}
-\end{listing}
-\matlabfile{codigo/globalThresholding.m}
 
+\bgroup
+\captionof{listing}{Función principal del algoritmo de umbralización global.\label{cod:global}}
+\matlabfile{codigo/globalThresholding.m}
+\egroup
 
 \section{Algoritmo de Otsu}
 En la función que se presenta en el extracto \ref{cod:otsu} solo es necesario introducir una imagen en formato {\ttfamily uint8}. Se devolverá por su parte, un vector con el umbral {\ttfamily t} y la imagen segmentada \cite{art:otsu}.
-\begin{listing}
-    \caption{Función principal del algoritmo de Otsu.\label{cod:otsu}}
-\end{listing}
-\matlabfile{codigo/otsu.m}
 
+\newpage
+
+\bgroup
+\captionof{listing}{Función principal del algoritmo de Otsu.\label{cod:otsu}}
+\matlabfile{codigo/otsu.m}
+\egroup
 
 \section{Algoritmo de maximización de la entropía de Renyi}
 La función {\ttfamily renyi(I)} permite llevar a cabo la umbralización por medio del método propuesto por Sahoo et al. en \cite{art:sahoo}. Se devolverá por su parte, un vector con el umbral {\ttfamily t}, la imagen segmentada y los tres valores para el umbral que se han calculado internamente.
-\begin{listing}
-    \caption{Función principal del algoritmo de maximización de la entropía de Renyi.\label{cod:renyi}}
-\end{listing}
-\matlabfile{codigo/renyi.m}
 
+\bgroup
+\captionof{listing}{Función principal del algoritmo de maximización de la entropía de Renyi.\label{cod:renyi}}
+\matlabfile{codigo/renyi.m}
+\egroup
 
 \section{Algoritmo {\em K-means}}
 La función {\ttfamily kmeans(I)} implementa el método de segmentación por regiones {\em K-means}. Se devolverá por su parte, un vector con el umbral {\ttfamily t} y el coste que ha tenido calcular la segmentación.
-\begin{listing}
-    \caption{Función principal del algoritmo {\em K-means}.\label{cod:kmeans}}
-\end{listing}
+
+\bgroup
+\captionof{listing}{Función principal del algoritmo {\em K-means}.\label{cod:kmeans}}
 \matlabfile{codigo/kmeans.m}
+\egroup
 
 Con intención de poder llevar a acabo la comparación de las imágenes que se obtienen con otros métodos, se ha preparado la función {\ttfamily normalicekmeans(I)} que tiene como entrada una imagen segmentada con el método {\em K-means} y como salida otra que ha cambiado las tonalidades para que se correspondan con las que le daría un algoritmo de segmentación.
-\begin{listing}
-    \caption{Función para convertir el resultado de {\em K-means} y hacer posible su comparación.\label{cod:kmeansnormalice}}
-\end{listing}
+
+\bgroup
+\captionof{listing}{Función para convertir el resultado de {\em K-means} y hacer posible su comparación.\label{cod:kmeansnormalice}}
 \matlabfile{codigo/normalicekmeans.m}
+\egroup
 
 Además, se han preparado una serie de programas para ejecutar de forma continuada y eficiente los experimentos que no se adjuntan a esta memoria ya que consisten únicamente en repeticiones de los algoritmos ya presentados.
 
-\document{end}
+\end{document}

@@ -7,20 +7,20 @@
 El concepto de función de equivalencia restringida (REF por sus siglas en inglés) surge del concepto de equivalencia y el de similitud \cite{art:refbarrenechea}. Este concepto es muy utilizado para la comparación de imágenes y su intención es dar una medida de cómo de iguales o similares son dos elementos $x$ e $y$. Para poder definir el concepto de REF, necesitamos varios previamente.
 
 \begin{definition}\label{def:negacionestricta}
-Una negación estricta es aquella función $c : [0, 1] \rightarrow [0, 1]$ que cumple que $c(0)=1$ y $c(1)=0$ y es estrictamente decreciente y continua. Además, si $c$ es involutiva se considera que se habla de una negación fuerte.
+Una negación estricta es aquella función ${c : [0, 1] \rightarrow [0, 1]}$ que cumple que ${c(0)=1}$ y ${c(1)=0}$ y es estrictamente decreciente y continua. Además, si $c$ es involutiva se considera que se habla de una negación fuerte.
 \end{definition}
 
 \begin{definition}\label{def:automorfismo}
-Llamaremos automorfismo ($\varphi$) a todas aquellas funciones del intervalo unidad tal que $\varphi : [0, 1] \rightarrow [0, 1]$ sean continuas y estrictamente crecientes propiciando que $\varphi(0)=0$ y $\varphi(1)=1$.
+Llamaremos automorfismo ($\varphi$) a todas aquellas funciones del intervalo unidad tal que ${\varphi : [0, 1] \rightarrow [0, 1]}$ sean continuas y estrictamente crecientes propiciando que ${\varphi(0)=0}$ y ${\varphi(1)=1}$.
 \end{definition}
 
 En 1979, E. Trillas \cite{art:thtrillas} enunció el siguiente teorema.
 \begin{theorem}[Teorema de Trillas]\label{th:trillas}
-Una función $c : [0, 1] \rightarrow [0, 1]$ es una negación fuerte si, y sólo si, existe un automorfismo del intervalo unidad tal que $c(x)=\varphi^{-1}(1-\varphi(x))$.
+Una función ${c : [0, 1] \rightarrow [0, 1]}$ es una negación fuerte si, y sólo si, existe un automorfismo del intervalo unidad tal que ${c(x)=\varphi^{-1}(1-\varphi(x))}$.
 \end{theorem}
 
 \begin{definition}\label{def:ref}
-Una función $REF  : [0, 1] \rightarrow [0, 1]$ es llamada de equivalencia restringida cuando cumple que:
+Una función ${REF  : [0, 1] \rightarrow [0, 1]}$ es llamada de equivalencia restringida cuando cumple que:
 	\begin{enumerate}
 	\item $REF(x, y) = REF(y, x), \forall x, y \in [0, 1];$
 	\item $REF(x, y) = 1$, si y sólo si, $x=y$;
@@ -33,11 +33,11 @@ Una función $REF  : [0, 1] \rightarrow [0, 1]$ es llamada de equivalencia restr
 \begin{proposition}\label{prop:contruccionref}
 Sean dos automorfismos $\varphi_{1}$ y $\varphi_{2}$, se llamará función $REF$ a la construcción que cumpla que:
 $$REF(x,y) = \varphi_1^{-1}(1-|\varphi_2(x)-\varphi_2(y)|) \quad\text{con}\quad c(x) = \varphi_2^{-1}(1-\varphi_2(x)).$$
-Además, si tenemos una $REF$ y un automorfismo en $\unitinterval$, la aplicación de estos ($F=\varphi \circ REF$) es otra $REF$.
+Además, si tenemos una $REF$ y un automorfismo en $\unitinterval$, la aplicación de estos (${F=\varphi \circ REF}$) es otra $REF$.
 \end{proposition}
 
 \begin{theorem}\label{th:ref}
-Una función continua $REF:\unitinterval^2 \rightarrow\unitinterval$ que cumpla que $REF(1,x)=x, \xinunitinterval$, es una función $REF$ asociada con la función $I:\unitinterval^2\rightarrow\unitinterval$ con $I$ continua y asociativa si y sólo si existe un automorfismo $\varphi$ en $\unitinterval$ tal que:
+Una función continua ${REF:\unitinterval^2 \rightarrow\unitinterval}$ que cumpla que ${REF(1,x)=x,} \xinunitinterval$, es una función $REF$ asociada con la función ${I:\unitinterval^2\rightarrow\unitinterval}$ con $I$ continua y asociativa si y sólo si existe un automorfismo $\varphi$ en $\unitinterval$ tal que:
 $$REF(x,y)=\varphi^{-1}(1-\abs{(\varphi(x)-\varphi(y))})\quad\text{ y }\quad c(x)=\varphi^{-1}(1-\varphi(x))$$
 \end{theorem}
 

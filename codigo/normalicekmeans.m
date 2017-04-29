@@ -1,11 +1,9 @@
-% TRABAJO FINAL DE GRADO - FUNCION AUXILIAR PARA TRASLADAR LA UMBRALIZACION DE KMEANS
-% Iñigo Aguas
+% TRABAJO FINAL DE GRADO - FUNCIÓN AUXILIAR PARA TRASLADAR LA UMBRALIZACIÓN DE KMEANS
+% Iñigo Aguas Ardaiz
 % UPNA, 25 de junio de 2015.
 
-% Esta funcion permite que cuando se utilice la función k-means sea posible
-% convertir su resultado al mismo juego de colores que usarian los demas algoritmos.
-
-
+% Esta función permite que cuando se utilice la función k-means sea posible
+% convertir su resultado al mismo juego de colores que usan los demas algoritmos.
 function imgClean = normalicekmeans(img)
     [h, gray] = imhist(img);
     grays = unique(gray(h(:)~=0));
